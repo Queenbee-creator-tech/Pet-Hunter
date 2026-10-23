@@ -60,3 +60,6 @@ The established central Autumn fantasy town sits beside a large freshwater lake,
 
 ## Decision 006 — Autumn central lake character (approved)
 The town's large freshwater lake is crystal-clear and peaceful, with gentle accessible shores and scenic views of rolling hills, grasslands, and scattered woodland. The lake's size, depth, name, outlets, wildlife, and other features remain TBD; do not assume it has mysterious islands or a major river connection.
+
+## Decision 007 — Autumn town waterfront layout (approved)
+Autumn's established fantasy town is a waterfront settlement directly along the shore of its peaceful, crystal-clear freshwater lake. Buildings, walking paths, and docks line the lakeshore. Fishing systems, boats, aquatic encounters, and specific dock functions remain proposals, not approved gameplay mechanics.
