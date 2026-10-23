@@ -57,3 +57,6 @@ An established fantasy town is the main civilization center, rather than a small
 
 ## Decision 005 — Autumn town location (approved)
 The established central Autumn fantasy town sits beside a large freshwater lake, surrounded by rolling hills, open countryside/grasslands, and scattered woodland. Lake name, town name, settlement layout, shoreline access, and precise hydrology remain TBD.
+
+## Decision 006 — Autumn central lake character (approved)
+The town's large freshwater lake is crystal-clear and peaceful, with gentle accessible shores and scenic views of rolling hills, grasslands, and scattered woodland. The lake's size, depth, name, outlets, wildlife, and other features remain TBD; do not assume it has mysterious islands or a major river connection.
