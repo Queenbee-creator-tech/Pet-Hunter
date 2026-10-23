@@ -1,12 +1,40 @@
 import {BIOMES,fresh,leave,enter,decide} from './engine.js';
-let s=fresh();
+// Versioned browser save: survives reloads on this browser, not other devices.
+const SAVE_KEY='pet-hunter-alpha-v03';
+function validSave(v){
+ return v && typeof v==='object' && typeof v.screen==='string' &&
+ typeof v.name==='string' && typeof v.background==='string' &&
+ (v.homeBiome===null||BIOMES.includes(v.homeBiome)) &&
+ (v.biome===null||BIOMES.includes(v.biome)) &&
+ typeof v.stamina==='number' && Number.isFinite(v.stamina) &&
+ v.inventory && ['eggs','materials','creatures'].every(k=>Number.isSafeInteger(v.inventory[k])&&v.inventory[k]>=0) &&
+ Number.isSafeInteger(v.incubating)&&v.incubating>=0 &&
+ Number.isSafeInteger(v.skills)&&v.skills>=0 &&
+ Number.isSafeInteger(v.encounter)&&v.encounter>=0 &&
+ Array.isArray(v.log) && v.log.every(x=>typeof x==='string') &&
+ typeof v.step==='string' && typeof v.lastOutcome==='string' &&
+ ['intro','identity','background','homeChoice','sanctuary','incubation','care','craft','inventory','destinations','explore'].includes(v.screen) &&
+ (!v.homeBiome || (v.name.trim() && v.background));
+}
+function loadSave(){
+ try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return fresh();const data=JSON.parse(raw);return validSave(data)?data:fresh();}
+ catch{return fresh();}
+}
+let s=loadSave();
+let saveWarning='';
+function save(){
+ try{localStorage.setItem(SAVE_KEY,JSON.stringify(s));saveWarning='';}
+ catch{saveWarning='Progress could not be saved in this browser. Avoid closing this tab.';}
+}
+
 const game=document.querySelector('#game'),stats=document.querySelector('#stats'),leaveButton=document.querySelector('#leave');
 function p(t){const e=document.createElement('p');e.textContent=t;game.append(e);}
 function heading(t){const e=document.createElement('h2');e.textContent=t;game.append(e);}
-function button(label,fn,disabled=false){const e=document.createElement('button');e.className='choice';e.textContent=label;e.disabled=disabled;e.addEventListener('click',()=>{fn();render();});game.append(e);}
+function button(label,fn,disabled=false){const e=document.createElement('button');e.className='choice';e.textContent=label;e.disabled=disabled;e.addEventListener('click',()=>{fn();save();render();});game.append(e);}
 function setScreen(screen){s={...s,screen};}
 function render(){
  game.replaceChildren();
+ if(saveWarning)p(saveWarning);
  stats.textContent=s.homeBiome?'Hunter: '+s.name+' • Home: '+s.homeBiome+' • Stamina: '+s.stamina+'/20 • Eggs: '+s.inventory.eggs+' • Materials: '+s.inventory.materials+' • Creatures: '+s.inventory.creatures+' • Practice: '+s.skills:'First-time character setup';
  leaveButton.hidden=s.screen!=='explore';
  if(s.screen==='intro'){heading('A Hunter’s Beginning');p('Every hunter has a story. Beyond the four seasonal domains, wild creatures and forgotten nests await. But first: who are you?');button('Begin your story',()=>setScreen('identity'));return;}
@@ -30,6 +58,6 @@ function render(){
  if(s.step==='after'){if(s.lastOutcome)p(s.lastOutcome);p('The clearing grows quiet. You can keep exploring or return to your '+s.homeBiome+' sanctuary using Leave Exploration.');button('Continue exploring',()=>s=decide(s,'continue'));}
  p('Recent expedition events:');s.log.slice(-3).forEach(p);
 }
-leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);render();});
-document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including character and home biome?')){s=fresh();render();}});
+leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
+document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including character and home biome?')){s=fresh();try{localStorage.removeItem(SAVE_KEY);saveWarning='';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
