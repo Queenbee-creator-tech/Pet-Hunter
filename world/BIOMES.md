@@ -84,3 +84,6 @@ The main river may serve as a substantial boating route, but a player should nee
 
 ## Decision 013 — Skill-dependent river travel (approved)
 The Spring -> Autumn -> Summer river is primarily a land exploration route for players without appropriate capabilities. Players who develop sufficient crafting and traveling skills may access mostly navigable river travel using suitable watercraft. This is a player capability gate, not a change to persistent river geography. Waterfalls, rapids, shallows, and other hazards may still impose restrictions. Exact thresholds, equipment, navigation rules, and exceptions remain TBD. Candidate metadata fields: required_crafting_skill, required_travel_skill, watercraft_type, river_hazard.
+
+## Decision 014 — Multiple solutions for river hazards (approved)
+Dangerous river sections may support several solutions: carry watercraft around an obstacle (portage), locate a safer alternate route, or use advanced traveling skills and specialized equipment to navigate it. Not every obstacle must support every solution; impassable waterfalls or terrain can still require bypasses. Hazards are fixed shared-world geography, while available solutions depend on the player's skills, equipment and route knowledge. Exact hazard taxonomy, risk/failure outcomes and requirements remain TBD.
