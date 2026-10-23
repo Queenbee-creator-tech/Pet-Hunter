@@ -72,3 +72,6 @@ Autumn's dominant wilderness landscape is rolling meadows and grassy hills with 
 
 ## Decision 010 — Autumn lake river connection (approved)
 A major freshwater river flows into and out of Autumn's large, clear, peaceful central lake beside the waterfront town. The generator must maintain continuous connected water flow through the lake. River source, downstream destination, direction, width, crossings, and navigability are TBD. Small tributaries remain possible but are not approved as a required network.
+
+## Decision 011 — Autumn river outlet toward Summer (approved)
+The major freshwater river flows through Autumn's central lake and downstream toward the coastline connected to Summer's Ancient Coral seas, ultimately emptying into the ocean. The upstream source, exact route, estuary form, navigability, hazards, and whether the river is usable as a player travel route remain TBD. Preserve coherent downstream hydrology.
