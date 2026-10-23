@@ -137,3 +137,7 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 - **Travel to other biomes** depends on relevant hunter skills, available resources/equipment and situational requirements; exact routes, thresholds and exceptions remain to be designed.
 - **Relocating a sanctuary** to another biome is separate from travel and requires sufficient in-game money. A player may visit a biome without moving home there. Costs and any additional prerequisites are not yet set.
 - The existing alpha still offers a home-biome choice and unrestricted expedition destination selection; these are outdated prototype behaviors, not the revised approved design. Update them in a later implementation pass with suitable migration for existing saves.
+
+### Approved relocation requirement clarification (2026-10-23)
+- Sanctuary relocation requires **both** enough in-game money **and** satisfaction of the destination biome's survival/habitation requirements. Travel access alone is insufficient.
+- Exact survival criteria and thresholds are undecided; do not invent permanent numeric requirements.
