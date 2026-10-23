@@ -69,3 +69,6 @@ Autumn beyond the main waterfront town is mostly isolated, uninhabited wildernes
 
 ## Decision 009 — Autumn wilderness landscape (approved)
 Autumn's dominant wilderness landscape is rolling meadows and grassy hills with scattered small groves, streams, and gentle valleys. It should feel open and spacious, distinct from Spring's dense forest. Groves should form coherent clusters and streams follow terrain. Exact terrain percentages and stream connectivity remain to be defined.
+
+## Decision 010 — Autumn lake river connection (approved)
+A major freshwater river flows into and out of Autumn's large, clear, peaceful central lake beside the waterfront town. The generator must maintain continuous connected water flow through the lake. River source, downstream destination, direction, width, crossings, and navigability are TBD. Small tributaries remain possible but are not approved as a required network.
