@@ -54,3 +54,6 @@ Percentages are targets and need clear category definitions before implementatio
 
 ## Decision 004 — Autumn central settlement (approved)
 An established fantasy town is the main civilization center, rather than a small village or large city. It is a recognizable inhabited hub surrounded by substantial explorable wilderness. Markets, workshops, roads and other specific features remain proposals pending approval.
+
+## Decision 005 — Autumn town location (approved)
+The established central Autumn fantasy town sits beside a large freshwater lake, surrounded by rolling hills, open countryside/grasslands, and scattered woodland. Lake name, town name, settlement layout, shoreline access, and precise hydrology remain TBD.
