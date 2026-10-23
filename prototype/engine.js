@@ -1,9 +1,20 @@
 // Alpha v0.2: story onboarding is ONE-TIME setup, not a repeatable gameplay loop.
 // All capture outcomes, rewards and costs are placeholders for testing, not final balance.
 export const BIOMES=['Spring','Summer','Autumn','Winter'];
-export function fresh(){return {screen:'intro',name:'',background:'',homeBiome:null,biome:null,step:'',stamina:20,inventory:{eggs:0,materials:0,creatures:0},incubating:0,skills:0,log:[],encounter:0,lastOutcome:''};}
-export function leave(s){return {...s,screen:'sanctuary',step:'',biome:null,log:[...s.log,'Returned to the '+s.homeBiome+' sanctuary; rewards and practice retained.']};}
-export function enter(s,biome){return {...s,screen:'explore',biome,step:'trail',encounter:s.encounter+1,lastOutcome:'',log:[...s.log,'Entered '+biome+'.']};}
+export const STAMINA_MAX=20;
+export const RECOVERY_MS=5*60*1000;
+export function isHome(s){return !!s.homeBiome && s.screen!=='explore';}
+export function recover(s,now=Date.now()){
+ if(!isHome(s)||s.stamina>=STAMINA_MAX||!Number.isFinite(s.recoverySince))return s;
+ const elapsed=Math.max(0,now-s.recoverySince),ticks=Math.floor(elapsed/RECOVERY_MS);
+ if(!ticks)return s;
+ const stamina=Math.min(STAMINA_MAX,s.stamina+ticks*2);
+ return {...s,stamina,recoverySince:stamina>=STAMINA_MAX?null:s.recoverySince+ticks*RECOVERY_MS};
+}
+
+export function fresh(){return {screen:'intro',name:'',background:'',homeBiome:null,biome:null,step:'',stamina:20,recoverySince:null,inventory:{eggs:0,materials:0,creatures:0},incubating:0,skills:0,log:[],encounter:0,lastOutcome:''};}
+export function leave(s,now=Date.now()){return {...s,recoverySince:s.stamina<STAMINA_MAX?now:null,screen:'sanctuary',step:'',biome:null,log:[...s.log,'Returned to the '+s.homeBiome+' sanctuary; rewards and practice retained.']};}
+export function enter(s,biome,now=Date.now()){s=recover(s,now);return {...s,recoverySince:null,screen:'explore',biome,step:'trail',encounter:s.encounter+1,lastOutcome:'',log:[...s.log,'Entered '+biome+'.']};}
 export function decide(s,action){
  const next={...s,inventory:{...s.inventory},log:[...s.log],lastOutcome:''};
  if(action==='observe'){next.skills++;next.step='clue';next.log.push('Observed tracks (+1 test practice; no stamina spent).');}
