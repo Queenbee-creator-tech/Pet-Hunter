@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {BIOMES,fresh,enter,leave,decide} from '../prototype/engine.js';
+import {BIOMES,fresh,enter,leave,decide,recover,RECOVERY_MS} from '../prototype/engine.js';
 const player=()=>({...fresh(),name:'Tester',background:'Aspiring Hunter',homeBiome:'Spring',screen:'sanctuary'});
 const find=(s)=>decide(decide(s,'observe'),'follow');
 test('fresh player begins in one-time onboarding',()=>{const s=fresh();assert.equal(s.screen,'intro');assert.equal(s.homeBiome,null);});
@@ -12,3 +12,9 @@ test('materials cost five stamina',()=>{const s=decide(find(enter(player(),'Wint
 test('captures can succeed and fail during alpha tests',()=>{let s=enter(player(),'Winter');s=decide(find(s),'capture');assert.equal(s.inventory.creatures,1);s=decide(find(decide(s,'continue')),'capture');assert.equal(s.inventory.creatures,1);assert.match(s.lastOutcome,/FAILED/);assert.equal(s.stamina,10);});
 test('zero stamina prevents reward collection while practice remains available',()=>{let s=player();s.stamina=0;s=decide(find(enter(s,'Summer')),'egg');assert.equal(s.inventory.eggs,0);assert.equal(s.stamina,0);s=decide(s,'continue');s=decide(s,'observe');assert.equal(s.skills,2);});
 test('engine state can roundtrip JSON for browser save',()=>{let s=decide(find(enter(player(),'Summer')),'egg');s=JSON.parse(JSON.stringify(s));assert.equal(s.inventory.eggs,1);assert.equal(s.screen,'explore');assert.equal(s.step,'after');assert.equal(s.homeBiome,'Spring');});
+
+test('home recovery grants exactly 2 per complete 5 minutes',()=>{const s={...player(),stamina:10,recoverySince:1000};assert.equal(recover(s,1000+RECOVERY_MS-1).stamina,10);assert.equal(recover(s,1000+RECOVERY_MS).stamina,12);});
+test('recovery accumulates offline and caps at 20',()=>{const s={...player(),stamina:10,recoverySince:1000};const r=recover(s,1000+RECOVERY_MS*10);assert.equal(r.stamina,20);assert.equal(r.recoverySince,null);});
+test('exploration does not restore stamina',()=>{const s={...player(),screen:'explore',stamina:8,recoverySince:1000};assert.equal(recover(s,1000+RECOVERY_MS*4).stamina,8);});
+test('leaving exploration starts home recovery clock',()=>{const s=leave({...enter(player(),'Summer'),stamina:8},12345);assert.equal(s.recoverySince,12345);assert.equal(recover(s,12345+RECOVERY_MS).stamina,10);});
+test('departing home settles earned stamina then stops recovery',()=>{const s=enter({...player(),stamina:10,recoverySince:1000},'Winter',1000+RECOVERY_MS*2);assert.equal(s.stamina,14);assert.equal(s.recoverySince,null);assert.equal(recover(s,1000+RECOVERY_MS*5).stamina,14);});
