@@ -130,3 +130,10 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 - Hunter stamina **begins recovering only when the player returns home to their sanctuary**, at **+2 stamina per 5 real-world minutes**. The current alpha maximum is 20, subject to future balancing. Exploration does not regenerate stamina. Recovery can catch up after the browser is closed, as long as the hunter remains at home.
 - The **Codex/Journal** will have a **Character** section with a visual representation of the hunter and their stamina, and a toggle to a **Skills** view displaying learned skills/progress. This is a future graphical UI requirement; current prototype may show a text placeholder. Do not conflate this with the sanctuary's room-hotspot navigation or personal book library.
 - Alpha v0.4 prototype implements basic home recovery logic and a text character/skills navigation placeholder; automated tests have been authored, but passing CI and real-browser behavior still require verification.
+
+
+## Revised starting civilization and travel/relocation progression (2026-10-23)
+- **Supersedes earlier onboarding choice of a starting home biome:** every new hunter begins in the **Autumn Civilization**, with their starting sanctuary in Autumn.
+- **Travel to other biomes** depends on relevant hunter skills, available resources/equipment and situational requirements; exact routes, thresholds and exceptions remain to be designed.
+- **Relocating a sanctuary** to another biome is separate from travel and requires sufficient in-game money. A player may visit a biome without moving home there. Costs and any additional prerequisites are not yet set.
+- The existing alpha still offers a home-biome choice and unrestricted expedition destination selection; these are outdated prototype behaviors, not the revised approved design. Update them in a later implementation pass with suitable migration for existing saves.
