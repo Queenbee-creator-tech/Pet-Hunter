@@ -116,3 +116,11 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 - The current GitHub alpha prototype incorrectly labels a biome-selection menu as "Home Sanctuary" and has no actual playable sanctuary. **This is an identified prototype gap requiring correction in the next consolidated build/test batch.**
 - Returning from exploration retains acquired rewards and skills, and brings the player to their actual sanctuary in their selected home biome.
 - Keep one-time onboarding separate from repeatable play; don't assume every sanctuary system is implemented in the MVP.
+
+
+## Alpha Test Batch 002 feedback — 2026-10-23
+- Tester reports **all tested buttons passed** in alpha v0.2. Screenshot shows Summer as chosen home, a sanctuary screen with one incubating egg, one creature, and retained practice. This is a tester-reported functional pass, **not** verification of persistence across reload or fully implemented sanctuary mechanics.
+- **Approved future UI direction:** Exploration is primarily contextual text/story choices. Sanctuary is **visually navigable**, not a text-button list. Its main/home view shows the physical sanctuary with small clickable hotspot dots on graphics for rooms and interactable objects. Clicking a hotspot opens a **visual view of that room** (e.g. incubation room, creature sleeping/bed area, crafting area, personal book library), with relevant interactive objects.
+- **Leave to Explore** is accessible from the **sanctuary main view**.
+- The current button-only sanctuary is an intentional temporary mechanics-testing scaffold; replace with visual room/hotspot navigation in a later UI development phase. Do not confuse current buttons with the approved final sanctuary experience.
+- The player explicitly wants a **personal library for books** within the sanctuary. Details of books and library mechanics are not yet specified; do not invent them.
