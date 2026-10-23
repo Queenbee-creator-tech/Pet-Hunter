@@ -87,3 +87,6 @@ The Spring -> Autumn -> Summer river is primarily a land exploration route for p
 
 ## Decision 014 — Multiple solutions for river hazards (approved)
 Dangerous river sections may support several solutions: carry watercraft around an obstacle (portage), locate a safer alternate route, or use advanced traveling skills and specialized equipment to navigate it. Not every obstacle must support every solution; impassable waterfalls or terrain can still require bypasses. Hazards are fixed shared-world geography, while available solutions depend on the player's skills, equipment and route knowledge. Exact hazard taxonomy, risk/failure outcomes and requirements remain TBD.
+
+## Decision 015 — Known and hidden routes (approved)
+Major travel routes are known from the beginning. Other trails, shortcuts, and alternative crossings may be hidden until discovered. Route geography and traversability remain fixed within the shared persistent world; each player can independently discover and track knowledge of routes. Discovery mechanisms (observation, exploration, travel skill, maps, clues) and any information-sharing rules remain TBD. The AI narrator must not invent permanent shortcuts absent from the generated map.
