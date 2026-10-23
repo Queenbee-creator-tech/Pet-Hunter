@@ -78,3 +78,6 @@ The major freshwater river flows through Autumn's central lake and downstream to
 
 ## Decision 012 — Major river source in Spring (approved)
 The main river originates from converging streams and waterfalls in Spring's elevated forest valleys, flows through Autumn's countryside into and out of the central lakeside town's freshwater lake, and eventually empties into the ocean connected to Summer's Ancient Coral seas. The approved overall flow is Spring -> Autumn -> Summer. Exact source coordinates, tributaries, elevation, estuary, river name and travel mechanics remain TBD. Winter need not connect to this specific river.
+
+## Decision 013 — Skill-gated river navigation (approved direction)
+The main river may serve as a substantial boating route, but a player should need appropriate crafting skills and traveling/navigation skills to independently build and operate watercraft for this route. The river geography is persistent and shared; skills affect player capability, not terrain. Exact skill thresholds, vessel classes, alternative acquisition methods, hazardous segments, and whether the whole route is navigable remain TBD. Players may explore riverbanks without boating.
