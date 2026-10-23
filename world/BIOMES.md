@@ -93,3 +93,6 @@ Major travel routes are known from the beginning. Other trails, shortcuts, and a
 
 ## Decision 016 — Exploration and travel skills reveal hidden routes (approved)
 Players discover hidden paths, shortcuts, and crossings through exploration, careful observation, and environmental clues. Traveling skills improve discovery and may allow identification of especially difficult-to-find routes. Basic discoveries need not be gated behind high skills. Each player's discovered-route knowledge is tracked individually while the underlying routes exist permanently in the shared generated world. Exact thresholds, probabilities, checks, and clue mechanics remain TBD.
+
+## Decision 017 — Hidden route discoveries are personal (approved)
+Hidden-route discovery records are individual to each player, even in the shared persistent multiplayer world. Players cannot transfer discovered-route map unlocks or route information through a route-sharing system; each player must discover hidden trails, shortcuts, and alternative crossings independently through exploration/observation and traveling skills. Major public routes remain known to all from the beginning. The underlying geography is identical for all players. Whether players can physically accompany one another on routes they have not yet discovered is a separate unresolved rule.
