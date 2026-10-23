@@ -63,3 +63,6 @@ The town's large freshwater lake is crystal-clear and peaceful, with gentle acce
 
 ## Decision 007 — Autumn town waterfront layout (approved)
 Autumn's established fantasy town is a waterfront settlement directly along the shore of its peaceful, crystal-clear freshwater lake. Buildings, walking paths, and docks line the lakeshore. Fishing systems, boats, aquatic encounters, and specific dock functions remain proposals, not approved gameplay mechanics.
+
+## Decision 008 — Autumn countryside population (approved)
+Autumn beyond the main waterfront town is mostly isolated, uninhabited wilderness. Secondary settlements are very few; isolated structures may exist but should be uncommon. Maintain a wilderness-first exploration identity. Exact counts, road density, ruins, and outpost placement remain TBD.
