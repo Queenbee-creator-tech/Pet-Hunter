@@ -1,20 +1,21 @@
-import {BIOMES,fresh,leave,enter,decide} from './engine.js';
+import {BIOMES,fresh,leave,enter,decide,recover,RECOVERY_MS} from './engine.js';
 // Versioned browser save: survives reloads on this browser, not other devices.
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.3.2';
+const BUILD='0.4.0';
 function validSave(v){
  return v && typeof v==='object' && typeof v.screen==='string' &&
  typeof v.name==='string' && typeof v.background==='string' &&
  (v.homeBiome===null||BIOMES.includes(v.homeBiome)) &&
  (v.biome===null||BIOMES.includes(v.biome)) &&
  typeof v.stamina==='number' && Number.isFinite(v.stamina) &&
+ (v.recoverySince==null || Number.isFinite(v.recoverySince)) &&
  v.inventory && ['eggs','materials','creatures'].every(k=>Number.isSafeInteger(v.inventory[k])&&v.inventory[k]>=0) &&
  Number.isSafeInteger(v.incubating)&&v.incubating>=0 &&
  Number.isSafeInteger(v.skills)&&v.skills>=0 &&
  Number.isSafeInteger(v.encounter)&&v.encounter>=0 &&
  Array.isArray(v.log) && v.log.every(x=>typeof x==='string') &&
  typeof v.step==='string' && typeof v.lastOutcome==='string' &&
- ['intro','identity','background','homeChoice','sanctuary','incubation','care','craft','inventory','destinations','explore'].includes(v.screen) &&
+ ['intro','identity','background','homeChoice','sanctuary','character','skills','incubation','care','craft','inventory','destinations','explore'].includes(v.screen) &&
  (!v.homeBiome || (v.name.trim() && v.background));
 }
 function loadSave(){
@@ -22,6 +23,9 @@ function loadSave(){
  catch(err){console.warn('Pet Hunter: save load error',err);return fresh();}
 }
 let s=loadSave();
+if(!('recoverySince' in s))s={...s,recoverySince:null};
+if(s.homeBiome && s.screen!=='explore' && s.stamina<20 && s.recoverySince==null)s={...s,recoverySince:Date.now()};
+s=recover(s);
 let saveWarning='';
 let saveStatus='Not saved yet';
 try { if (localStorage.getItem(SAVE_KEY) && validSave(JSON.parse(localStorage.getItem(SAVE_KEY)))) saveStatus='Saved progress restored'; } catch {}
@@ -36,6 +40,7 @@ function heading(t){const e=document.createElement('h2');e.textContent=t;game.ap
 function button(label,fn,disabled=false){const e=document.createElement('button');e.className='choice';e.textContent=label;e.disabled=disabled;e.addEventListener('click',()=>{fn();save();render();});game.append(e);}
 function setScreen(screen){s={...s,screen};}
 function render(){
+ const before=s.stamina;s=recover(s);if(s.stamina!==before)save();
  game.replaceChildren();
  const status=document.createElement('p');status.className='note';status.textContent='Alpha '+BUILD+' • '+saveStatus;game.append(status);
  if(saveWarning)p(saveWarning);
@@ -44,8 +49,10 @@ function render(){
  if(s.screen==='intro'){heading('A Hunter’s Beginning');p('Every hunter has a story. Beyond the four seasonal domains, wild creatures and forgotten nests await. But first: who are you?');button('Begin your story',()=>setScreen('identity'));return;}
  if(s.screen==='identity'){heading('What is your name, Hunter?');p('Your name will follow you into every domain.');const input=document.createElement('input');input.placeholder='Hunter name';input.maxLength=32;input.value=s.name;input.setAttribute('aria-label','Hunter name');game.append(input);button('Continue',()=>{const name=input.value.trim();if(!name){alert('Enter your hunter name first.');return;}s={...s,name,screen:'background'};});return;}
  if(s.screen==='background'){heading('Your Past');p('Some hunters inherit generations of knowledge. Others step into the unknown without a family legacy.');button('Legacy Hunter — hunting runs in your family',()=>{s={...s,background:'Legacy Hunter',screen:'homeChoice'};});button('Aspiring Hunter — your story begins here',()=>{s={...s,background:'Aspiring Hunter',screen:'homeChoice'};});return;}
- if(s.screen==='homeChoice'){heading('Where will you call home?');p('Your sanctuary will be a real place within the seasonal biome you choose. This is your home, even when you travel to other biomes.');BIOMES.forEach(b=>button(b+' — make this my home',()=>{s={...s,homeBiome:b,screen:'sanctuary',log:[...s.log,'Established a sanctuary in '+b+'.']};}));return;}
- if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);button('Visit the incubation room',()=>setScreen('incubation'));button('Visit the creature care area',()=>setScreen('care'));button('Visit the crafting workbench',()=>setScreen('craft'));button('Check expedition supplies',()=>setScreen('inventory'));button('Leave home to explore',()=>setScreen('destinations'));return;}
+ if(s.screen==='homeChoice'){heading('Where will you call home?');p('Your sanctuary will be a real place within the seasonal biome you choose. This is your home, even when you travel to other biomes.');BIOMES.forEach(b=>button(b+' — make this my home',()=>{s={...s,homeBiome:b,screen:'sanctuary',recoverySince:null,log:[...s.log,'Established a sanctuary in '+b+'.']};}));return;}
+ if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);p('Stamina recovery: +2 every 5 minutes while home (up to 20).');button('Character / Codex (test)',()=>setScreen('character'));button('Visit the incubation room',()=>setScreen('incubation'));button('Visit the creature care area',()=>setScreen('care'));button('Visit the crafting workbench',()=>setScreen('craft'));button('Check expedition supplies',()=>setScreen('inventory'));button('Leave home to explore',()=>setScreen('destinations'));return;}
+ if(s.screen==='character'){heading('Hunter Journal — Character');p('Hunter: '+s.name+' • '+s.background+' • Home: '+s.homeBiome);p('Stamina: '+s.stamina+'/20');p('Visual character portrait and skill tabs are planned for the future graphical interface.');button('View skills',()=>setScreen('skills'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
+ if(s.screen==='skills'){heading('Hunter Journal — Skills');p('Practice progress: '+s.skills);button('View character',()=>setScreen('character'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
  if(['incubation','care','craft','inventory'].includes(s.screen)){
   const titles={incubation:'Incubation Room',care:'Creature Care Area',craft:'Crafting Workbench',inventory:'Your Supplies'};heading(s.homeBiome+' Sanctuary — '+titles[s.screen]);
   if(s.screen==='incubation'){p('Stored eggs: '+s.inventory.eggs+' • In incubator: '+s.incubating);button('Place one egg in incubator (test)',()=>{s={...s,inventory:{...s.inventory,eggs:s.inventory.eggs-1},incubating:s.incubating+1};},s.inventory.eggs<1);p('Hatching timers and genetics are not built yet.');}
@@ -65,3 +72,6 @@ function render(){
 leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
 document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including character and home biome?')){s=fresh();try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
+
+// Refresh the on-screen stamina while the sanctuary is open; recovery also catches up after reload.
+setInterval(()=>{if(s.homeBiome && s.screen!=='explore' && s.stamina<20)render();},15000);
