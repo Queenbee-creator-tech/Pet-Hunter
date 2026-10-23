@@ -75,3 +75,6 @@ A major freshwater river flows into and out of Autumn's large, clear, peaceful c
 
 ## Decision 011 — Autumn river outlet toward Summer (approved)
 The major freshwater river flows through Autumn's central lake and downstream toward the coastline connected to Summer's Ancient Coral seas, ultimately emptying into the ocean. The upstream source, exact route, estuary form, navigability, hazards, and whether the river is usable as a player travel route remain TBD. Preserve coherent downstream hydrology.
+
+## Decision 012 — Major river source in Spring (approved)
+The main river originates from converging streams and waterfalls in Spring's elevated forest valleys, flows through Autumn's countryside into and out of the central lakeside town's freshwater lake, and eventually empties into the ocean connected to Summer's Ancient Coral seas. The approved overall flow is Spring -> Autumn -> Summer. Exact source coordinates, tributaries, elevation, estuary, river name and travel mechanics remain TBD. Winter need not connect to this specific river.
