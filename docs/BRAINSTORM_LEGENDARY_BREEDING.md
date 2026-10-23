@@ -31,3 +31,13 @@ Do not implement until discussed and approved.
 - Candidate safeguards to evaluate: limited attempts per legendary, restrictions on legendary-descended bloodlines, and server-authoritative lineage tracking. **These safeguards and exact odds are not yet approved.**
 - Illustrative odds discussed: 80% rare / 19% epic / 1% legendary; strictly an example, not balanced or canonical.
 - Test exploit paths including multi-account trading, unlimited rare breeding pairs, rerolls, save manipulation, and breeding descendants.
+
+
+## Clarification — farming is allowed, exploits are not
+- Players **may repeatedly breed and farm** for exceptional outcomes; persistence should be rewarded. Do not impose a lifetime breeding-attempt cap merely to prevent farming.
+- Ordinary biological cooldowns, incubation, compatibility, costs and conditions are potential balancing mechanics, not yet fixed.
+- Engine-authoritative probability rolls, genealogy and eligibility are important; a remaining-attempt counter is **not a required system**.
+- Legendary + legendary may produce lower-tier offspring even with perfect conditions. Exact probabilities TBD.
+- Offspring remain recognizably the **same creature family/species**, beginning as babies and growing through life stages; lower-tier offspring show appropriately lower-tier visual features.
+- Open modeling question: how tier is represented genetically, how appearance changes by tier, and whether a bred lower-tier offspring can later produce a higher tier.
+- Protect against actual exploits (client-forged outcomes, rerolling saved results, duplicated eggs), not legitimate repeat attempts.
