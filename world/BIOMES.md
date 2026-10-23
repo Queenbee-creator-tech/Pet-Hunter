@@ -66,3 +66,6 @@ Autumn's established fantasy town is a waterfront settlement directly along the 
 
 ## Decision 008 — Autumn countryside population (approved)
 Autumn beyond the main waterfront town is mostly isolated, uninhabited wilderness. Secondary settlements are very few; isolated structures may exist but should be uncommon. Maintain a wilderness-first exploration identity. Exact counts, road density, ruins, and outpost placement remain TBD.
+
+## Decision 009 — Autumn wilderness landscape (approved)
+Autumn's dominant wilderness landscape is rolling meadows and grassy hills with scattered small groves, streams, and gentle valleys. It should feel open and spacious, distinct from Spring's dense forest. Groves should form coherent clusters and streams follow terrain. Exact terrain percentages and stream connectivity remain to be defined.
