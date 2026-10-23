@@ -90,3 +90,6 @@ Dangerous river sections may support several solutions: carry watercraft around 
 
 ## Decision 015 — Known and hidden routes (approved)
 Major travel routes are known from the beginning. Other trails, shortcuts, and alternative crossings may be hidden until discovered. Route geography and traversability remain fixed within the shared persistent world; each player can independently discover and track knowledge of routes. Discovery mechanisms (observation, exploration, travel skill, maps, clues) and any information-sharing rules remain TBD. The AI narrator must not invent permanent shortcuts absent from the generated map.
+
+## Decision 016 — Exploration and travel skills reveal hidden routes (approved)
+Players discover hidden paths, shortcuts, and crossings through exploration, careful observation, and environmental clues. Traveling skills improve discovery and may allow identification of especially difficult-to-find routes. Basic discoveries need not be gated behind high skills. Each player's discovered-route knowledge is tracked individually while the underlying routes exist permanently in the shared generated world. Exact thresholds, probabilities, checks, and clue mechanics remain TBD.
