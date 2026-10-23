@@ -1,6 +1,7 @@
 import {BIOMES,fresh,leave,enter,decide} from './engine.js';
 // Versioned browser save: survives reloads on this browser, not other devices.
 const SAVE_KEY='pet-hunter-alpha-v03';
+const BUILD='0.3.1';
 function validSave(v){
  return v && typeof v==='object' && typeof v.screen==='string' &&
  typeof v.name==='string' && typeof v.background==='string' &&
@@ -17,14 +18,15 @@ function validSave(v){
  (!v.homeBiome || (v.name.trim() && v.background));
 }
 function loadSave(){
- try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return fresh();const data=JSON.parse(raw);return validSave(data)?data:fresh();}
- catch{return fresh();}
+ try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return fresh();const data=JSON.parse(raw);if(validSave(data))return data;console.warn('Pet Hunter: save failed validation',data);return fresh();}
+ catch(err){console.warn('Pet Hunter: save load error',err);return fresh();}
 }
 let s=loadSave();
 let saveWarning='';
+let saveStatus='Not saved yet';
 function save(){
- try{localStorage.setItem(SAVE_KEY,JSON.stringify(s));saveWarning='';}
- catch{saveWarning='Progress could not be saved in this browser. Avoid closing this tab.';}
+ try{localStorage.setItem(SAVE_KEY,JSON.stringify(s));const check=localStorage.getItem(SAVE_KEY);if(!check||!validSave(JSON.parse(check)))throw new Error('Save verification failed');saveWarning='';saveStatus='Saved in this browser';}
+ catch(err){console.warn('Pet Hunter save error',err);saveStatus='SAVE FAILED';saveWarning='Progress could not be saved in this browser. Avoid closing this tab.';}
 }
 
 const game=document.querySelector('#game'),stats=document.querySelector('#stats'),leaveButton=document.querySelector('#leave');
@@ -34,6 +36,7 @@ function button(label,fn,disabled=false){const e=document.createElement('button'
 function setScreen(screen){s={...s,screen};}
 function render(){
  game.replaceChildren();
+ const status=document.createElement('p');status.className='note';status.textContent='Alpha '+BUILD+' • '+saveStatus;game.append(status);
  if(saveWarning)p(saveWarning);
  stats.textContent=s.homeBiome?'Hunter: '+s.name+' • Home: '+s.homeBiome+' • Stamina: '+s.stamina+'/20 • Eggs: '+s.inventory.eggs+' • Materials: '+s.inventory.materials+' • Creatures: '+s.inventory.creatures+' • Practice: '+s.skills:'First-time character setup';
  leaveButton.hidden=s.screen!=='explore';
@@ -59,5 +62,5 @@ function render(){
  p('Recent expedition events:');s.log.slice(-3).forEach(p);
 }
 leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
-document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including character and home biome?')){s=fresh();try{localStorage.removeItem(SAVE_KEY);saveWarning='';}catch{saveWarning='Unable to clear browser save.';}render();}});
+document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including character and home biome?')){s=fresh();try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
