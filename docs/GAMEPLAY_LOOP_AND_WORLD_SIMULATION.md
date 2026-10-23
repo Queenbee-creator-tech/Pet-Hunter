@@ -39,3 +39,22 @@ One compact location, a few species, one expedition, one encounter with conseque
 - docs/ARCHITECTURE.md
 - docs/BRAINSTORM_CROSS_BIOME_RAISING.md
 - docs/BRAINSTORM_LEGENDARY_BREEDING.md
+
+## Approved future multiplayer bounty contest decision rules (2026-10-23)
+This is an **approved design rule table**, not an implemented or playtested feature. It is future scope, not a prerequisite for the first playable prototype.
+
+A contested bounty encounter lets eligible hunters choose **Fight** or **Yield / Avoid Confrontation** before a response deadline. Yielding means declining a fight, not necessarily abandoning the bounty entirely. No response means timeout. An opportunity to capture is never a guaranteed capture or reward.
+
+| Hunter A | Hunter B | Resolution |
+|---|---|---|
+| Fight | Fight | Consensual creature battle begins; battle outcome determines first capture opportunity |
+| Fight | Yield | Hunter A gets capture opportunity |
+| Yield | Fight | Hunter B gets capture opportunity |
+| Yield | No response | Hunter A gets capture opportunity after deadline |
+| No response | Fight | Hunter B gets capture opportunity after deadline |
+| Yield | Yield | Both withdraw from this contest; bounty remains open |
+| No response | No response | Bounty remains open |
+
+The table is symmetric: Fight/No response also advances the responding hunter, and No response/Yield advances the yielding hunter. No player is forced into PvP. The game engine, not the AI narrator, resolves contest outcomes.
+
+**Still open:** timer duration; whether choices are private/simultaneous; handling 3+ contenders; disconnections and exploits; capture process after gaining priority; re-entry into open bounties; bounty eligibility and rewards. Do not mark prototype or testing checklist items complete for this design approval.
