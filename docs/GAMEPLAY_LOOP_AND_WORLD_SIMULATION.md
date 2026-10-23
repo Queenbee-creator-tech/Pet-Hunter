@@ -124,3 +124,9 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 - **Leave to Explore** is accessible from the **sanctuary main view**.
 - The current button-only sanctuary is an intentional temporary mechanics-testing scaffold; replace with visual room/hotspot navigation in a later UI development phase. Do not confuse current buttons with the approved final sanctuary experience.
 - The player explicitly wants a **personal library for books** within the sanctuary. Details of books and library mechanics are not yet specified; do not invent them.
+
+
+## Approved stamina recovery and character profile direction (2026-10-23)
+- Hunter stamina **begins recovering only when the player returns home to their sanctuary**, at **+2 stamina per 5 real-world minutes**. The current alpha maximum is 20, subject to future balancing. Exploration does not regenerate stamina. Recovery can catch up after the browser is closed, as long as the hunter remains at home.
+- The **Codex/Journal** will have a **Character** section with a visual representation of the hunter and their stamina, and a toggle to a **Skills** view displaying learned skills/progress. This is a future graphical UI requirement; current prototype may show a text placeholder. Do not conflate this with the sanctuary's room-hotspot navigation or personal book library.
+- Alpha v0.4 prototype implements basic home recovery logic and a text character/skills navigation placeholder; automated tests have been authored, but passing CI and real-browser behavior still require verification.
