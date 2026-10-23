@@ -81,3 +81,6 @@ The main river originates from converging streams and waterfalls in Spring's ele
 
 ## Decision 013 — Skill-gated river navigation (approved direction)
 The main river may serve as a substantial boating route, but a player should need appropriate crafting skills and traveling/navigation skills to independently build and operate watercraft for this route. The river geography is persistent and shared; skills affect player capability, not terrain. Exact skill thresholds, vessel classes, alternative acquisition methods, hazardous segments, and whether the whole route is navigable remain TBD. Players may explore riverbanks without boating.
+
+## Decision 013 — Skill-dependent river travel (approved)
+The Spring -> Autumn -> Summer river is primarily a land exploration route for players without appropriate capabilities. Players who develop sufficient crafting and traveling skills may access mostly navigable river travel using suitable watercraft. This is a player capability gate, not a change to persistent river geography. Waterfalls, rapids, shallows, and other hazards may still impose restrictions. Exact thresholds, equipment, navigation rules, and exceptions remain TBD. Candidate metadata fields: required_crafting_skill, required_travel_skill, watercraft_type, river_hazard.
