@@ -6,7 +6,7 @@
 A mostly shallow, crystal-clear ocean with scattered exposed, **walkable land covered in towering coral forests**. Players can explore reef islands, coral paths, limestone platforms, caves and exposed formations on foot. The dominant terrain between these places is water, not continuous land. This is not a fully underwater setting: it should feel like an ancient underwater world has risen into open air.
 
 ## Travel fantasy
-Crossing between coral forests and reef islands often requires **giant turtles or other rideable aquatic creatures**. Possible wooden homes, shelters or platforms on turtle backs. Exact transport rules, availability, settlement culture and creature species TBD.
+Crossing between coral forests and reef islands often requires **giant turtles or other aquatic transportation**. **Giant turtles are transportation only**, not player-capturable, breedable, or raiseable pets. Wooden homes, shelters or platforms on turtle backs are visual possibilities. Exact transport rules and settlement culture TBD.
 
 ## Visual reference cues
 - Turquoise shallows, bright coastal light, massive reef towers and living coral trees
@@ -26,5 +26,5 @@ Crossing between coral forests and reef islands often requires **giant turtles o
 - Final biome name and lore
 - Is this a fifth biome, or does it replace one of the four provisional starter biomes?
 - Coral ecology and which formations are living vs fossilized
-- Settlements, starting location and transport acquisition
+- Settlements, starting location and how players access transportation
 - Full species roster and skill interactions
