@@ -105,3 +105,14 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 ### Open decisions / later work
 - Detailed skill list and practice/XP formulas; encounter weights, legendary probability caps and capture odds; reward costs and regeneration; battle injuries; thief inclusion and balance; initial story pacing playtests; confirmation behavior for leaving active encounters; initial first-five-minutes prototype.
 - Do not mark implementation/test checklist tasks complete merely because a design idea has been discussed.
+
+
+## Clarification: sanctuary is a physical home area, NOT the navigation homepage (2026-10-23)
+**Approved correction overriding earlier prototype framing:**
+- During one-time character creation the player chooses a permanent **home seasonal biome** (e.g. Winter).
+- Their sanctuary is a **distinct, playable physical location inside that chosen home biome**, containing their creatures, eggs, supplies, habitats and home activities (crafting, feeding, hatching, taming, training, breeding).
+- **Exploration is a different playable area/mode**. A player with a Winter home may explore Winter, Spring, Summer or Autumn, then return to their **Winter sanctuary**, regardless of the biome explored.
+- The sanctuary is **not** a homepage, biome-picker or merely a hub menu. Global navigation / expedition selection should not be conflated with the in-world sanctuary.
+- The current GitHub alpha prototype incorrectly labels a biome-selection menu as "Home Sanctuary" and has no actual playable sanctuary. **This is an identified prototype gap requiring correction in the next consolidated build/test batch.**
+- Returning from exploration retains acquired rewards and skills, and brings the player to their actual sanctuary in their selected home biome.
+- Keep one-time onboarding separate from repeatable play; don't assume every sanctuary system is implemented in the MVP.
