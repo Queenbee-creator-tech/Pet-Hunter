@@ -20,3 +20,12 @@ A player whose home is the warm Ancient Coral biome travels to an ice/winter bio
 - How complex should habitat building be in the initial mobile text interface?
 
 Avoid hard-locking players out of other biomes unless explicitly decided. Do not implement until approved.
+
+
+## User direction: limited magical egg storage
+- Offer an ancient/fantasy-style magical preservation container (working label: Ancient Preservation Vault), rather than a modern refrigerator.
+- Eggs from unsuitable biomes can be stored while the player develops the skills and habitat needed to hatch and raise them.
+- **Storage capacity is limited**, creating inventory decisions.
+- Players can alternatively return an egg to the wild.
+- Proposed: preservation pauses egg development and does not incubate it; potential capacity upgrades are still proposals, not approved.
+- Open questions: starting slots, expansion rules, whether eggs deteriorate outside preservation, and where/how wild returns work.
