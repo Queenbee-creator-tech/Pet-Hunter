@@ -11,6 +11,7 @@ Status: Working metadata. Explicitly approved decisions are distinguished from p
 - Dramatic fantasy biome boundaries rather than gradual transitions, while retaining physical geographical connections.
 - Different geographical access restrictions for each biome (Decision 003); specific entry mechanics remain provisional.
 - Autumn is the central civilization and connecting region.
+- Autumn's primary settlement is an established fantasy town (approved). Its exact layout, buildings, services, and population remain TBD.
 - Spring is forest-dominated with soft shaded light, glowing plants, waterfalls, scattered crystal formations and small floating land fragments. No giant flowers or crystal-made trees.
 - Winter is a harsh, high-mountain wilderness, with near-permanent polar night, auroras, white/silver ice, frozen forests and cliffs.
 - Summer is across the water, with an Ancient Coral environment: shallow turquoise ocean, walkable coral forests and reef islands. Giant turtles are intended as transport, not collectible pets.
@@ -50,3 +51,6 @@ Percentages are targets and need clear category definitions before implementatio
 
 ## Original initial creature roster target (provisional)
 6 common + 12 rare + 4 epic + 2 legendary = 24 species per biome, 96 across four biomes. Prototype scope should be smaller; do not treat targets as implemented.
+
+## Decision 004 — Autumn central settlement (approved)
+An established fantasy town is the main civilization center, rather than a small village or large city. It is a recognizable inhabited hub surrounded by substantial explorable wilderness. Markets, workshops, roads and other specific features remain proposals pending approval.
