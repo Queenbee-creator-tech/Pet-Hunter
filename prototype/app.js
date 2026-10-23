@@ -1,7 +1,7 @@
 import {BIOMES,fresh,leave,enter,decide} from './engine.js';
 // Versioned browser save: survives reloads on this browser, not other devices.
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.3.1';
+const BUILD='0.3.2';
 function validSave(v){
  return v && typeof v==='object' && typeof v.screen==='string' &&
  typeof v.name==='string' && typeof v.background==='string' &&
@@ -24,6 +24,7 @@ function loadSave(){
 let s=loadSave();
 let saveWarning='';
 let saveStatus='Not saved yet';
+try { if (localStorage.getItem(SAVE_KEY) && validSave(JSON.parse(localStorage.getItem(SAVE_KEY)))) saveStatus='Saved progress restored'; } catch {}
 function save(){
  try{localStorage.setItem(SAVE_KEY,JSON.stringify(s));const check=localStorage.getItem(SAVE_KEY);if(!check||!validSave(JSON.parse(check)))throw new Error('Save verification failed');saveWarning='';saveStatus='Saved in this browser';}
  catch(err){console.warn('Pet Hunter save error',err);saveStatus='SAVE FAILED';saveWarning='Progress could not be saved in this browser. Avoid closing this tab.';}
