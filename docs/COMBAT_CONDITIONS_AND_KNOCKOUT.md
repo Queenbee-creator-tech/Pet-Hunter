@@ -117,3 +117,8 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - Players may leave the room while treatment progresses; timers should persist through navigation and save/reload.
 - Exact treatment durations, differences between medical care/rest/stress recovery, and whether completion must be manually claimed are **not yet decided**.
 - This is approved design only; treatment timers are not yet implemented.
+
+## Injury severity and recovery duration — approved (2026-10-24)
+- Care treatment timers **scale with injury severity**: serious injuries take longer to recover from than minor injuries.
+- Exact severity categories, durations, treatment requirements, and any modifiers remain to be decided and balanced. A 2-minute minor injury is illustrative, not yet approved as a fixed rule.
+- Injured conscious creatures may still fight with condition-related risks; unconscious creatures remain unavailable until recovered.
