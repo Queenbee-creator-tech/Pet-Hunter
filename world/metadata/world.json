@@ -11,7 +11,18 @@
     "dimensions": null,
     "coordinate_system": null,
     "orientation": null,
-    "seed_policy": null
+    "seed_policy": null,
+    "cell_size_meters": 100,
+    "dimensions_proposal": {
+      "width_cells": 256,
+      "height_cells": 256,
+      "status": "proposed_pending_biome_allocation"
+    },
+    "physical_extent_if_256_cells_km": {
+      "width": 25.6,
+      "height": 25.6,
+      "area_km2": 655.36
+    }
   },
   "biome_ids": [
     "autumn",
