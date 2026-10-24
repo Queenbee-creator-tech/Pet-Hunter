@@ -103,3 +103,10 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - After the 2-minute timer ends, the training slot shows **Training Complete!** and remains occupied.
 - The player must return to the Care Room and press **Complete Training** to collect the skill XP and release the slot.
 - XP is not lost if the player returns later. Completion must be claimable only once and persist correctly through save/reload.
+
+## Sanctuary facility slot capacity — approved (2026-10-24)
+- **Incubation:** three slots, one egg per slot (existing design).
+- **Training:** three slots, one creature per slot, with independent 2-minute training timers and manual completion.
+- **Care:** three separate slots, one creature per slot, reserved for creatures with actual care needs.
+- Training and care slots are distinct capacities; a creature must not be assigned to conflicting activities simultaneously.
+- Exact care treatment/rest timing and detailed UI behavior remain to be determined. This is a design decision, not yet an implemented feature.
