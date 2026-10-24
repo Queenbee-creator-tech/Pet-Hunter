@@ -46,6 +46,7 @@ function heading(t){const e=document.createElement('h2');e.textContent=t;game.ap
 function button(label,fn,disabled=false){const e=document.createElement('button');e.className='choice';e.textContent=label;e.disabled=disabled;e.addEventListener('click',()=>{fn();save();render();});game.append(e);}
 function setScreen(screen){s={...s,screen};}
 function render(){
+ s=normalizeCare(s);
  const before=s.stamina;s=recover(s);if(s.stamina!==before)save();
  game.replaceChildren();
  const status=document.createElement('p');status.className='note';status.textContent='Alpha '+BUILD+' • '+saveStatus;game.append(status);
