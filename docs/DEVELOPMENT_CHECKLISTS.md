@@ -54,3 +54,45 @@ These are planning checklists, not claims that work is completed. Check off item
 - [ ] Build the mobile-first web interface
 - [ ] Test exploits, save consistency, and performance
 - [ ] Deploy a playable web prototype
+
+
+## Sunday October 25, 2026 — Autumn playable alpha deadline
+
+**Deadline contract:** A playable Autumn experience must include AI-driven exploration, real Autumn species with stats and approved modular mutations, acquisition, incubation, raising/care, breeding/inheritance, and locked non-Autumn biomes. These are **required for Sunday**, not postponed polish. Do not silently substitute placeholder species or static narration for the required features.
+
+**Status convention:** All boxes below start unchecked until the feature is implemented and verified in the deployed build. Existing prototypes and tests are foundations, not proof of end-to-end completion.
+
+### World and AI exploration
+- [ ] Autumn is the only playable biome
+- [ ] Spring, Summer, and Winter appear locked and are inaccessible in the engine
+- [ ] AI generates varied Autumn adventures, choices, and encounters
+- [ ] AI follows approved Autumn geography, lore, and metadata
+- [ ] Engine, not AI, authorizes choices, costs, probabilities, rewards, and outcomes
+
+### Autumn species and genetics
+- [ ] Agree and define the complete Sunday Autumn species roster (count remains to be confirmed; 12 is a proposal, not approval)
+- [ ] Define each species' appearance, habitats, and behavior
+- [ ] Implement species-specific stats and Common/Rare/Epic/Legendary rarity tiers
+- [ ] Define approved modular mutation traits, compatibility, and inheritance
+- [ ] Spawn real Autumn species in encounters and award correctly typed creatures or eggs
+
+### Incubation, breeding, and raising
+- [ ] Hatching preserves the correct species, rarity, stats, and inherited traits
+- [ ] Breeding checks eligibility, species compatibility, and applicable hunter skills
+- [ ] Engine-controlled breeding and mutation outcomes use configured probabilities
+- [ ] Inventory and saves preserve individual creature stats, rarity, and mutations
+- [ ] Autumn creatures have working care/raising interactions
+
+### Release verification
+- [ ] Complete the explore → encounter → acquire → return → hatch/care → breed loop
+- [ ] Test AI narrator for rule violations, fabricated rewards, and consistency
+- [ ] Test breeding, mutations, stat persistence, cooldowns, and reloads
+- [ ] Test mobile layout, browser save/resume, and locked-biome restrictions
+- [ ] Deploy Sunday build and playtest it end-to-end on a phone
+
+### Scope and risks
+- AI integration requires a server-side key/proxy; do not put API secrets in browser code.
+- Prototype files exist for exploration, incubation, breeding, and saves; they still contain placeholder species and provisional balance.
+- No unapproved species, mutation visuals, or hybrid forms may be invented by the engine or narrator.
+- Avoid adding combat, multiplayer, additional playable biomes, or visual polish before this deadline.
+- If a requirement is blocked, report it explicitly rather than reclassifying it as optional.
