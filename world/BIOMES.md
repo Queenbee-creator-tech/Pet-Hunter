@@ -155,3 +155,6 @@ Each biome's single fixed portal arrival point is a **relatively safe place to o
 
 ## Decision 033 — Moderate world scale and shorter meaningful expeditions (approved)
 The persistent shared world should be **moderately sized**, allowing players to travel meaningful distances and make worthwhile discoveries during shorter play sessions. Biomes still need enough space for exploration, creature habitats, resources, hidden routes, and environmental variety; avoid unnecessary travel padding or an enormous world for its own sake. Exact map dimensions, route counts, travel durations, and pacing thresholds are **not yet approved** and require prototype testing. This refines earlier descriptions of 'large wilderness scale' without removing the wilderness-first identity.
+
+## Decision 034 — Permanent seasonal identity per biome (approved)
+Each biome retains its namesake season permanently: Autumn remains autumn, Spring remains spring, Summer remains summer, and Winter remains winter. Seasons do not rotate across the world. Weather patterns and time-of-day behavior within each biome are separate decisions still to be defined; this approval does not establish specific weather frequencies or a day/night cycle.
