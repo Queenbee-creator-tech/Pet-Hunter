@@ -102,3 +102,10 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Disasters may temporarily block established routes without permanently rewriting geography.
 - [ ] Specify location risk zones, frequency, warning cues, equipment effects, shelter effectiveness, temporary obstruction duration and restoration rules.
 - [ ] Align injury consequences with the still-open health model; preserve approved death/respawn rules.
+
+## Decision 039 — Hybrid environmental action gating (approved)
+- [x] Hide opportunities requiring knowledge/recognition the hunter lacks.
+- [x] Show unavailable actions for obvious obstacles when skill/equipment requirements are unmet.
+- [x] Separate discovery/recognition, attempt eligibility, and success resolution.
+- [x] Engine evaluates hunter skills, equipment, conditions and risk; narrator only describes authorized outcomes.
+- [ ] Define skill thresholds, item requirements, risk calculations, locked-action wording and tests in the engine/gameplay threads.
