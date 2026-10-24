@@ -5,7 +5,11 @@ import {normalizeIncubation,addEgg,startIncubation,hatch,odds,INCUBATION_MS} fro
 import {normalizeBreeding,addCreature,eligibleCreatures,beginBreeding,finishBreeding,BREEDING_MS,BREEDING_COOLDOWN_MS} from './breeding.js';
 import {normalizeCare,careCandidates,trainingCandidates,beginCare,finishCare,beginTraining,finishTraining,TRAINING_MS,TEST_SKILLS} from './care.js';
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.9.0';
+const BUILD='0.9.1';
+let previousScreen='sanctuary';
+const roomScreens=['sanctuary','incubation','breeding','care'];
+function go(screen){if(screen!=='character'&&screen!=='codex'&&screen!=='inventory')previousScreen=screen;setScreen(screen);}
+function returnFromOverlay(){setScreen(previousScreen==='character'||previousScreen==='codex'||previousScreen==='inventory'?'sanctuary':previousScreen);}
 function validSave(v){
  return v && typeof v==='object' && typeof v.screen==='string' &&
  typeof v.name==='string' && typeof v.background==='string' &&
@@ -47,8 +51,21 @@ function button(label,fn,disabled=false){const e=document.createElement('button'
 function setScreen(screen){s={...s,screen};}
 function render(){
  s=normalizeCare(s);
+ const shell=document.querySelector('.shell');
+ const isHome=!!s.homeBiome;
+ const isExplore=s.screen==='explore'||s.screen==='destinations';
+ shell.classList.toggle('in-world',isHome);
+ shell.classList.toggle('exploring',isExplore);
+ shell.classList.toggle('sanctuary-view',isHome&&!isExplore);
+ shell.dataset.scene=isExplore?'autumn':s.screen;
+ document.querySelector('#world-nav').hidden=!isHome;
+ document.querySelector('#corner-tools').hidden=!isHome;
+ document.querySelector('#scene-hotspots').hidden=s.screen!=='sanctuary';
+ document.querySelector('#world-title').textContent=isExplore?'Autumn · Expedition':s.homeBiome+' · Sanctuary';
+ document.querySelectorAll('[data-screen]').forEach(el=>{el.classList.toggle('active',el.dataset.screen===s.screen);el.setAttribute('aria-current',el.dataset.screen===s.screen?'page':'false');});
  const before=s.stamina;s=recover(s);if(s.stamina!==before)save();
  game.replaceChildren();
+ document.querySelector('#return-context').hidden=!['character','codex','inventory','craft'].includes(s.screen);
  const status=document.createElement('p');status.className='note';status.textContent='Alpha '+BUILD+' • '+saveStatus;game.append(status);
  if(saveWarning)p(saveWarning);
  stats.textContent=s.homeBiome?'Hunter: '+s.name+' • Home: '+s.homeBiome+' • Essence: '+s.stamina+'/'+STAMINA_MAX+' • Eggs: '+s.inventory.eggs+' • Materials: '+s.inventory.materials+' • Creatures: '+s.inventory.creatures+' • Practice: '+s.skills:'First-time character setup';
@@ -56,9 +73,9 @@ function render(){
  if(s.screen==='intro'){heading('A Hunter’s Beginning');p('Every hunter has a story. Beyond the four seasonal domains, wild creatures and forgotten nests await. But first: who are you?');button('Begin your story',()=>setScreen('identity'));return;}
  if(s.screen==='identity'){heading('What is your name, Hunter?');p('Your name will follow you into every domain.');const input=document.createElement('input');input.placeholder='Hunter name';input.maxLength=32;input.value=s.name;input.setAttribute('aria-label','Hunter name');game.append(input);button('Continue',()=>{const name=input.value.trim();if(!name){alert('Enter your hunter name first.');return;}s={...s,name,screen:'background'};});return;}
  if(s.screen==='background'){heading('Your Past');p('Some hunters inherit generations of knowledge. Others step into the unknown without a family legacy.');button('Legacy Hunter — hunting runs in your family',()=>{s={...s,background:'Legacy Hunter',screen:'sanctuary',homeBiome:'Autumn'};});button('Aspiring Hunter — your story begins here',()=>{s={...s,background:'Aspiring Hunter',screen:'sanctuary',homeBiome:'Autumn'};});return;}
- if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);p('Essence recovery: +2 every 5 minutes while home (up to 500).');button('Travel Journal',()=>setScreen('character'));button('Bag',()=>setScreen('inventory'));button('Visit the incubation room',()=>setScreen('incubation'));button('Visit the breeding room',()=>setScreen('breeding'));button('Visit the creature care area',()=>setScreen('care'));button('Visit the crafting workbench',()=>setScreen('craft'));button('Leave home to explore',()=>setScreen('destinations'));return;}
- if(s.screen==='character'){heading('Travel Journal — Character');p('Hunter: '+s.name+' • '+s.background+' • Origin: Autumn');p('Essence: '+s.stamina+'/'+STAMINA_MAX);p('Life: bar and values awaiting design');p('Autumn starting skills: granted; individual bonuses awaiting design.');p('Skill practice earned: '+s.skills);button('Flip page → Creature Codex',()=>setScreen('codex'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
- if(s.screen==='codex'){heading('Travel Journal — Creature Codex');p('Owned creatures and their individual records:');if(!s.creatureItems.length)p('No creatures yet.');s.creatureItems.forEach((c,i)=>{heading('Creature '+(i+1)+' — '+c.species);p('Level '+c.level+' • '+c.rarity+' • Health '+c.health+'/'+c.maxHealth+' • Energy '+c.energy+'/'+c.maxEnergy);p('Injury: '+c.injury+' • Stress: '+c.stress+' • Fear: '+c.fear);p('Skills: '+(Object.entries(c.skills).map(([k,v])=>k+' Lv '+v.level+' ('+v.xp+' XP)').join(', ')||'Not trained'));p('Traits: '+(c.traits||[]).join(', '));});button('← Flip page to Character',()=>setScreen('character'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
+ if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);p('Essence recovery: +2 every 5 minutes while home (up to 500).');return;}
+ if(s.screen==='character'){heading('Travel Journal — Character');p('Hunter: '+s.name+' • '+s.background+' • Origin: Autumn');p('Essence: '+s.stamina+'/'+STAMINA_MAX);p('Life: bar and values awaiting design');p('Autumn starting skills: granted; individual bonuses awaiting design.');p('Skill practice earned: '+s.skills);button('Flip page → Creature Codex',()=>setScreen('codex'));button('Return to previous view',returnFromOverlay);return;}
+ if(s.screen==='codex'){heading('Travel Journal — Creature Codex');p('Owned creatures and their individual records:');if(!s.creatureItems.length)p('No creatures yet.');s.creatureItems.forEach((c,i)=>{heading('Creature '+(i+1)+' — '+c.species);p('Level '+c.level+' • '+c.rarity+' • Health '+c.health+'/'+c.maxHealth+' • Energy '+c.energy+'/'+c.maxEnergy);p('Injury: '+c.injury+' • Stress: '+c.stress+' • Fear: '+c.fear);p('Skills: '+(Object.entries(c.skills).map(([k,v])=>k+' Lv '+v.level+' ('+v.xp+' XP)').join(', ')||'Not trained'));p('Traits: '+(c.traits||[]).join(', '));});button('← Flip page to Character',()=>setScreen('character'));button('Return to previous view',returnFromOverlay);return;}
  if(s.screen==='skills'){setScreen('character');return;}
  if(['incubation','breeding','care','craft','inventory'].includes(s.screen)){
   const titles={incubation:'Incubation Room',breeding:'Breeding Room',care:'Creature Care Area',craft:'Crafting Workbench',inventory:'Your Bag'};heading(s.homeBiome+' Sanctuary — '+titles[s.screen]);
@@ -135,6 +152,11 @@ function render(){
  if(s.step==='after'){if(s.lastOutcome)p(s.lastOutcome);p('The clearing grows quiet. You can keep exploring or return to your '+s.homeBiome+' sanctuary using Leave Exploration.');button('Continue exploring',()=>s=decide(s,'continue'));}
  p('Recent expedition events:');s.log.slice(-3).forEach(p);
 }
+document.querySelectorAll('[data-screen]').forEach(el=>el.addEventListener('click',()=>{go(el.dataset.screen);save();render();}));
+document.querySelectorAll('[data-hotspot]').forEach(el=>el.addEventListener('click',()=>{go(el.dataset.hotspot);save();render();}));
+document.querySelector('#journal-tool').addEventListener('click',()=>{if(!['character','codex'].includes(s.screen))previousScreen=s.screen;setScreen('character');save();render();});
+document.querySelector('#bag-tool').addEventListener('click',()=>{if(s.screen!=='inventory')previousScreen=s.screen;setScreen('inventory');save();render();});
+document.querySelector('#return-context').addEventListener('click',()=>{returnFromOverlay();save();render();});
 leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
 document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including your character?')){s=normalizeCare(normalizeBreeding(normalizeIncubation(fresh())));try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
