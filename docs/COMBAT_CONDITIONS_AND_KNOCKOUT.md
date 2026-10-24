@@ -55,6 +55,14 @@
 - No constant upkeep requirement for creatures who are not being overworked or endangered. Healthy strong creatures can finish combat without any care requirements.
 - Specific formulas, thresholds, treatment durations and recovery items remain TBD, not approved numeric rules.
 
+## Progression level cap (approved)
+- Maximum hunter/player level: 50.
+- Maximum creature level: 50.
+- Maximum hunter skill level: 50.
+- Maximum creature skill level: 50.
+- Level caps do NOT imply numerical attributes (HP, attack, defense, energy, etc.) are capped at 50; stat values and scaling are separate design decisions.
+- Implement the cap consistently in progression systems when those systems are built. Existing prototype mechanics may use provisional thresholds and are not automatically updated by this design record.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
