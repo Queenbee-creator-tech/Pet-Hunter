@@ -49,3 +49,10 @@ When designing each species, define its approved visual modules (colors, marking
 - Equal parental values produce that shared value; no meaningful higher/lower distinction.
 - Rarity inheritance and mutations use separate mechanics, still TBD.
 - This rule is approved for design; implementation and balancing tests remain pending.
+
+## Creature levels versus trained skills — approved (2026-10-24)
+- Overall creature level increases primarily through **exploration and combat experience**, not passive Care Room training.
+- Care Room training primarily improves **specific creature skills** (such as swimming, tracking, or combat abilities) rather than raising overall creature level.
+- Individual creature skills have their own progression, with the previously approved skill cap of 50; a creature's skill level can differ significantly from its overall creature level.
+- Inherited genetic potential influences numerical stat development as the creature gains overall levels; it is separate from both current trained skills and experience.
+- Exact XP awards, diminishing-return behavior, training durations, and the amount (if any) of overall XP granted by training are not yet finalized.
