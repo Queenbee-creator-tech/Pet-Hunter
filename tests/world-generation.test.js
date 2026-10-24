@@ -35,3 +35,13 @@ test('Geography preview preserves varied mountain elevations and central Autumn 
  const groves=terrain.reduce((n,t)=>n+(t===TERRAIN.GROVE),0);
  assert.ok(groves>0,'Autumn needs groves');
 });
+
+test('Spring floating islands have separate heights and substantial footprints',()=>{
+ const w=generateWorldDraft(42), islands=w.landmarks.floatingIslands;
+ assert.ok(islands.length>=3);
+ assert.ok(new Set(islands.map(p=>p.height)).size>=3);
+ const city=w.landmarks.springCity;
+ assert.ok(w.floatingHeight[city.y*w.width+city.x]>0);
+ const floatingCells=w.floatingHeight.reduce((n,v)=>n+(v>0),0);
+ assert.ok(floatingCells>150,'floating land should be visible on inspector');
+});
