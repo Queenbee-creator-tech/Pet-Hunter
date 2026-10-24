@@ -110,3 +110,10 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - **Care:** three separate slots, one creature per slot, reserved for creatures with actual care needs.
 - Training and care slots are distinct capacities; a creature must not be assigned to conflicting activities simultaneously.
 - Exact care treatment/rest timing and detailed UI behavior remain to be determined. This is a design decision, not yet an implemented feature.
+
+## Timed care treatments — approved (2026-10-24)
+- Care Room treatments use **timers**, not instant recovery.
+- The three care slots each support an independently timed treatment for one assigned creature.
+- Players may leave the room while treatment progresses; timers should persist through navigation and save/reload.
+- Exact treatment durations, differences between medical care/rest/stress recovery, and whether completion must be manually claimed are **not yet decided**.
+- This is approved design only; treatment timers are not yet implemented.
