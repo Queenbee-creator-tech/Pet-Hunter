@@ -213,3 +213,10 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - **When that timer expires, the yellow guidance disappears, the mark deactivates, and the reusable stone returns to the player's inventory** for reuse. The stone does not preserve a creature at its location indefinitely.
 - Expiry of the mark does not mean the creature ceases to exist; it may continue moving or interacting with the world. Exact timing and whether a player can still follow ordinary environmental clues after mark expiry remain to be balanced.
 - This is an approved design direction, not yet implemented.
+
+
+## Smart stone timer clarification (2026-10-23)
+- **The smart/tracking stone does not have an independent timer.** Its guidance is tied directly to the marked creature's **species-specific time window for remaining at that exact encounter location**.
+- The mark expires when that creature's remaining stay window ends, even if the player placed the stone after the creature had already been there for some time. Example: a 15-minute location stay with 5 minutes already elapsed leaves 10 minutes of guidance.
+- On expiry, the yellow text-choice guidance ends, the mark deactivates and the reusable stone returns to inventory. The creature is no longer guaranteed to be there; it is not deleted from the world.
+- Actual stay durations per species are still undecided. This clarification supersedes any implication that the stone has a separately configurable duration.
