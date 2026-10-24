@@ -98,3 +98,8 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - The session timer persists when the player navigates elsewhere or resumes a saved game.
 - Completion awards XP toward the selected creature skill, not its overall creature level.
 - XP amount, slot capacity, and whether the player must manually collect the completed session remain TBD.
+
+## Manual training completion — approved (2026-10-24)
+- After the 2-minute timer ends, the training slot shows **Training Complete!** and remains occupied.
+- The player must return to the Care Room and press **Complete Training** to collect the skill XP and release the slot.
+- XP is not lost if the player returns later. Completion must be claimable only once and persist correctly through save/reload.
