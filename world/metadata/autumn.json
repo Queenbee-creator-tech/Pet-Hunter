@@ -64,6 +64,7 @@
     "details": null,
     "spring_floating_city_lake_connection": {
       "preserve_major_river_through_autumn_lake": true,
+      "new_spring_lake_not_assumed": true,
       "exact_confluence_geometry": null
     }
   },
