@@ -151,3 +151,7 @@ Each of the four sanctuary biome portals (Autumn, Spring, Summer, Winter) leads 
 
 ## Decision 032 — Relatively safe biome portal arrivals (approved)
 Each biome's single fixed portal arrival point is a **relatively safe place to orient oneself**, not a completely protected safe zone and not a deliberately hazardous spawn. Nearby wildlife, natural weather, and environmental conditions remain part of the living world. Risk depends on actual terrain, wildlife, conditions, and player actions, rather than an artificial danger boundary. No invulnerability bubble or absolute guarantee against danger is implied. Exact terrain and nearby hazards for each of the four arrival points remain to be designed.
+
+
+## Decision 033 — Moderate world scale and shorter meaningful expeditions (approved)
+The persistent shared world should be **moderately sized**, allowing players to travel meaningful distances and make worthwhile discoveries during shorter play sessions. Biomes still need enough space for exploration, creature habitats, resources, hidden routes, and environmental variety; avoid unnecessary travel padding or an enormous world for its own sake. Exact map dimensions, route counts, travel durations, and pacing thresholds are **not yet approved** and require prototype testing. This refines earlier descriptions of 'large wilderness scale' without removing the wilderness-first identity.
