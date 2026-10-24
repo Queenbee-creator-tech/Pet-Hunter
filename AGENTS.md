@@ -19,7 +19,7 @@ This file is the repository working instruction for coding assistants and collab
 7. End each task with **what changed, what was tested, what remains, and the single next action**. Never claim a GitHub update succeeded until its tool call succeeds.
 
 ## Current active workflow: world generation (do this first)
-- Selected starting grid proposal: **256 × 256** cells (65,536). **NOT finalized**: meters per cell, biome allocation, Summer ocean inclusion, coordinate convention and elevation units.
+- Selected starting grid proposal: **256 × 256** cells (65,536). **NOT finalized**: biome allocation, Summer ocean inclusion, coordinate convention and elevation units.
 - Decide cell scale, biome area constraints and orientation; define terrain clustering and connected region rules.
 - Define elevations first, then hydrology: headwaters and river paths descend, tributaries join, lakes have consistent inflows/outflows, waterfalls require elevation drops. Preserve approved Spring → Autumn freshwater lake → Summer ocean river route. Winter is mountainous.
 - Autumn: predominantly open meadows/rolling hills with smaller clustered groves, central lakeside town and lake. All four biomes contain environment-appropriate hidden caves/habitats/rare resources at permanent locations.
@@ -53,3 +53,7 @@ Consult existing design docs for details; do not infer missing capture probabili
 - [Worldbuilding](world/BIOMES.md)
 - [World metadata checklist](world/BIOME_METADATA_CHECKLIST.md)
 - [World metadata](world/metadata/world.json)
+
+
+### Decision 043 — 100 m grid cell (approved)
+The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid would cover 25.6 km × 25.6 km (655.36 km²). Grid dimensions and biome allocation remain pending; narrative choice distance need not equal one cell.
