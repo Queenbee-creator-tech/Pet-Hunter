@@ -45,3 +45,6 @@ Persistent sanctuary-room tabs: Sanctuary, Incubation Room, Breeding Room, Creat
 - [ ] Verify existing saves and regression tests
 
 Do not treat unimplemented UI ideas as finished features. Gameplay rules remain governed by their existing design documents.
+
+## Mobile-first layout clarification (2026-10-24)
+Mobile is the primary target; desktop is an adaptive wider layout, not the baseline shrunk down. Portrait phone view should show a purpose-composed cottage scene with the fireplace, bookshelf, workbench and door discoverable; do not just crop the widescreen concept art indiscriminately. Use a compact top HUD (allow resource details to expand), persistent Journal and Bag in a reachable corner, and a fixed bottom room tab bar with four clearly tappable destinations. Hotspots need approximately 44px or larger touch targets, visible labels/focus feedback and a text-accessible alternative. Ensure safe-area insets, small-screen scrolling where necessary, and that overlays do not block essential actions. On desktop, expand the scene and HUD while preserving the same interaction model. Build/test portrait at narrow phone widths first, then landscape and desktop. The reference widescreen cottage illustration is a mood/layout concept, not a ready-to-crop mobile asset.
