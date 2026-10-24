@@ -61,7 +61,11 @@
       "major_river_enters_and_exits_central_freshwater_lake",
       "river_flows_from_spring_toward_summer_ocean"
     ],
-    "details": null
+    "details": null,
+    "spring_floating_city_lake_connection": {
+      "preserve_major_river_through_autumn_lake": true,
+      "exact_confluence_geometry": null
+    }
   },
   "features": {
     "approved": [
