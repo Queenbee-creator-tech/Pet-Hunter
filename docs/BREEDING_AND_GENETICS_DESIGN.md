@@ -27,3 +27,10 @@ When designing each species, define its approved visual modules (colors, marking
 - Combine performance genetics with approved modular appearance traits (horns, wings, tails, color, markings) when species art and genetics are designed.
 - Existing rules still apply: mutations are separate from rarity; crossbreeding is allowed only within approved species/hybrid catalog; offspring rarity not guaranteed by parents' rarity; max creature level 50 does not imply numeric stat cap 50.
 - Do not copy ARK's exact formulas or lock unapproved mechanics.
+
+## ARK-inspired breeding and genetics direction (approved concept, formulas TBD)
+- ARK is the main conceptual reference for depth of selective breeding and genetics, NOT necessarily for player-directed level-up stat allocation or the entire progression system.
+- Explore offspring inheriting different stat potentials from each parent, selective breeding over generations, individual variation, traceable lineages and genetic mutations.
+- Distinguish inherited genetic potential from temporary condition and trained/current stats. Whether and how gained levels affect inheritance remains a balancing decision, not a locked formula.
+- Adapt these ideas to Pet Hunter's approved rarity system, crossbreeding rules, mutations independent of rarity and modular species traits. Do not copy ARK's exact rates, caps or formulas without user approval.
+- This is a design direction only; no numeric inheritance or mutation mechanics approved by this note.
