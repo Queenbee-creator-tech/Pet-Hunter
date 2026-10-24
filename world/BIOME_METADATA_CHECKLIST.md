@@ -135,3 +135,10 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Each grid cell represents 100 m × 100 m.
 - [ ] Finalize proposed 256×256 overall grid and biome allocation/ocean inclusion.
 - [ ] Specify how narrative travel distances map to grid cells.
+
+
+## Decision 044 — Canonical world grid and biome allocation (approved)
+- World grid: 256 × 256 cells at 100 m per cell, 25.6 × 25.6 km (655.36 km²).
+- Target biome shares: Autumn 30%, Spring 25%, Summer 25%, Winter 20%; irregular connected boundaries, approximate area targets rather than rectangles.
+- Summer's 25% **includes ocean, reefs, islands and underwater habitats** in the same world grid; no separate ocean grid.
+- Still to design: elevation/terrain generation, hydrology, precise region shapes and coordinates. Generator and developer inspector are not yet complete.
