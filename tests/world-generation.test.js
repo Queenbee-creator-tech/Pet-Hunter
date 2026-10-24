@@ -16,3 +16,12 @@ for(const seed of [0,1,7,42,2026]){
 test('Draft generation does not silently support tiny grids',()=>{
  assert.throws(()=>generateWorldDraft(1,8,8),RangeError);
 });
+
+test('Summer coastal city and turtle transport destinations are represented',()=>{
+ const w=generateWorldDraft(42);
+ assert.equal(w.biomes[w.landmarks.summerCity.y*w.width+w.landmarks.summerCity.x],2);
+ assert.ok(w.landmarks.summerIslands.length>=2);
+ assert.ok(w.landmarks.underwaterDestinations.length>=1);
+ assert.equal(w.turtleRoutes.length,w.landmarks.summerIslands.length+w.landmarks.underwaterDestinations.length);
+ assert.ok(w.turtleRoutes.every(route=>route.transport==='giant_turtle'));
+});
