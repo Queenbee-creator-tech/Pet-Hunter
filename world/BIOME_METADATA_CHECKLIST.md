@@ -109,3 +109,10 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Separate discovery/recognition, attempt eligibility, and success resolution.
 - [x] Engine evaluates hunter skills, equipment, conditions and risk; narrator only describes authorized outcomes.
 - [ ] Define skill thresholds, item requirements, risk calculations, locked-action wording and tests in the engine/gameplay threads.
+
+## Decision 039 — Hybrid action visibility (approved)
+- [x] Hide actions requiring knowledge the hunter lacks.
+- [x] Show obvious obstacles' unavailable actions as locked when requirements are unmet.
+- [x] Engine evaluates hunter skills, equipment and environmental state; AI narrates eligible options without inventing routes.
+- [ ] Specify knowledge gates, equipment gates, optional risk checks, locked-option information and success probabilities.
+- [ ] Prototype one obstacle with a small set of actions and test information leakage / route consistency.
