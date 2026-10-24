@@ -8,17 +8,29 @@
     "generated_once_then_persisted": true,
     "scale_target": "moderate",
     "session_pacing_target": "meaningful_short_sessions",
-    "dimensions": null,
+    "dimensions": {
+      "width_cells": 256,
+      "height_cells": 256
+    },
     "coordinate_system": null,
     "orientation": null,
     "seed_policy": null,
     "cell_size_meters": 100,
-    "dimensions_proposal": {
-      "width_cells": 256,
-      "height_cells": 256,
-      "status": "proposed_pending_biome_allocation"
+    "biome_area_targets_percent": {
+      "autumn": 30,
+      "spring": 25,
+      "summer": 25,
+      "winter": 20
     },
-    "physical_extent_if_256_cells_km": {
+    "biome_allocation_policy": "approximate_targets_irregular_connected_regions",
+    "ocean_included_in_world_grid": true,
+    "summer_allocation_includes": [
+      "ocean",
+      "reefs",
+      "islands",
+      "underwater_habitats"
+    ],
+    "physical_extent_km": {
       "width": 25.6,
       "height": 25.6,
       "area_km2": 655.36
