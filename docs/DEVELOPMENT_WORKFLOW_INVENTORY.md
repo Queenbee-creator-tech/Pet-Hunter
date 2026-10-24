@@ -29,8 +29,8 @@ Status definitions: Design → Metadata → Implementation → Testing → Compl
 - Engine authoritative for location, routes, action availability and outcome.
 
 ### Required before generation
-- [ ] Choose global grid dimensions (128² / 256² / 512² proposed; none approved).
-- [ ] Define cell scale and relationship to narrative exploration movement.
+- [ ] Finalize proposed 256×256 dimensions and biome allocation; 100 m/cell approved.
+- [ ] Define relationship between approved 100 m/cell scale and narrative exploration movement.
 - [ ] Choose coordinate axes, elevation units and neighbor connectivity.
 - [ ] Define biome footprint constraints and boundary transitions.
 - [ ] Define terrain clustering, adjacency and landform constraints.
@@ -50,7 +50,7 @@ Do not mark generation complete until a saved grid is produced and verified.
 Goal: a player can start, explore an unlocked Autumn starter region of the canonical Avalora world, engage in an engine-resolved encounter, capture and manage a creature, experience a sanctuary activity, save/reload and continue. This is the first slice of the real game, not a separate throwaway engine.
 
 ### Critical path / acceptance checklist
-- [ ] **World**: agree cell scale and biome allocation for proposed 256×256 grid; finish terrain/elevation/drainage/landmark metadata; generate one saved canonical world; developer inspector verifies clustering, hydrology, routes and starter-area accessibility.
+- [ ] **World**: finalize biome allocation for proposed 256×256 grid (100 m/cell approved); finish terrain/elevation/drainage/landmark metadata; generate one saved canonical world; developer inspector verifies clustering, hydrology, routes and starter-area accessibility.
 - [ ] **Player & persistence**: create/load hunter; save location, inventory, creature collection, progression, timers and tutorial flags; reload without duplicating rewards.
 - [ ] **UI**: mobile-first tutorial entry, exploration panel, navigation, backpack/journal, creature collection, combat/capture, sanctuary activities; no obscured or duplicated controls.
 - [ ] **Exploration & travel**: engine-authoritative connected location choices, starter-area landmark/hidden discovery, basic environment interaction, sanctuary return.
@@ -68,3 +68,7 @@ Goal: a player can start, explore an unlocked Autumn starter region of the canon
 - The tutorial sequence, starting creature/gear, capture onboarding, and whether incubation is mandatory for tutorial completion remain open design decisions.
 - Progress labels reflect documented evidence, not assumptions. An unchecked item is not necessarily absent from the repository; it means completion is unverified.
 - World grid **256×256 is a proposed starting dimension**, not yet locked; cell scale, biome proportions and ocean inclusion remain open.
+
+
+### Decision 043 — 100 m grid cell (approved)
+The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid would cover 25.6 km × 25.6 km (655.36 km²). Grid dimensions and biome allocation remain pending; narrative choice distance need not equal one cell.
