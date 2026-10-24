@@ -202,3 +202,6 @@ Use rule-guided generation (Option B) to arrange most explorable terrain and loc
 
 ## Decision 041 — Autumn open terrain with scattered small groves (approved)
 Autumn is predominantly open meadows and rolling hills, with mostly smaller groves scattered among them rather than large continuous forests. Preserve the established central lakeside town, freshwater lake, streams and valleys. Specific terrain percentages and exact placement remain TBD; canonical generated locations remain fixed.
+
+## Decision 042 — Biome-specific hidden discoveries (approved)
+All four biomes contain their own environmentally appropriate hidden discoveries, including versions of concealed caves/shelters, creature dens/nests/habitats, and rare gatherable resources. Autumn's scattered groves can conceal such finds; equivalent discovery opportunities adapt to Spring forests/waterfalls, Summer coasts/reefs/seas, and Winter mountains/ice. These are categories, not finalized specific locations, species, materials, or frequency. Hidden discoveries occupy stable locations in the one canonical saved world. Knowledge-gated discovery visibility follows Decision 039; engine owns discovery state and location, AI narrates without inventing locations.
