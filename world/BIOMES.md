@@ -158,3 +158,6 @@ The persistent shared world should be **moderately sized**, allowing players to 
 
 ## Decision 034 — Permanent seasonal identity per biome (approved)
 Each biome retains its namesake season permanently: Autumn remains autumn, Spring remains spring, Summer remains summer, and Winter remains winter. Seasons do not rotate across the world. Weather patterns and time-of-day behavior within each biome are separate decisions still to be defined; this approval does not establish specific weather frequencies or a day/night cycle.
+
+## Decision 035 — Variable weather within permanent seasonal biomes (approved)
+Weather changes naturally within each biome even though its namesake season remains permanent. Each biome has distinct, season-appropriate weather patterns. Illustrative examples discussed: Autumn sunshine, fog, and rain; Winter clear freezing conditions, snowfall, and blizzards. These examples are not yet an exhaustive or finalized weather-type catalog. Exact probabilities, timing, weather transitions, visibility and traversal impacts remain TBD; engine-authoritative environmental conditions should inform the text narrator.
