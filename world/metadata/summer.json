@@ -19,7 +19,9 @@
     "approved_descriptors": [],
     "weather_parameters": null,
     "permanent_season": "summer",
-    "season_rotates": false
+    "season_rotates": false,
+    "dynamic_weather": true,
+    "biome_appropriate_weather": true
   },
   "hydrology": {
     "approved": [
