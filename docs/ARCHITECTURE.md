@@ -20,3 +20,12 @@ Conceptual flow: Mobile text UI → action command → core engine ↔ world dat
 
 ## Future interfaces
 The same engine should be callable from another client (2D/3D or app) with minimal rule changes. Rendering and control schemes may change; game logic stays authoritative.
+
+
+## Critical events and narrator authority (design requirement)
+
+The game engine is the single authority for world geometry, player position, event triggers, permitted actions, skill/equipment checks, random rolls, and resulting state. The LLM is a presentation/narration layer; it cannot independently cause a fall, invent a rescue route, steal an item, kill a character, or determine success.
+
+Proposed engine event contract: `event_id`, `event_type`, `player_location`, `scene_facts`, `urgency`, `available_reactions[]` (each with a stable action ID and eligibility), `resolution_rules`, and `result`. The interface submits an action ID; the engine validates it against current state and resolves the result; the narrator describes the validated event and result. Multi-stage critical events may transition to subsequent event states. Do not accept the narrator's text as authoritative commands or world mutations.
+
+Candidate cases for tests: cliff fall with/without a reachable branch; pitfall and escape; equipment/skill changing odds for the same action; invalid reaction rejected; NPC thief detection/recovery without arbitrary inventory mutation; event persistence across interrupted sessions. Real-time countdowns, injury/death outcomes, and theft rules are not yet approved.
