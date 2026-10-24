@@ -88,3 +88,11 @@ The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid wou
 
 ### Clarification to Decision 047 — Preserve previously approved river (2026-10-24)
 The **existing** continuous river is Spring headwaters and waterfalls → Autumn's central freshwater lake → Summer's ocean/Ancient Coral seas. Spring City's floating-land waterfall is connected to this same system. **Do not infer or require a new separate Spring lake, an enormous cross-biome lake, or a revised river route.** Earlier wording in Decision 047 about a lake directly beneath Spring City must not be interpreted as authorizing a distinct additional lake. Exact waterfall-base terrain and any downstream drop geometry remain to be determined without reopening established hydrology.
+
+
+### World generator implementation progress — 2026-10-24
+- [x] Added reusable seeded terrain-field and clustered terrain-mask primitives in `world/generation/terrain.js`.
+- [x] Added Node test cases in `tests/terrain-generation.test.js` (determinism, area coverage, clustering, invalid inputs).
+- [ ] Run `npm test` in the repository/CI and confirm tests pass; **not yet verified**.
+- [ ] Connect primitives to actual biome polygons, elevations, hydrology, landmark constraints, persistence and the developer-only world inspector. **No canonical map has been generated or saved yet.**
+- [ ] Integrate the eventual canonical world into the existing exploration engine and tutorial.
