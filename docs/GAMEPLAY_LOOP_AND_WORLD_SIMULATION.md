@@ -251,3 +251,7 @@ Each successful portal-stone travel action consumes **one** crafted stone, wheth
 
 ## Decision 031 — Fixed biome portal arrival locations (approved, 2026-10-23)
 The sanctuary's four biome portals each have exactly one persistent arrival location in their respective biome. Every player using the same biome portal arrives at that same location. The engine owns these fixed destinations and subsequent world navigation; the LLM cannot randomize arrival points or create extra portal destinations. Arrival locations and safety characteristics are TBD. A successful portal activation consumes one crafted stone.
+
+
+## Decision 032 — Relatively safe portal arrival zones (approved, 2026-10-23)
+Each fixed biome portal arrival point provides a reasonably safe opportunity for the player to orient themselves. Wildlife and environmental conditions continue to exist around arrival locations, and ordinary world simulation remains active. Do not make portal arrivals fully immune to danger or deliberately expose arriving players to immediate unavoidable threats. Threats emerge from engine-tracked terrain, weather, creatures, and circumstances; no arbitrary invisible danger-ring is approved. Specific arrival-site layouts and risks are TBD.
