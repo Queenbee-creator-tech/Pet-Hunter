@@ -197,3 +197,11 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - **Core world constraint:** Pet Hunter has a persistent, internally mapped geography despite being a text-only exploration experience. Landmarks and geographic connections remain stable between visits; encounters, obstacles, conditions and narrative choices can change. Travel in reverse should follow actual traversable connections, not randomly regenerate an unrelated geography.
 - Retracing a creature sighting is possible through known routes without memorizing identical choice sequences.
 - **Working item proposal, not yet explicitly approved as final:** craftable, reusable tracking stone holding one active marked location at a time. It helps indicate which text choices move toward that fixed location, but does not teleport, freeze the creature, or guarantee capture. Replacing a mark overwrites the old mark; exact crafting requirements remain open.
+
+
+## Approved early-game tracking stone clarification (2026-10-23)
+- The fixed world map does **not** tell players where a randomly encountered creature appeared. An encounter can occur at a random precise location along a stable geographic route.
+- Hunters can **mark the exact encounter location** using a tracking stone. The engine remembers the marked position and indicates, through a **yellow glow on relevant text choices**, which paths guide the player back toward it. This guides navigation without teleporting, moving the map, or guaranteeing the creature remains there.
+- **Craft the tracking stone once**, early in the game after gathering the required minerals; no advanced crafting-level gate. It is **reusable indefinitely** and is not consumed when marking. Current working capacity is one active location mark at a time, overwritable; final capacity can be revisited if needed.
+- The mark identifies the **original encounter spot**, not a moving creature's live position. Within its return window the same individual is there; after expiration, tracking/evidence/world outcomes apply.
+- The exact mineral recipe and stone UI implementation remain undecided. Not yet implemented in alpha.
