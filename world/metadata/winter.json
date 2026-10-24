@@ -12,7 +12,11 @@
       "frozen_forests"
     ],
     "distribution_percentages": null,
-    "elevation_rules": null
+    "elevation_rules": {
+      "highest_natural_mountain_region_in_world": true,
+      "numeric_elevation_range": null,
+      "relative_peak_elevation": "higher_than_other_biomes"
+    }
   },
   "climate": {
     "approved_descriptors": [
