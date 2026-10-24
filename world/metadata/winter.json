@@ -151,5 +151,15 @@
     "knowledge_gated_visibility": true,
     "exact_locations": null,
     "discovery_rates": null
+  },
+  "settlement_generation": {
+    "primary_city": {
+      "placement": "valley_floor_within_mountain_range",
+      "inside_mountain": false,
+      "surrounded_by_mountain_slopes": true,
+      "accessible_valley_required": true,
+      "exact_location": null,
+      "access_routes": null
+    }
   }
 }
