@@ -5,8 +5,8 @@ Status: **Brainstorm only. No final game title or world name approved.**
 ## Current candidates
 - **Pet Hunter** — temporary development title.
 - **Ami** (singular), **Amis** (plural) — user's favorite candidate for collective term for collectible creatures. Individual species retain their own names. Inspired by animals and friends; not formally locked.
-- **Avalora** — liked as a possible Autumn starting city name; not locked.
-- **World name** — undecided.
+- **Avalora** — user's preferred **world name**, replacing its earlier proposed role as Autumn starting city.
+- **World name** — **Avalora** (current preferred choice; confirm before treating as final canon).
 - **Game title** — undecided, may differ from world name.
 
 ## Naming direction
@@ -16,4 +16,4 @@ The game is a mobile-first fantasy creature collecting, hatching, breeding, rais
 Wildbound, Everwild, Wildora, Wildera, Avelora (later Avalora as city), Veylings (initially liked, later moved on), Animalia, Animia, Amia, AmiQuest, AmiWorld, AmiGo, Zoolia, Faunova, Animora, Zovara, Faunica, Zoolora, Zonami, Biomia, and other sound experiments.
 
 ## Next step
-Resume later with fresh approaches. Do not present any brainstorm candidate as approved canon or a cleared trademark. Check existing games/trademarks before final launch decisions.
+World is currently called Avalora; the Autumn starting city needs a different name. Resume game-title brainstorming later with fresh approaches. Do not present any brainstorm candidate as approved canon or a cleared trademark. Check existing games/trademarks before final launch decisions.
