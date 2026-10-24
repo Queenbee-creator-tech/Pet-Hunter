@@ -94,7 +94,7 @@ function render(){
  p('Recent expedition events:');s.log.slice(-3).forEach(p);
 }
 leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
-document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including your character?')){s=fresh();try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
+document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including your character?')){s=normalizeIncubation(fresh());try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
 
 // Refresh the on-screen stamina while the sanctuary is open; recovery also catches up after reload.
