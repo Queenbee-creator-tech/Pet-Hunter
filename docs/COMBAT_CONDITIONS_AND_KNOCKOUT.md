@@ -9,8 +9,15 @@
 - Conditions may co-occur. HP and injuries are not interchangeable; medical recovery may be necessary even after HP restoration.
 - AI may narrate conditions and reactions but MUST NOT independently decide outcomes, change HP, assign injury or override probabilities. Engine is authoritative.
 
+## Exploration party and hunter knockout travel (approved)
+- Hunters may bring up to four creatures when exploring.
+- Normal return travel uses the previously established crafted return stone / waypoint mechanics; do not replace or consume these on knockout.
+- On hunter knockout (0 HP), fade to black and offer a choice: return to home sanctuary OR nearest portal. No stone is required or consumed.
+- The lore explanation of who or what transported the unconscious hunter is intentionally unknown; do not invent a rescuer.
+- Knockout transport is a recovery choice triggered by unconsciousness, not a freely usable travel shortcut.
+
 ## Still to design
-- Hunter knockout rescue/return mechanism, costs and consequences.
+- Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
 - Exact probability formulas, injury severities, recovery duration, treatments, item effects and training progression.
 - UI animations, battle presentation and persistence of status conditions.
