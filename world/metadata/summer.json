@@ -64,7 +64,11 @@
   "features": {
     "approved": [
       "ancient_coral_environment",
-      "giant_turtles_intended_for_transport_not_collection"
+      "giant_turtles_intended_for_transport_not_collection",
+      "primary_summer_city_on_coast",
+      "underwater_locations",
+      "multiple_small_offshore_islands",
+      "turtle_transport_to_offshore_destinations"
     ],
     "exact_placements": null
   },
@@ -80,7 +84,13 @@
     "fixed_sanctuary_portal_arrival": true,
     "arrival_location_id": null,
     "arrival_safety": "relatively_safe",
-    "physical_routes": null
+    "physical_routes": null,
+    "giant_turtle_transport": {
+      "role": "transport_between_coast_offshore_islands_and_underwater_destinations",
+      "capturable": false,
+      "route_requirements": null,
+      "exact_routes": null
+    }
   },
   "sources": [
     "world/BIOMES.md"
@@ -147,5 +157,19 @@
     "knowledge_gated_visibility": true,
     "exact_locations": null,
     "discovery_rates": null
+  },
+  "settlements": {
+    "primary_city": {
+      "location": "mainland_coast",
+      "exact_coordinates": null
+    },
+    "underwater_locations": {
+      "enabled": true,
+      "exact_coordinates": null
+    },
+    "offshore_islands": {
+      "multiple": true,
+      "exact_coordinates": null
+    }
   }
 }
