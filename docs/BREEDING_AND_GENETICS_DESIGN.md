@@ -42,3 +42,10 @@ When designing each species, define its approved visual modules (colors, marking
 - Hunter progression is skill-based (skills start at level 1 and cap at 50), rather than requiring a separate overall hunter level. Creature skills likewise cap at 50.
 - Breeding-exclusive level cap of 60 is under discussion/proposed, NOT yet final. How inherited potential interacts with that cap is TBD.
 - Preserve individual wild stat variation and species-specific ranges; no exact stat formulas approved.
+
+## Approved weighted stat inheritance probability (2026-10-24)
+- For each inherited genetic stat independently, offspring have a 55% chance of inheriting the higher parent's genetic stat potential and a 45% chance of inheriting the lower parent's potential (ARK-inspired).
+- This is inheritance of genetic potential, NOT current HP or trained/leveled stat gains. Bred offspring still hatch at level 1.
+- Equal parental values produce that shared value; no meaningful higher/lower distinction.
+- Rarity inheritance and mutations use separate mechanics, still TBD.
+- This rule is approved for design; implementation and balancing tests remain pending.
