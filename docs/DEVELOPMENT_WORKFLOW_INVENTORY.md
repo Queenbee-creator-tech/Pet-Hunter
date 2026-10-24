@@ -92,3 +92,10 @@ The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid wou
 - **Spring's main city is on a substantial floating landmass**, with a waterfall associated with the elevated city. The rest of Spring includes normal forested ground and smaller floating land fragments. Generator must reserve a city-sized elevated landmass; waterfall source/outlet, height, exact position and access routes still need design.
 - **Winter's main city is on a valley floor amid the mountain range**, surrounded by mountains but **not built inside or carved into a mountain**. Generator must preserve a traversable valley and routes; precise geometry/coordinates still undecided.
 - Generate valid landforms first, then place the cities as constrained landmarks; do not place them randomly on incompatible terrain.
+
+
+### Decision 047 — Spring floating-city lake and downstream Summer waterfall (approved)
+- Water falls from Spring's floating city into a lake directly below the floating landmass.
+- That water continues downstream toward Summer and falls again as a waterfall on the route into Summer.
+- Preserve the previously approved major waterway Spring → Autumn central lake → Summer ocean; exact confluences, whether the Spring lake and Autumn lake are distinct, and the second waterfall's exact position are not yet specified.
+- Generate hydrologically connected lake outlets and elevation drops; do not treat either waterfall as purely decorative.
