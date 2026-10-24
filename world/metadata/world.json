@@ -59,12 +59,15 @@
       "route_geometry": null
     },
     "spring_city_cascade": {
-      "source": "spring_floating_city",
-      "first_drop": "waterfall_into_lake_below_spring_city",
-      "downstream_destination": "summer",
-      "additional_drop": "waterfall_on_route_into_summer",
-      "autumn_lake_connection": "retain_existing_spring_to_autumn_lake_to_summer_route",
-      "exact_lake_identity_and_waterfall_location": null
+      "source": "spring_floating_city_waterfall",
+      "connection": "feeds_established_single_connected_spring_autumn_summer_waterway",
+      "established_route": [
+        "spring_headwaters",
+        "autumn_central_freshwater_lake",
+        "summer_ocean"
+      ],
+      "second_waterfall": "user_described_downstream_drop_toward_summer_exact_placement_unresolved",
+      "new_separate_spring_lake_approved": false
     }
   },
   "exploration": {
