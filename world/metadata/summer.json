@@ -56,8 +56,8 @@
     ],
     "details": null,
     "incoming_spring_cascade": {
-      "downstream_waterfall_before_or_at_summer": "approved",
-      "exact_waterfall_location": null,
+      "connected_route": "spring_to_autumn_central_lake_to_summer_ocean",
+      "additional_downstream_drop": "mentioned_by_user_exact_placement_not_decided",
       "final_ocean_outlet": "existing_approved_route"
     }
   },
