@@ -149,5 +149,28 @@
       "obstruction_duration_rules": null,
       "engine_authoritative": true
     }
+  },
+  "environmental_action_gating": {
+    "mode": "hybrid",
+    "unknown_opportunities_hidden": true,
+    "obvious_obstacles_show_unavailable_actions": true,
+    "stages": [
+      "recognition",
+      "attempt_eligibility",
+      "outcome_resolution"
+    ],
+    "relevant_inputs": [
+      "hunter_skills",
+      "equipped_items",
+      "terrain",
+      "weather",
+      "environmental_hazards"
+    ],
+    "risky_attempts_can_fail": true,
+    "skill_thresholds": null,
+    "equipment_requirements": null,
+    "probability_formula": null,
+    "engine_authoritative": true,
+    "implementation_status": "design_only"
   }
 }
