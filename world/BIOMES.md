@@ -178,3 +178,11 @@ Equipment, skills and preparation can help players overcome or mitigate weather 
 - **Summer:** tsunamis, dangerous currents, heat, rough seas.
 - **Winter:** blizzards, extreme cold, avalanches, dangerous ice.
 These are approved environmental hazard categories, not a finalized list of every possible weather state. Earthquakes and tsunamis are environmental/geophysical events rather than weather. Event frequencies, intensity, duration, warning signs, exact effects, equipment counters, skill requirements and world-state consequences remain TBD. Preserve earlier approval that hazards may be fatal when unprepared and some routes may be impassable while others remain risky.
+
+## Decision 038 — Location-based hazard behavior and temporary route impacts (approved)
+- Major disaster likelihood depends on location; some areas are more hazardous than others, even within the same biome. Exact location risk zones and event probabilities are TBD.
+- Disasters usually have warning signs, but some events can happen suddenly. Warning reliability, skill modifiers and lead time are TBD.
+- Environmental hazards can affect hunter survival, movement, equipment condition, wild creature behavior, and route availability. The precise effects and damage/injury mechanics remain TBD.
+- Shelter effectiveness varies with shelter type and hazard severity; no shelter is assumed universally protective. Shelter construction and effectiveness rules remain TBD.
+- Disasters may temporarily alter environmental conditions and block established routes (e.g. flooding or debris). The fixed persistent geography remains intact; no permanent terrain reshaping is approved. Exact persistence, clearance and reset mechanisms are TBD.
+- The authoritative engine determines hazard events, route accessibility and consequences. AI narrates only approved state. Death/respawn follows docs/PLAYER_INJURY_DEATH_RESPAWN.md; do not add Portal Stone respawn costs or progress loss.
