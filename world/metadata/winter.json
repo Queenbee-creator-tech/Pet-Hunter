@@ -134,5 +134,18 @@
     "exact_visibility_thresholds": null,
     "success_probability_formula": null,
     "locked_action_detail_policy": null
+  },
+  "hidden_discoveries": {
+    "enabled": true,
+    "biome_specific": true,
+    "categories": [
+      "concealed_caves_or_shelters",
+      "creature_dens_nests_or_habitats",
+      "rare_gatherable_resources"
+    ],
+    "fixed_in_canonical_world": true,
+    "knowledge_gated_visibility": true,
+    "exact_locations": null,
+    "discovery_rates": null
   }
 }
