@@ -76,3 +76,13 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 ## Decision 035 — Dynamic biome weather (approved)
 - [x] Weather varies naturally within each permanently seasonal biome, with biome-appropriate patterns.
 - [ ] Define weather categories per biome, transition rules, frequency, duration, and engine impacts; examples are illustrative, not an exhaustive approved catalog.
+
+## Decision 036 — Weather system directions (approved)
+- [x] Extreme weather can potentially be fatal for unprepared players; exact death/recovery mechanics remain TBD.
+- [x] Weather obstacles may be impassable or traversable with risk, depending on conditions and capabilities.
+- [x] Weather can change gradually with warnings or suddenly, depending on event.
+- [x] Natural shelter and craftable camping equipment are possible protection options.
+- [x] Weather affects wild creature behavior, movement and environmental interactions.
+- [x] Each biome has distinctive environmental hazards.
+- [x] Skills, equipment and preparation can mitigate or overcome weather challenges.
+- [ ] Define biome-specific weather and hazard catalogs, thresholds, frequency, timing, shelter effectiveness, skill/equipment requirements, creature responses, and injury/death/recovery mechanics.
