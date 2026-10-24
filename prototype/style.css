@@ -9,3 +9,17 @@
 .sanctuary-view .story-wrap{margin:0 auto 20px;width:100%;max-width:660px}
 .sanctuary-view .story-wrap section{position:relative}
 @media(min-width:750px){.sanctuary-view .scene{min-height:750px}.sanctuary-view .hotspots{position:absolute;inset:0;min-height:0}.sanctuary-view .hotspot.library{left:15%;top:27%}.sanctuary-view .hotspot.workbench{right:18%;top:35%}.sanctuary-view .hotspot.door{right:8%;top:64%}.sanctuary-view .story-wrap{margin:440px 30px 30px auto;max-width:500px}}
+
+/* 0.9.2: mobile sanctuary structural repair. Keep hotspot layer in normal flow
+   and prevent its content from overlapping the narrative card. */
+@media(max-width:749px){
+ .sanctuary-view .scene{display:block;overflow:visible}
+ .sanctuary-view .hotspots{position:relative!important;inset:auto!important;display:block;min-height:390px;height:390px;flex:none;z-index:2}
+ .sanctuary-view .hotspot.library{top:100px;left:7%}
+ .sanctuary-view .hotspot.workbench{top:200px;right:5%}
+ .sanctuary-view .hotspot.door{top:290px;right:7%;min-width:110px}
+ .sanctuary-view .story-wrap{position:relative;z-index:1;margin:0 auto!important;padding:0 14px 20px;clear:both}
+ .sanctuary-view .corner-tools{z-index:4}
+ .room-nav{position:sticky;bottom:0}
+ .story-wrap section{padding-bottom:28px}
+}
