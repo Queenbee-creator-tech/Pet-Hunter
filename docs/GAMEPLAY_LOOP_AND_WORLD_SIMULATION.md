@@ -141,3 +141,24 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 ### Approved relocation requirement clarification (2026-10-23)
 - Sanctuary relocation requires **both** enough in-game money **and** satisfaction of the destination biome's survival/habitation requirements. Travel access alone is insufficient.
 - Exact survival criteria and thresholds are undecided; do not invent permanent numeric requirements.
+
+
+## Critical Event System — engine-driven active actions (design direction, 2026-10-23)
+
+**Approved core principle:** The engine, not the LLM narrator, owns the world state, triggers, valid choices, skill checks, chance, and consequences. The narrator dramatizes engine-provided situations and outcomes without inventing or changing rules.
+
+**Critical event examples:** A player falls into a hole, slips from a cliff, triggers a dangerous obstacle, or faces a contextual NPC thief/stealing-creature encounter. The thief scenario remains **proposed**, not a finalized theft mechanic.
+
+**Proposed event sequence:**
+1. The engine detects an event trigger from a player's actual location, action, terrain, and circumstances.
+2. The engine enters a critical-event state and determines possible immediate reactions; only valid options are selectable.
+3. The narrator conveys urgency in immersive prose and presents the approved choices.
+4. The engine resolves a selected reaction based on applicable skills, equipment, creature abilities, environmental conditions, and (where appropriate) a random check. The same choice can succeed for one character and fail for another; avoid universal predetermined right/wrong buttons.
+5. The engine records any consequences (e.g., averted fall, new position, injury, lost or recovered property, or potentially character death) and, if danger continues, may open another event stage.
+6. The narrator describes only the authoritative outcome.
+
+**Cliff/hole example:** Catch a branch, aim for a ledge, protect the head, or use suitable gear, **only if the engine verifies the opportunity actually exists**. Successful first reactions may lead to another decision (e.g., hanging from a branch and needing to climb to safety). Do not invent branches or ledges to rescue a player.
+
+**Thief example (NOT YET APPROVED AS A LIVE MECHANIC):** In a plausible context, the engine could trigger a suspicious NPC or stealing-creature encounter. Players might notice warning clues, protect belongings, pursue, negotiate, confront, or attempt recovery where valid. Detection and recovery outcomes should reflect skills, preparedness, circumstances and risk. Do not automatically steal rare/irreplaceable items or impose unavoidable losses; exact protections and recovery rules require approval. This does not imply open-world player-to-player theft.
+
+**Still undecided:** Whether some events have real-time decision timers; countdown duration and timeout behavior; frequency and severity; success formulas; injury/death and respawn rules; theft eligibility, item protection, and recovery; creature-assisted reactions; accessibility and connection-loss behavior. These are **design notes, not implemented or tested features**.
