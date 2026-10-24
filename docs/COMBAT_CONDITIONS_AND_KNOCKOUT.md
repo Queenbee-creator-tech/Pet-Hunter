@@ -63,6 +63,12 @@
 - Level caps do NOT imply numerical attributes (HP, attack, defense, energy, etc.) are capped at 50; stat values and scaling are separate design decisions.
 - Implement the cap consistently in progression systems when those systems are built. Existing prototype mechanics may use provisional thresholds and are not automatically updated by this design record.
 
+## ARK-inspired creature stat scaling (approved concept; formulas TBD)
+- Level 50 is the creature/player/skill progression cap, NOT a cap on numerical stats such as HP, attack or energy.
+- Use an ARK-inspired model: species-specific base stats and ranges; individuals of the same species and level can have different distributions/strengths.
+- Determine per-species min/max numerical stat values and how level gains, inherited genetics, rarity and mutations affect them in later balancing work. Mutations remain independent of rarity.
+- No sample stat numbers or exact allocation formulas are canon yet. Do not copy ARK formulas automatically; use the concept and tune for Pet Hunter.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
