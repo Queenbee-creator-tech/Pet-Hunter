@@ -1,0 +1,59 @@
+{
+  "schema_version": "draft-0.1",
+  "status": "working_metadata_not_generator_ready",
+  "id": "pet_hunter_world",
+  "generation": {
+    "world_count": 1,
+    "shared_persistent_geography": true,
+    "generated_once_then_persisted": true,
+    "scale_target": "moderate",
+    "session_pacing_target": "meaningful_short_sessions",
+    "dimensions": null,
+    "coordinate_system": null,
+    "orientation": null,
+    "seed_policy": null
+  },
+  "biome_ids": [
+    "autumn",
+    "spring",
+    "summer",
+    "winter"
+  ],
+  "central_biome_id": "autumn",
+  "boundaries": {
+    "character": "dramatic_fantasy_transitions",
+    "physical_connections": true,
+    "exact_adjacency": null,
+    "geometry": null
+  },
+  "waterways": {
+    "major_river": {
+      "source_biome_id": "spring",
+      "passes_through_biome_id": "autumn",
+      "passes_through_feature": "autumn_central_freshwater_lake",
+      "destination_biome_id": "summer",
+      "destination_feature": "ocean",
+      "route_geometry": null
+    }
+  },
+  "exploration": {
+    "player_visible_world_map": false,
+    "engine_authoritative_location": true,
+    "engine_authoritative_routes": true,
+    "public_and_individually_discoverable_hidden_routes": true
+  },
+  "sanctuary": {
+    "biome_portal_ids": [
+      "autumn",
+      "spring",
+      "summer",
+      "winter"
+    ],
+    "fixed_arrival_points_per_biome": 1,
+    "arrival_safety": "relatively_safe"
+  },
+  "sources": [
+    "world/BIOMES.md"
+  ],
+  "notes": "Game mechanics for portal stones and Essence belong to gameplay/architecture documentation. This is source metadata, not the generated map."
+}
