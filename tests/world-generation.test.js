@@ -25,3 +25,13 @@ test('Summer coastal city and turtle transport destinations are represented',()=
  assert.equal(w.turtleRoutes.length,w.landmarks.summerIslands.length+w.landmarks.underwaterDestinations.length);
  assert.ok(w.turtleRoutes.every(route=>route.transport==='giant_turtle'));
 });
+
+test('Geography preview preserves varied mountain elevations and central Autumn lake',()=>{
+ const w=generateWorldDraft(42), {width,height,landmarks,terrain,elevation}=w;
+ assert.ok(landmarks.autumnLake.y>height*.25&&landmarks.autumnLake.y<height*.7,'lake should not be on northern edge');
+ const winterElevations=[];
+ for(let i=0;i<w.biomes.length;i++)if(w.biomes[i]===3)winterElevations.push(elevation[i]);
+ assert.ok(Math.max(...winterElevations)-Math.min(...winterElevations)>400,'winter needs varied mountain heights');
+ const groves=terrain.reduce((n,t)=>n+(t===TERRAIN.GROVE),0);
+ assert.ok(groves>0,'Autumn needs groves');
+});
