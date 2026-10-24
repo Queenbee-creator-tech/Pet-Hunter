@@ -71,4 +71,11 @@ Goal: a player can start, explore an unlocked Autumn starter region of the canon
 
 
 ### Decision 043 — 100 m grid cell (approved)
-The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid would cover 25.6 km × 25.6 km (655.36 km²). Grid dimensions and biome allocation remain pending; narrative choice distance need not equal one cell.
+The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid would cover 25.6 km × 25.6 km (655.36 km²). Grid dimensions and biome allocation are now approved; narrative choice distance need not equal one cell.
+
+
+## Decision 044 — Canonical world grid and biome allocation (approved)
+- World grid: 256 × 256 cells at 100 m per cell, 25.6 × 25.6 km (655.36 km²).
+- Target biome shares: Autumn 30%, Spring 25%, Summer 25%, Winter 20%; irregular connected boundaries, approximate area targets rather than rectangles.
+- Summer's 25% **includes ocean, reefs, islands and underwater habitats** in the same world grid; no separate ocean grid.
+- Still to design: elevation/terrain generation, hydrology, precise region shapes and coordinates. Generator and developer inspector are not yet complete.
