@@ -111,3 +111,10 @@ The **existing** continuous river is Spring headwaters and waterfalls → Autumn
 - [ ] Run `npm test` in the repository/CI and confirm tests pass; **not yet verified**.
 - [ ] Connect primitives to actual biome polygons, elevations, hydrology, landmark constraints, persistence and the developer-only world inspector. **No canonical map has been generated or saved yet.**
 - [ ] Integrate the eventual canonical world into the existing exploration engine and tutorial.
+
+
+### Connected-biome allocation prototype — 2026-10-24
+- [x] Added `world/generation/biomes.js` with deterministic, incremental frontier-based assignment for four connected candidate biome regions, targeting approved shares.
+- [x] Added `tests/biome-allocation.test.js` for area shares, repeatability, and connectivity.
+- [ ] Execute tests and assess seed robustness, particularly whether region frontiers become enclosed before quotas are met. Code is experimental and **not yet verified**.
+- [ ] Add elevation, Winter mountain/valley, Spring floating city, Autumn lake and Summer coastline/ocean before approving a canonical map.
