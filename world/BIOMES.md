@@ -143,3 +143,7 @@ Players craft **portal stones** and **Essence Potions** at their sanctuary, not 
 
 ## Decision 030 — Single-use portal stones (approved)
 Each portal-stone activation consumes exactly **one crafted portal stone**. This applies both when departing the sanctuary through a biome portal and when returning directly from exploration to the sanctuary. For an outbound trip and portal return, players therefore need two stones. With no usable stone, the player can still return via valid physical routes. Portal stones are crafted at the sanctuary; exact recipe, acquisition costs, biome arrival points, and unlocks remain TBD. The engine validates inventory and decrements the stone count atomically with successful portal travel; narration cannot create free uses.
+
+
+## Decision 031 — One fixed arrival point per biome (approved)
+Each of the four sanctuary biome portals (Autumn, Spring, Summer, Winter) leads to **one permanent, fixed arrival location** within its corresponding biome. All players using a given biome portal arrive at the same persistent world location, not an engine-randomized spawn and not an unlockable list of alternative portal arrivals. Players then navigate outward via engine-approved routes. Exact portal arrival coordinates, landmarks, safety, and visual descriptions are still to be designed. Portal activation continues to consume one crafted stone under Decision 030; returning by portal goes directly to the player's own sanctuary.
