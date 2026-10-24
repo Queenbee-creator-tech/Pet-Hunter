@@ -4,6 +4,39 @@
 
 **Playable prototype:** https://queenbee-creator-tech.github.io/Pet-Hunter/
 
+## Active development roadmap — integrated tutorial MVP
+
+**Current milestone:** build and test the first complete playable experience inside the real Pet Hunter game. The tutorial is **not** a separate project, separate map, temporary engine, or disposable implementation. It is a guided journey using the same persistent Avalora world, player saves, creature systems, rules, and mobile-first interface that the full game will use. Tutorial progression adds guidance and unlocks; it must not fork core mechanics.
+
+**Working tracker:** [Development Workflow Inventory](docs/DEVELOPMENT_WORKFLOW_INVENTORY.md). **Assistant/developer instructions:** [AGENTS.md](AGENTS.md). Consult both at the beginning of each development task and update them when progress or priorities change.
+
+### Work through these stages in order (with necessary integration work as dependencies)
+
+| Order | Workflow | Tutorial-ready acceptance test |
+| --- | --- | --- |
+| 1 — CURRENT | World metadata, generation and developer inspector | Approve grid scale/biome allocation; build geographic rules; generate and persist **one canonical Avalora**; inspect actual terrain/elevation/water/biome/route layers; validate connected forests, downhill rivers, lake outlets, waterfalls at elevation changes, fixed landmarks, accessible Autumn starter region |
+| 2 | Player state and persistence | Create/load a hunter; save/reload location, inventory, creatures, timers, tutorial progress; prevent duplicate rewards |
+| 3 | Exploration, routes, travel and interaction | Explore actual Autumn world cells/locations via text choices, discover a point of interest, handle engine-approved obstacles, travel back to sanctuary |
+| 4 | Autumn creature content and encounters | At least one approved species with usable stats, habitat, behavior, encounter data and testable mutation support for the starter milestone |
+| 5 | Combat and capture | Run an encounter to resolution; apply approved XP/win rules; make valid capture attempt and persist creature |
+| 6 | Eggs, incubation, collection | Acquire/use egg via approved gameplay, select egg from collection, incubate/hatch using three-slot rules, inspect owned creatures |
+| 7 | Sanctuary care, training and progression | Use approved three-slot timed care/training systems, claim completed results, preserve state across reload |
+| 8 | Mobile-first UI and tutorial guidance | Connect real screens to real systems; unobstructed navigation, backpack, journal, sanctuary and encounter UI; guide player through real game |
+| 9 | End-to-end QA and release | Fresh start → explore → encounter → combat → capture → sanctuary → care/training → egg/incubation → save/reload → continue in Autumn; test failures, mobile and persistence |
+
+These are **work stages, not claims that all design details are finalized**. Implement dependencies in the correct order; UI work may proceed alongside engine work but must integrate before completion. The exact tutorial script and whether every listed activity is mandatory for graduation remain subject to approval. Do not remove already approved gameplay rules just to simplify the tutorial.
+
+### Immediate next decisions — world workflow
+
+1. Treat **256 × 256** as the selected *starting grid proposal*, pending confirmation of cell scale and biome allocation.
+2. Agree meters per cell, movement/location granularity, coordinate axes and elevation units.
+3. Agree biome footprints and whether Summer's ocean is inside the same grid.
+4. Define terrain clustering and elevation-driven hydrology, including connected forests/groves, downhill river drainage, lake inlets/outlets, waterfalls at drops, and coastline/reef placement.
+5. Define permanent landmarks, route graph, sanctuary arrivals, habitats, resources, hidden discoveries, hazard zones, generator seed/version and persistence schema.
+6. Implement generator and **developer-only world inspector** reading actual saved world data; validate and fix before marking world workflow complete.
+
+**Completion discipline:** Each workflow passes Design → Metadata → Implementation → Testing → Complete. Never equate documentation with functioning code. Maintain approved / proposed / unverified distinctions and update the tracker after each substantive change.
+
 ## Project status
 
 **Early development / alpha prototype.** The current prototype is a small technical foundation, **not** a complete implementation of the gameplay design below. Many mechanics are approved as design directions but still need implementation, balancing, and testing. Species, recipes, exact durations, combat balance, and much of the worldbuilding remain provisional. **Approved design rules are not necessarily implemented in the playable build.**
