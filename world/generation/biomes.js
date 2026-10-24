@@ -30,25 +30,34 @@ export function allocateBiomes(width = WORLD_CONFIG.width, height = WORLD_CONFIG
     if(y>0)n.push(i-width);if(y<height-1)n.push(i+width);
     return n;
   };
-  // Select a boundary cell, expanding each biome until its exact target.
-  // Lower-noise neighboring cells are preferred, with seed-driven variation.
+  // Candidate frontiers are incrementally maintained: no repeated full-grid scan.
+  // Bias toward nearby low-noise cells while preserving seeded variability.
+  const candidates = BIOME_IDS.map(() => []);
+  const addNeighbors = (b,i) => {
+    for(const n of neighborIndices(i)) if(cells[n]===-1) candidates[b].push(n);
+  };
+  for(let b=0;b<4;b++) addNeighbors(b,frontiers[b][0]);
   let assigned=4;
   while(assigned<total) {
     let progressed=false;
     for(let b=0;b<4;b++) {
       if(counts[b]>=target[b])continue;
-      const options=[];
-      for(const i of frontiers[b])for(const n of neighborIndices(i))if(cells[n]===-1)options.push(n);
-      if(!options.length)continue;
-      let best=options[0], score=Infinity;
-      for(const n of options){const s=noise[n]+rng()*0.06;if(s<score){score=s;best=n;}}
-      cells[best]=b;counts[b]++;assigned++;frontiers[b].push(best);progressed=true;
+      const pool=candidates[b];
+      let chosen=-1;
+      // Sample candidates instead of sorting an ever-growing frontier.
+      for(let tries=0;tries<12&&pool.length;tries++){
+        const k=Math.floor(rng()*pool.length),n=pool[k];
+        pool[k]=pool[pool.length-1];pool.pop();
+        if(cells[n]!==-1)continue;
+        if(chosen<0||noise[n]+rng()*0.1<noise[chosen]+rng()*0.1){
+          if(chosen>=0)pool.push(chosen);
+          chosen=n;
+        } else pool.push(n);
+      }
+      if(chosen<0)continue;
+      cells[chosen]=b;counts[b]++;assigned++;addNeighbors(b,chosen);progressed=true;
     }
-    if(!progressed) {
-      // If a biome is enclosed before meeting its quota, other regions
-      // should not be silently reassigned: fail for design inspection.
-      throw new Error('Biome allocation enclosed a region; adjust generation constraints');
-    }
+    if(!progressed) throw new Error('Biome region enclosed before quota; inspect seed and constraints');
   }
   return {width,height,seed,cells,counts:Object.fromEntries(BIOME_IDS.map((id,i)=>[id,counts[i]]))};
 }
