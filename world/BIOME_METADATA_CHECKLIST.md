@@ -55,3 +55,8 @@ Define the **world-level metadata schema** using approved facts first, marking m
 
 ## Source caveats
 `BIOMES.md` is a chronological decision log and contains superseded early text (e.g., references to stamina-gated encounters, player maps, undecided portal stone consumption). Later explicit decisions supersede earlier statements. Do not treat all entries as simultaneously current.
+
+
+## Decision 033 — World scale and pacing (approved)
+- [x] **World-scale target:** moderately sized persistent world, supporting meaningful exploration in shorter sessions rather than excessively long expeditions.
+- [ ] Translate this qualitative target into measurable geography, route density, and travel-time parameters after prototype testing; no numerical dimensions or times are approved.
