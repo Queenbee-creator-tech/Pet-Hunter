@@ -1,4 +1,4 @@
-import {WORLD_CONFIG, seededRandom} from './terrain.js';
+import {WORLD_CONFIG} from './terrain.js';
 
 // Safe baseline for biome allocation. This is NOT Avalora's final map:
 // it uses contiguous bands as a temporary foundation. Natural irregular
@@ -14,9 +14,7 @@ export function allocateBiomes(width = WORLD_CONFIG.width, height = WORLD_CONFIG
   for(let b=0;remainder>0;b=(b+1)%4,remainder--)targets[b]++;
   const cells = new Int8Array(total);
   const counts = [0,0,0,0];
-  const rng = seededRandom(seed);
-  // Slight boundary drift; the initial scaffold keeps every region contiguous.
-  let carry = [0,0,0,0];
+  // This safe scaffold is seed-independent; a later topology pass will use the seed.
   for(let y=0;y<height;y++){
     const remainingRows=height-y;
     const ideal=targets.map((t,b)=>(t-counts[b])/remainingRows);
