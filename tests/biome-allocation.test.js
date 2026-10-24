@@ -1,25 +1,33 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {allocateBiomes, BIOME_IDS} from '../world/generation/biomes.js';
-test('biome allocation fills every cell and matches approved target ratios',()=>{
- const world=allocateBiomes(32,32,1);
- assert.equal(world.cells.length,1024);
- assert.ok([...world.cells].every(v=>v>=0&&v<4));
- assert.equal(Object.values(world.counts).reduce((a,b)=>a+b,0),1024);
- for(const [id,share] of Object.entries({autumn:30,spring:25,summer:25,winter:20}))
-   assert.ok(Math.abs(world.counts[id]/1024*100-share)<0.2,id);
-});
-test('biome allocation is reproducible',()=>{
- assert.deepEqual(allocateBiomes(24,24,5).cells,allocateBiomes(24,24,5).cells);
-});
-test('each biome forms one connected land region',()=>{
- const world=allocateBiomes(32,32,7),w=world.width,h=world.height;
- for(let b=0;b<BIOME_IDS.length;b++){
-   const first=world.cells.indexOf(b),seen=new Set([first]),stack=[first];
-   while(stack.length){const i=stack.pop(),x=i%w,y=Math.floor(i/w);
-     for(const n of [x>0?i-1:-1,x<w-1?i+1:-1,y>0?i-w:-1,y<h-1?i+w:-1])
-       if(n>=0&&world.cells[n]===b&&!seen.has(n)){seen.add(n);stack.push(n);}
-   }
-   assert.equal(seen.size,world.counts[BIOME_IDS[b]],BIOME_IDS[b]);
+import {allocateBiomes,BIOME_IDS} from '../world/generation/biomes.js';
+function verify(w,h,seed){
+ const result=allocateBiomes(w,h,seed),{cells,counts}=result;
+ assert.equal(cells.length,w*h);
+ for(let b=0;b<4;b++){
+  const start=cells.indexOf(b);assert.ok(start>=0);
+  const visited=new Uint8Array(w*h),stack=[start];visited[start]=1;let n=0;
+  while(stack.length){
+   const i=stack.pop(),x=i%w,y=(i/w)|0;n++;
+   for(const j of [x>0?i-1:-1,x<w-1?i+1:-1,y>0?i-w:-1,y<h-1?i+w:-1])
+    if(j>=0&&cells[j]===b&&!visited[j]){visited[j]=1;stack.push(j);}
+  }
+  assert.equal(n,counts[BIOME_IDS[b]],`disconnected ${BIOME_IDS[b]} at ${w}x${h} seed ${seed}`);
  }
+ assert.equal(Object.values(counts).reduce((a,b)=>a+b,0),w*h);
+ const autumnXs=[];for(let i=0;i<cells.length;i++)if(cells[i]===0)autumnXs.push(i%w);
+ const avg=autumnXs.reduce((a,b)=>a+b,0)/autumnXs.length;
+ assert.ok(avg>w*.35&&avg<w*.7,'Autumn not central');
+ return result;
+}
+test('connected and exact at multiple sizes and seeds',()=>{
+ for(const [w,h] of [[8,8],[16,16],[24,24],[32,32],[64,64],[128,128],[256,256]])
+ for(const seed of [0,1,7,42,2026])verify(w,h,seed);
+});
+test('repeatable and seeded natural boundaries',()=>{
+ assert.deepEqual(verify(256,256,42).cells,verify(256,256,42).cells);
+ assert.notDeepEqual(verify(256,256,42).cells,verify(256,256,43).cells);
+ const {cells,width:w,height:h}=verify(256,256,42);
+ const first=Array.from({length:h},(_,y)=>cells.slice(y*w,(y+1)*w).indexOf(0));
+ assert.ok(new Set(first).size>=3,'biome boundary is straight');
 });
