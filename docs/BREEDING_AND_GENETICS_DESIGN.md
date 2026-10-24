@@ -56,3 +56,9 @@ When designing each species, define its approved visual modules (colors, marking
 - Individual creature skills have their own progression, with the previously approved skill cap of 50; a creature's skill level can differ significantly from its overall creature level.
 - Inherited genetic potential influences numerical stat development as the creature gains overall levels; it is separate from both current trained skills and experience.
 - Exact XP awards, diminishing-return behavior, training durations, and the amount (if any) of overall XP granted by training are not yet finalized.
+
+## Creature XP sources — approved direction (2026-10-24)
+- **Combat participation is the primary source** of overall creature-level experience.
+- When the hunter earns skill XP through exploration, **accompanying creatures receive a small amount of overall creature XP**. This does not automatically raise the creatures' corresponding individual skills.
+- Care Room training remains primarily for targeted creature skill XP, not overall level XP.
+- Exact exploration XP share/percentage, combat participation thresholds, XP splitting and anti-exploit rules are not yet decided. The illustrative 100 hunter XP -> 5 creature XP is NOT an approved rate.
