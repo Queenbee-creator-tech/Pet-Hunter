@@ -52,3 +52,7 @@ Portal stones and Essence Potions are craftable only at the sanctuary. Sanctuary
 
 ## Decision 030 — Portal stone inventory transaction
 Each successful portal travel activation requires and consumes one portal stone. This applies to outbound sanctuary-to-biome and inbound exploration-to-sanctuary actions. Reject activation when no stone is available; never deduct on an invalid/failed action. Validate inventory, consume one stone, and update authoritative location in a single reliable state transition so refreshes or repeated taps cannot duplicate travel or consume extra stones. Crafting recipe and arrival coordinates remain undecided.
+
+
+## Decision 031 — Static biome portal destination mapping
+Maintain a fixed authoritative mapping of the four sanctuary biome portal IDs to exactly one world location ID each. Outbound portal travel resolves to the mapped destination for the selected biome; it does not roll a random location or offer multiple arrival targets. Return stones resolve to the player's own sanctuary. Validate and consume one stone per successful activation. Exact destination location IDs and scene definitions await world design.
