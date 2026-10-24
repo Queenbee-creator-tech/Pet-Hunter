@@ -40,6 +40,13 @@
 - Do not require fear training as a prerequisite for normal command-following in an unaffected creature. Training can prepare for stressful encounters and rehabilitate acquired fear/stress.
 - Earlier speculative text about inherent species timidity/temperament governing fear should NOT be treated as approved design. This correction supersedes that interpretation.
 
+## XCOM-style overdeployment and recovery loop (latest approved clarification)
+- The central source of fatigue, stress, fear and injury risk is repeated deployment / overplaying creatures relative to their remaining stamina/energy, alongside the demands and events of combat. Creatures need not start combat with negative conditions.
+- Continuing to deploy tired, injured, stressed or fearful creatures is permitted; those conditions increase the chance of failing to follow orders or acting independently, as in XCOM. Only 0-HP unconsciousness blocks deployment.
+- Sanctuary facilities clear corresponding acquired conditions: sleeping quarters/bedroom for tiredness, training for fear and stress, medical area for injuries, and medical care/recovery for unconsciousness. Exact recovery timings, costs, thresholds and probabilities TBD.
+- The intended loop is optional strategic recovery after exertion, NOT mandatory constant pet maintenance. Recovered creatures return to normal behavior without permanent fear/stress penalties.
+- This latest clarification supersedes earlier suggestions that stress/fear must be inherent temperament traits or that injured creatures cannot deploy.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
