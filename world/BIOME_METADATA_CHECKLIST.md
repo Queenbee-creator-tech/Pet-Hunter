@@ -125,3 +125,8 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 ## Decision 041 — Autumn terrain balance
 - [x] Predominantly open meadows and rolling hills with scattered smaller groves, not extensive continuous forest.
 - [ ] Define exact terrain proportions and placements during generation design.
+
+## Decision 042 — Hidden biome discoveries
+- [x] Every biome has environment-specific concealed caves/shelters, creature habitats and rare resources.
+- [x] Discovery locations remain fixed in the canonical world; perception follows approved hybrid skill gating.
+- [ ] Define individual discovery locations, contents, encounter requirements and rarity rates later.
