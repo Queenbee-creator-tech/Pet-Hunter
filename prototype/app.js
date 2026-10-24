@@ -5,7 +5,7 @@ import {normalizeIncubation,addEgg,startIncubation,hatch,odds,INCUBATION_MS} fro
 import {normalizeBreeding,addCreature,eligibleCreatures,beginBreeding,finishBreeding,BREEDING_MS,BREEDING_COOLDOWN_MS} from './breeding.js';
 import {normalizeCare,careCandidates,trainingCandidates,beginCare,finishCare,beginTraining,finishTraining,TRAINING_MS,TEST_SKILLS} from './care.js';
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.9.1';
+const BUILD='0.9.3';
 let previousScreen='sanctuary';
 const roomScreens=['sanctuary','incubation','breeding','care'];
 function go(screen){if(screen!=='character'&&screen!=='codex'&&screen!=='inventory')previousScreen=screen;setScreen(screen);}
