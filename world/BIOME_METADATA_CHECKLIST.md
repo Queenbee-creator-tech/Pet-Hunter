@@ -60,3 +60,11 @@ Define the **world-level metadata schema** using approved facts first, marking m
 ## Decision 033 — World scale and pacing (approved)
 - [x] **World-scale target:** moderately sized persistent world, supporting meaningful exploration in shorter sessions rather than excessively long expeditions.
 - [ ] Translate this qualitative target into measurable geography, route density, and travel-time parameters after prototype testing; no numerical dimensions or times are approved.
+
+## Metadata extraction milestone — draft files created (2026-10-23)
+- [x] Draft machine-readable world metadata: [world.json](metadata/world.json).
+- [x] Draft individual biome records: [autumn.json](metadata/autumn.json), [spring.json](metadata/spring.json), [summer.json](metadata/summer.json), [winter.json](metadata/winter.json).
+- [ ] Review and approve the schema as an implementation contract. Current files are **draft structured data only**, not a completed or tested generator.
+- [ ] Fill unresolved `null` values only through explicit approvals or separately labeled prototype parameters.
+- [ ] Validate file parsing, cross-file references, and generator behavior in the Engine thread.
+The JSON files intentionally exclude superseded or provisional percentages, map UI assumptions, specific creature spawn rates, unapproved climate numbers and portal visuals.
