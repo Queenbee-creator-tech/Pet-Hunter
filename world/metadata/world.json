@@ -188,5 +188,15 @@
     "exact_visibility_thresholds": null,
     "success_probability_formula": null,
     "locked_action_detail_policy": null
+  },
+  "world_generation": {
+    "method": "rule_guided_generated_once",
+    "designer_controlled_landmarks": true,
+    "canonical_geography_persisted": true,
+    "same_for_all_players_and_sessions": true,
+    "regenerate_per_session": false,
+    "temporary_environmental_access_changes_allowed": true,
+    "layout_generated": false,
+    "generation_parameters": null
   }
 }
