@@ -73,3 +73,9 @@ When designing each species, define its approved visual modules (colors, marking
 - Combat XP includes a shared participation award plus **individual performance bonuses**. Creatures contributing more to the fight can earn additional XP, and delivering the final blow may grant an additional bonus.
 - Meaningful non-damage contributions (such as defense or support) should count toward performance, not only damage output.
 - Exact base awards, bonus amounts, weighting, eligibility and anti-exploit calculations are TBD. Any numerical examples discussed are illustrative, not approved balance values.
+
+## Combat XP victory condition — approved (2026-10-24)
+- Combat XP is awarded **only if the hunter's team wins the battle**. On victory, all four participating creatures receive the shared award plus applicable contribution/final-blow bonuses.
+- If the team loses, **no creature earns XP from that battle**, regardless of actions performed before defeat.
+- Previously earned exploration XP is retained. Battle consequences such as injuries, fatigue, fear, stress and equipment wear still persist after defeat under the approved knockout rules.
+- Exact XP amounts and win-condition implementation remain to be designed and tested.
