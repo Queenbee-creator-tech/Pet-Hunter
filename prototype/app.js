@@ -5,7 +5,7 @@ import {normalizeIncubation,addEgg,startIncubation,hatch,odds,INCUBATION_MS} fro
 import {normalizeBreeding,addCreature,eligibleCreatures,beginBreeding,finishBreeding,BREEDING_MS,BREEDING_COOLDOWN_MS} from './breeding.js';
 import {normalizeCare,careCandidates,trainingCandidates,beginCare,finishCare,beginTraining,finishTraining,TRAINING_MS,TEST_SKILLS} from './care.js';
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.9.3';
+const BUILD='0.9.4';
 let previousScreen='sanctuary';
 const roomScreens=['sanctuary','incubation','breeding','care'];
 function go(screen){if(screen!=='character'&&screen!=='codex'&&screen!=='inventory')previousScreen=screen;setScreen(screen);}
@@ -90,17 +90,36 @@ function render(){
      button('Hatch Egg',()=>{const result=hatch(s,i);s=result.state;if(result.result==='success'){s={...s,inventory:{...s.inventory,creatures:s.inventory.creatures-1}};s=addCreature(s,result.egg.species,result.egg.rarity,result.egg.traits||[]);alert('Success! You hatched '+result.egg.species+' ('+result.egg.rarity+').');}else if(result.result==='failure')alert('The egg did not hatch and is permanently lost.');},remaining>0);
     }else{
      p('Empty — one egg maximum');
-     button('Select one egg for Incubator '+(i+1),()=>{
-      if(!s.eggItems.length){alert('No eggs available in storage.');return;}
-      const choices=s.eggItems.map((egg,j)=>'Egg '+(j+1)+' — '+egg.rarity+' ('+odds(s.incubationSkill??0,egg.rarity)+'% hatch success)');
-      const answer=prompt('Choose ONE egg for incubator '+(i+1)+' by entering its number (1–'+choices.length+').\\n\\n'+choices.join('\\n'));
-      if(answer===null)return;
-      const index=Number(answer)-1;
-      if(!Number.isInteger(index)||index<0||index>=s.eggItems.length){alert('Please enter a valid egg number.');return;}
-      const egg=s.eggItems[index];
+     const picker=document.createElement('select');
+     picker.setAttribute('aria-label','Select egg for incubator '+(i+1));
+     picker.className='egg-picker';
+     const placeholder=document.createElement('option');
+     placeholder.value='';
+     placeholder.textContent=s.eggItems.length?'Choose an egg from your collection':'No eggs available in storage';
+     picker.append(placeholder);
+     s.eggItems.forEach((egg,j)=>{
+      const option=document.createElement('option');
+      option.value=egg.id;
+      option.textContent='Egg '+(j+1)+' — '+egg.rarity+' ('+odds(s.incubationSkill??0,egg.rarity)+'% hatch chance)';
+      picker.append(option);
+     });
+     picker.disabled=!s.eggItems.length;
+     game.append(picker);
+     const startButton=document.createElement('button');
+     startButton.className='choice';
+     startButton.textContent='Start Incubation';
+     startButton.disabled=true;
+     picker.addEventListener('change',()=>{startButton.disabled=!picker.value;});
+     startButton.addEventListener('click',()=>{
+      const egg=s.eggItems.find(item=>String(item.id)===picker.value);
+      if(!egg)return;
       const chance=odds(s.incubationSkill??0,egg.rarity);
-      if(confirm('Place ONE '+egg.rarity+' egg into incubator '+(i+1)+'? '+chance+'% success. Failure permanently destroys the egg. Cancel keeps it in storage.'))s=startIncubation(s,egg.id,i);
-     },!s.eggItems.length);
+      if(!confirm('Place ONE '+egg.rarity+' egg into incubator '+(i+1)+'? '+chance+'% success. Failure permanently destroys the egg. Cancel keeps it in storage.'))return;
+      s=startIncubation(s,egg.id,i);
+      save();
+      render();
+     });
+     game.append(startButton);
     
     }
    });
