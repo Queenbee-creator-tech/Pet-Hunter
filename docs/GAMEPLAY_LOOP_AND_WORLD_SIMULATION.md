@@ -171,3 +171,7 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 - Stamina recovery at home/sanctuary remains **2 stamina per 5 minutes**. Do not assume normal wilderness travel regenerates stamina.
 - The environment may still present hazards or creatures during low-stamina return travel. Rules for unavoidable encounters, defensive reactions, critical events and zero-stamina safety are **open** and must not be invented by the narrator.
 - Engine owns eligibility, stamina accounting, item consumption and position updates; the narrator only presents authorized actions and outcomes.
+
+
+## Approved combat format — text-based, turn-based tactical combat (2026-10-23)
+Combat is **turn-based**, inspired by the decision-oriented pacing of XCOM, adapted to Pet Hunter's mobile-first text adventure. The engine determines combat state, whose turn it is, legal actions, skill/stamina costs, hit/success checks, effects and consequences. The LLM narrates the authorized result and offers only engine-approved choices; it never determines outcomes independently. Exploration, critical-event decisions, and structured combat are distinct interaction states. Examples such as attack, defend, item use, companion commands and retreat are illustrative only; precise combat actions, turn order, movement/positioning, initiative, creature participation, encounter triggers, and failure/death consequences remain TBD. This is a design decision, not an implemented or tested feature.
