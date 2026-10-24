@@ -70,12 +70,23 @@ function render(){
      button('Hatch Egg',()=>{const result=hatch(s,i);s=result.state;if(result.result==='success')alert('Success! You hatched '+result.egg.species+' ('+result.egg.rarity+').');else if(result.result==='failure')alert('The egg did not hatch and is permanently lost.');},remaining>0);
     }else{
      p('Empty');
-     s.eggItems.forEach(egg=>{
-      const chance=odds(s.incubationSkill??0,egg.rarity);
-      button('Incubate '+egg.rarity+' egg • '+chance+'% success',()=>{
-       if(confirm('Start two-minute incubation? '+chance+'% hatch chance. Failure permanently loses the egg. Cancel keeps it safely in your bag.'))s=startIncubation(s,egg.id,i);
+     if(s.eggItems.length){
+      const picker=document.createElement('select');
+      picker.setAttribute('aria-label','Select egg for incubator '+(i+1));
+      s.eggItems.forEach((egg,j)=>{
+       const option=document.createElement('option');
+       option.value=egg.id;
+       option.textContent='Egg '+(j+1)+' — '+egg.rarity+' • '+odds(s.incubationSkill??0,egg.rarity)+'% success';
+       picker.append(option);
       });
-     });
+      game.append(picker);
+      button('Select Egg for Incubator '+(i+1),()=>{
+       const egg=s.eggItems.find(item=>item.id===picker.value);
+       if(!egg)return;
+       const chance=odds(s.incubationSkill??0,egg.rarity);
+       if(confirm('Incubate this '+egg.rarity+' egg in incubator '+(i+1)+'? '+chance+'% hatch chance. Failure permanently loses the egg. Cancel keeps it safely in your bag.'))s=startIncubation(s,egg.id,i);
+      });
+     }else p('No eggs in storage. Explore to find one.');
     }
    });
    p('Temporary alpha: egg species and skill requirements are placeholders. Hatch results are decided by the engine.');
