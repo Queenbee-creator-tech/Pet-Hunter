@@ -82,7 +82,7 @@ function render(){
   }
   if(s.screen==='care'){p('Creatures in your care: '+s.inventory.creatures);p(s.inventory.creatures?'Your captured creatures are safe here. Feeding, taming and training are future test features.':'You have no captured creatures yet. Explore to find one.');}
   if(s.screen==='craft'){p('Crafting materials: '+s.inventory.materials+' • Test field kits: '+(s.testKits||0));button('Craft test field kit (1 material)',()=>s=craftTestKit(s),s.inventory.materials<1);p('Temporary alpha recipe. Crafting skill gates and actual recipes are not implemented yet.');}
-  if(s.screen==='inventory'){p('Eggs: '+s.inventory.eggs+' • Incubating: '+s.incubating+' • Creatures: '+s.inventory.creatures+' • Materials: '+s.inventory.materials);p('Stored egg rarities: '+(s.eggItems.length?s.eggItems.map(e=>e.rarity).join(', '):'None')+' (creatures hidden)');p('Test field kits: '+(s.testKits||0)+' • Test-hatched creatures: '+(s.testHatched||0));p('Potions: not implemented • Carried pet classes: awaiting rules.');}
+  if(s.screen==='inventory'){p('Eggs: '+s.inventory.eggs+' • Incubating: '+s.incubating+' • Creatures: '+s.inventory.creatures+' • Materials: '+s.inventory.materials);p('Egg rarity can be inspected in the incubation room; species remains hidden until hatching.');p('Test field kits: '+(s.testKits||0)+' • Test-hatched creatures: '+(s.testHatched||0));p('Potions: not implemented • Carried pet classes: awaiting rules.');}
   button('Return to my sanctuary',()=>setScreen('sanctuary'));return;
  }
  if(s.screen==='destinations'){heading('Begin an Expedition');p('For this alpha, explore within Autumn. Other realms require travel unlocks.');button('Explore Autumn',()=>s=enter(s,'Autumn'));button('Stay at my sanctuary',()=>setScreen('sanctuary'));return;}
