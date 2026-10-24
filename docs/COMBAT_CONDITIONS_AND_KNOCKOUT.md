@@ -47,6 +47,14 @@
 - The intended loop is optional strategic recovery after exertion, NOT mandatory constant pet maintenance. Recovered creatures return to normal behavior without permanent fear/stress penalties.
 - This latest clarification supersedes earlier suggestions that stress/fear must be inherent temperament traits or that injured creatures cannot deploy.
 
+## Combat wear-and-tear and recovery loop (latest approved clarification)
+- XCOM-style deployment strain: repeated use of creatures without recovery, particularly with depleted stamina/energy, can cause or worsen tiredness, stress, fear and injuries. These conditions may also arise from especially difficult encounters and damage sustained.
+- Relative combat levels matter to risk: a level 10 creature defeating a level 20 enemy should have meaningful probability of consequences based on the actual damage/energy used; a level 45 defeating a level 20 generally emerges fine if the fight was easy. Level comparison is not an automatic injury rule; consider actual combat events.
+- Deploying an already injured, stressed, frightened or tired creature is permitted but increases the probability of independent reactions / failure to obey commands. Only unconsciousness at 0 HP makes a creature unavailable.
+- Sanctuary recovery resolves temporary conditions: medical area treats injuries/physical health; training area resolves fear/stress; bedroom/rest restores energy and exhaustion. Recovering from a condition is distinct from permanent progression of combat training.
+- No constant upkeep requirement for creatures who are not being overworked or endangered. Healthy strong creatures can finish combat without any care requirements.
+- Specific formulas, thresholds, treatment durations and recovery items remain TBD, not approved numeric rules.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
