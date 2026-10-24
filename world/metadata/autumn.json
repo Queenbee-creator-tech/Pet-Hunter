@@ -1,0 +1,57 @@
+{
+  "schema_version": "draft-0.1",
+  "status": "working_metadata_not_generator_ready",
+  "id": "autumn",
+  "name": "Autumn",
+  "identity": "central civilization and mostly uninhabited countryside",
+  "terrain": {
+    "approved_descriptors": [
+      "rolling_meadows",
+      "grassy_hills",
+      "scattered_small_groves",
+      "gentle_valleys",
+      "streams"
+    ],
+    "distribution_percentages": null,
+    "elevation_rules": null
+  },
+  "climate": {
+    "approved_descriptors": [],
+    "weather_parameters": null
+  },
+  "hydrology": {
+    "approved": [
+      "major_river_enters_and_exits_central_freshwater_lake",
+      "river_flows_from_spring_toward_summer_ocean"
+    ],
+    "details": null
+  },
+  "features": {
+    "approved": [
+      "established_fantasy_waterfront_town",
+      "large_peaceful_crystal_clear_freshwater_lake",
+      "gentle_accessible_lakeshores",
+      "town_lakeshore_buildings_paths_and_docks",
+      "very_few_secondary_settlements"
+    ],
+    "exact_placements": null
+  },
+  "habitats": {
+    "categories": null,
+    "suitability_rules": null
+  },
+  "resources": {
+    "categories": null,
+    "distribution_rules": null
+  },
+  "travel": {
+    "fixed_sanctuary_portal_arrival": true,
+    "arrival_location_id": null,
+    "arrival_safety": "relatively_safe",
+    "physical_routes": null
+  },
+  "sources": [
+    "world/BIOMES.md"
+  ],
+  "notes": "Null values are unresolved; no generated coordinates, terrain ratios, creature spawn rates or recipes are implied."
+}
