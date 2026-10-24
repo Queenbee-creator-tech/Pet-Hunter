@@ -62,3 +62,8 @@ When designing each species, define its approved visual modules (colors, marking
 - When the hunter earns skill XP through exploration, **accompanying creatures receive a small amount of overall creature XP**. This does not automatically raise the creatures' corresponding individual skills.
 - Care Room training remains primarily for targeted creature skill XP, not overall level XP.
 - Exact exploration XP share/percentage, combat participation thresholds, XP splitting and anti-exploit rules are not yet decided. The illustrative 100 hunter XP -> 5 creature XP is NOT an approved rate.
+
+## Exploration XP distribution — approved (2026-10-24)
+- Whenever the hunter earns exploration skill XP, **every creature currently accompanying the hunter in the expedition party** receives a small amount of overall creature-level XP, even if that creature did not directly assist with the specific action.
+- Expedition party size is up to four creatures. Creatures remaining at the sanctuary (including those in care, rest, or training) do not receive expedition XP.
+- Combat remains the main source of creature-level XP. The precise exploration XP rate remains TBD.
