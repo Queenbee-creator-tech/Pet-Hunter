@@ -68,3 +68,7 @@ Define the **world-level metadata schema** using approved facts first, marking m
 - [ ] Fill unresolved `null` values only through explicit approvals or separately labeled prototype parameters.
 - [ ] Validate file parsing, cross-file references, and generator behavior in the Engine thread.
 The JSON files intentionally exclude superseded or provisional percentages, map UI assumptions, specific creature spawn rates, unapproved climate numbers and portal visuals.
+
+## Decision 034 — Permanent biome seasons (approved)
+- [x] Each seasonal biome permanently retains its namesake season; no global seasonal rotation.
+- [ ] Define changing weather conditions and time-of-day behavior separately without assuming particular schedules or frequencies.
