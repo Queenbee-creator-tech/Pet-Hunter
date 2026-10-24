@@ -220,3 +220,13 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - The mark expires when that creature's remaining stay window ends, even if the player placed the stone after the creature had already been there for some time. Example: a 15-minute location stay with 5 minutes already elapsed leaves 10 minutes of guidance.
 - On expiry, the yellow text-choice guidance ends, the mark deactivates and the reusable stone returns to inventory. The creature is no longer guaranteed to be there; it is not deleted from the world.
 - Actual stay durations per species are still undecided. This clarification supersedes any implication that the stone has a separately configurable duration.
+
+
+## Corrected encounter-window rule (2026-10-23) — supersedes species-specific timer notes
+- Creatures spawn in the persistent world and behave naturally; branching narrative encounters are determined by exploration circumstances.
+- **A return window begins when the player encounters a creature**, regardless of species, rarity, or whether the player attempts to capture/tame it.
+- During the window, the encountered individual remains available at that exact encounter location. The window exists **with or without a smart stone**. A 15-minute window is an illustrative duration, not yet final balance.
+- A placed reusable smart stone **only helps navigate back** to the encounter spot via yellow-highlighted text choices. It neither creates, pauses, nor extends the encounter window.
+- At window expiry, the creature is no longer guaranteed at the location and may move or interact with the world; if marked, the stone deactivates and becomes available again.
+- **Do not use species-specific or rarity-specific timers as an assumed rule.** The previous species-specific timer interpretation was incorrect and is superseded by this section.
+- Implementation and playtesting are pending.
