@@ -86,10 +86,12 @@
     "arrival_safety": "relatively_safe",
     "physical_routes": null,
     "giant_turtle_transport": {
-      "role": "transport_between_coast_offshore_islands_and_underwater_destinations",
+      "role": "transport_from_coastal_city_to_island_landings_or_surface_access_points_for_underwater_descent",
       "capturable": false,
       "route_requirements": null,
-      "exact_routes": null
+      "exact_routes": null,
+      "direct_underwater_transport": false,
+      "underwater_access": "players_disembark_at_surface_destination_and_descend_separately"
     }
   },
   "sources": [
