@@ -38,6 +38,27 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   const x=islandX+dx,y=islandY+dy,i=idx(x,y,width);
   if(biomes[i]===2&&dx*dx+dy*dy<=4){terrain[i]=TERRAIN.ISLAND;elevation[i]=5;}
  }
+ // Offshore destination prototypes; turtle routes are graph edges, not capturable creatures.
+ const summerIslands=[];
+ for(const [fx,fy] of [[.89,.24],[.92,.55],[.88,.78]]){
+  const cy=clamp(Math.round(height*fy),3,height-4);
+  let cx=clamp(Math.round(width*fx),3,width-4);
+  while(cx<width-3&&terrain[idx(cx,cy,width)]!==TERRAIN.OCEAN)cx++;
+  if(terrain[idx(cx,cy,width)]!==TERRAIN.OCEAN)continue;
+  for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
+   const x=cx+dx,y=cy+dy,i=idx(x,y,width);
+   if(biomes[i]===2&&terrain[i]===TERRAIN.OCEAN&&dx*dx+dy*dy<=2){terrain[i]=TERRAIN.ISLAND;elevation[i]=5;}
+  }
+  summerIslands.push({x:cx,y:cy});
+ }
+ const underwaterDestinations=[];
+ for(const [fx,fy] of [[.85,.36],[.86,.68]]){
+  const y=clamp(Math.round(height*fy),1,height-2);
+  let x=clamp(Math.round(width*fx),1,width-2);
+  while(x<width-2&&terrain[idx(x,y,width)]!==TERRAIN.OCEAN&&terrain[idx(x,y,width)]!==TERRAIN.REEF)x++;
+  if(terrain[idx(x,y,width)]===TERRAIN.OCEAN||terrain[idx(x,y,width)]===TERRAIN.REEF)
+   underwaterDestinations.push({x,y,layer:'underwater'});
+ }
  let riverY=-1;
  for(let y=Math.floor(height*.1);y<Math.floor(height*.5);y++){
   const present=new Set();for(let x=0;x<width;x++)present.add(biomes[idx(x,y,width)]);
@@ -65,8 +86,13 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   const i=idx(x,y,width);if(biomes[i]===1&&dx*dx+dy*dy<=4){floatingHeight[i]=420;features[i]|=8;}
  }
  features[idx(sourceX,riverY,width)]|=4;
- const landmarks={springCity:{x:sourceX,y:riverY},autumnLake:{x:lakeX,y:riverY,radius:lakeRadius},autumnTown:{x:lakeX,y:clamp(riverY+lakeRadius+2,0,height-1)},winterCity:{x:winter.x,y:winter.y},summerCoast:{x:summerXs[0],y:riverY},summerIsland:{x:islandX,y:islandY}};
- return {schema:'avalora-world-draft-1',canonical:false,seed,width,height,biomeIds:BIOME_IDS,counts,biomes,terrain,elevation,floatingHeight,features,landmarks,river};
+ const coastalX=summerXs[0],coastalCity={x:coastalX,y:riverY};
+ const turtleRoutes=[
+  ...summerIslands.map((destination,i)=>({id:'summer_island_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle'})),
+  ...underwaterDestinations.map((destination,i)=>({id:'summer_underwater_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle'}))
+ ];
+ const landmarks={summerCity:coastalCity,summerIslands,underwaterDestinations,springCity:{x:sourceX,y:riverY},autumnLake:{x:lakeX,y:riverY,radius:lakeRadius},autumnTown:{x:lakeX,y:clamp(riverY+lakeRadius+2,0,height-1)},winterCity:{x:winter.x,y:winter.y},summerCoast:{x:summerXs[0],y:riverY},summerIsland:{x:islandX,y:islandY}};
+ return {schema:'avalora-world-draft-1',canonical:false,seed,width,height,biomeIds:BIOME_IDS,counts,biomes,terrain,elevation,floatingHeight,features,landmarks,river,turtleRoutes};
 }
 export function validateWorldDraft(world){
  const issues=[],{width:w,height:h,biomes,terrain,elevation,features,river,landmarks}=world;
@@ -82,6 +108,11 @@ export function validateWorldDraft(world){
  const winter=landmarks.winterCity,wi=idx(winter.x,winter.y,w);
  if(biomes[wi]!==3||terrain[wi]!==TERRAIN.VALLEY)issues.push('Winter city not in valley');
  if(!terrain.includes(TERRAIN.OCEAN))issues.push('Summer ocean missing');
+ const summerCity=landmarks.summerCity;
+ if(!summerCity||biomes[idx(summerCity.x,summerCity.y,w)]!==2)issues.push('Summer coastal city missing');
+ if(!landmarks.summerIslands?.length)issues.push('Summer offshore islands missing');
+ if(!landmarks.underwaterDestinations?.length)issues.push('Summer underwater destinations missing');
+ if(!world.turtleRoutes?.length)issues.push('Summer turtle transport routes missing');
  if(!terrain.includes(TERRAIN.LAKE))issues.push('Autumn lake missing');
  return {ok:issues.length===0,issues};
 }
