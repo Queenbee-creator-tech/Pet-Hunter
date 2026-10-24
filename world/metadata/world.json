@@ -241,5 +241,10 @@
     "spring_floating_landmasses": "independent_vertical_features_not_ground_mountains",
     "spring_to_autumn_river": "ground_level_downhill_drainage_without_mountain_requirement",
     "numeric_elevation_ranges": null
+  },
+  "settlement_landmark_constraints": {
+    "spring_primary_city": "major_floating_landmass_with_waterfall",
+    "winter_primary_city": "accessible_valley_floor_among_highest_mountain_range_not_inside_mountain",
+    "exact_coordinates": null
   }
 }
