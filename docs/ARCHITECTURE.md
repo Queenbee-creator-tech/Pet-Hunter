@@ -56,3 +56,7 @@ Each successful portal travel activation requires and consumes one portal stone.
 
 ## Decision 031 — Static biome portal destination mapping
 Maintain a fixed authoritative mapping of the four sanctuary biome portal IDs to exactly one world location ID each. Outbound portal travel resolves to the mapped destination for the selected biome; it does not roll a random location or offer multiple arrival targets. Return stones resolve to the player's own sanctuary. Validate and consume one stone per successful activation. Exact destination location IDs and scene definitions await world design.
+
+
+## Decision 032 — Portal arrival safety design constraint
+The four fixed biome portal destination locations should be authored as **relatively safe orientation points**, without a blanket invulnerability mechanic. Existing engine-controlled creature simulation, weather, environmental hazards, and valid interactions still apply nearby. Destination design and encounter validation should avoid unavoidable immediate arrival hazards while not promising zero risk. This is a world-design constraint, not approval of immunity timers, safe-zone radii, or new spawn-protection systems.
