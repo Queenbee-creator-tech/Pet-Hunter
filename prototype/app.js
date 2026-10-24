@@ -2,8 +2,9 @@ import {BIOMES,fresh,leave,enter,decide,recover,RECOVERY_MS,STAMINA_MAX} from '.
 // Versioned browser save: survives reloads on this browser, not other devices.
 import {craftTestKit,useTestKit} from './loop.js';
 import {normalizeIncubation,addEgg,startIncubation,hatch,odds,INCUBATION_MS} from './incubation.js';
+import {normalizeBreeding,addCreature,eligibleCreatures,beginBreeding,finishBreeding,BREEDING_MS,BREEDING_COOLDOWN_MS} from './breeding.js';
 const SAVE_KEY='pet-hunter-alpha-v03';
-const BUILD='0.7.0';
+const BUILD='0.8.0';
 function validSave(v){
  return v && typeof v==='object' && typeof v.screen==='string' &&
  typeof v.name==='string' && typeof v.background==='string' &&
@@ -19,14 +20,14 @@ function validSave(v){
  (v.testHatched===undefined||(Number.isSafeInteger(v.testHatched)&&v.testHatched>=0)) &&
  Array.isArray(v.log) && v.log.every(x=>typeof x==='string') &&
  typeof v.step==='string' && typeof v.lastOutcome==='string' &&
- ['intro','identity','background','homeChoice','sanctuary','character','skills','codex','incubation','care','craft','inventory','destinations','explore'].includes(v.screen) &&
+ ['intro','identity','background','homeChoice','sanctuary','character','skills','codex','incubation','breeding','care','craft','inventory','destinations','explore'].includes(v.screen) &&
  (!v.homeBiome || (v.name.trim() && v.background));
 }
 function loadSave(){
  try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return fresh();const data=JSON.parse(raw);if(validSave(data)){const legacy=data.stamina<=20 && !('autumnSkills' in data);return {...data,homeBiome:data.homeBiome?'Autumn':null,screen:data.screen==='homeChoice'?'sanctuary':data.screen,stamina:legacy?Math.min(STAMINA_MAX,data.stamina*25):data.stamina,autumnSkills:data.autumnSkills||{origin:'Autumn',status:'Starting skill set — details pending'},life:data.life??null,testKits:data.testKits??0,testHatched:data.testHatched??0};}console.warn('Pet Hunter: save failed validation',data);return fresh();}
  catch(err){console.warn('Pet Hunter: save load error',err);return fresh();}
 }
-let s=normalizeIncubation(loadSave());
+let s=normalizeBreeding(normalizeIncubation(loadSave()));
 if(!('recoverySince' in s))s={...s,recoverySince:null};
 if(s.homeBiome && s.screen!=='explore' && s.stamina<STAMINA_MAX && s.recoverySince==null)s={...s,recoverySince:Date.now()};
 s=recover(s);
@@ -53,12 +54,12 @@ function render(){
  if(s.screen==='intro'){heading('A Hunter’s Beginning');p('Every hunter has a story. Beyond the four seasonal domains, wild creatures and forgotten nests await. But first: who are you?');button('Begin your story',()=>setScreen('identity'));return;}
  if(s.screen==='identity'){heading('What is your name, Hunter?');p('Your name will follow you into every domain.');const input=document.createElement('input');input.placeholder='Hunter name';input.maxLength=32;input.value=s.name;input.setAttribute('aria-label','Hunter name');game.append(input);button('Continue',()=>{const name=input.value.trim();if(!name){alert('Enter your hunter name first.');return;}s={...s,name,screen:'background'};});return;}
  if(s.screen==='background'){heading('Your Past');p('Some hunters inherit generations of knowledge. Others step into the unknown without a family legacy.');button('Legacy Hunter — hunting runs in your family',()=>{s={...s,background:'Legacy Hunter',screen:'sanctuary',homeBiome:'Autumn'};});button('Aspiring Hunter — your story begins here',()=>{s={...s,background:'Aspiring Hunter',screen:'sanctuary',homeBiome:'Autumn'};});return;}
- if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);p('Essence recovery: +2 every 5 minutes while home (up to 500).');button('Travel Journal',()=>setScreen('character'));button('Bag',()=>setScreen('inventory'));button('Visit the incubation room',()=>setScreen('incubation'));button('Visit the creature care area',()=>setScreen('care'));button('Visit the crafting workbench',()=>setScreen('craft'));button('Leave home to explore',()=>setScreen('destinations'));return;}
+ if(s.screen==='sanctuary'){heading(s.homeBiome+' — Your Sanctuary');p('Welcome home, '+s.name+'. Your '+s.homeBiome+' sanctuary is where you keep your eggs, creatures, supplies and habitats.');p('Eggs in storage: '+s.inventory.eggs+' • Eggs incubating: '+s.incubating+' • Creatures in your care: '+s.inventory.creatures);p('Essence recovery: +2 every 5 minutes while home (up to 500).');button('Travel Journal',()=>setScreen('character'));button('Bag',()=>setScreen('inventory'));button('Visit the incubation room',()=>setScreen('incubation'));button('Visit the breeding room',()=>setScreen('breeding'));button('Visit the creature care area',()=>setScreen('care'));button('Visit the crafting workbench',()=>setScreen('craft'));button('Leave home to explore',()=>setScreen('destinations'));return;}
  if(s.screen==='character'){heading('Travel Journal — Character');p('Hunter: '+s.name+' • '+s.background+' • Origin: Autumn');p('Essence: '+s.stamina+'/'+STAMINA_MAX);p('Life: bar and values awaiting design');p('Autumn starting skills: granted; individual bonuses awaiting design.');p('Skill practice earned: '+s.skills);button('Flip page → Creature Codex',()=>setScreen('codex'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
  if(s.screen==='codex'){heading('Travel Journal — Creature Codex');p('Creatures encountered and what you have learned about them will appear here. Encounter records are not implemented yet.');button('← Flip page to Character',()=>setScreen('character'));button('Return to sanctuary',()=>setScreen('sanctuary'));return;}
  if(s.screen==='skills'){setScreen('character');return;}
- if(['incubation','care','craft','inventory'].includes(s.screen)){
-  const titles={incubation:'Incubation Room',care:'Creature Care Area',craft:'Crafting Workbench',inventory:'Your Bag'};heading(s.homeBiome+' Sanctuary — '+titles[s.screen]);
+ if(['incubation','breeding','care','craft','inventory'].includes(s.screen)){
+  const titles={incubation:'Incubation Room',breeding:'Breeding Room',care:'Creature Care Area',craft:'Crafting Workbench',inventory:'Your Bag'};heading(s.homeBiome+' Sanctuary — '+titles[s.screen]);
   if(s.screen==='incubation'){
    p('Stored eggs: '+s.inventory.eggs+' • Incubating: '+s.incubating+' / 3');
    p('Incubation skill: Level '+(s.incubationSkill??0)+' (alpha placeholder; XP progression TBD). Rarity is visible here, species stays hidden.');
@@ -67,7 +68,7 @@ function render(){
     if(active){
      const remaining=Math.max(0,Math.ceil((active.startedAt+INCUBATION_MS-Date.now())/1000));
      p(active.egg.rarity+' egg • '+(remaining?'Ready in '+Math.floor(remaining/60)+':'+String(remaining%60).padStart(2,'0'):'Ready to hatch')+' • '+active.chance+'% chance');
-     button('Hatch Egg',()=>{const result=hatch(s,i);s=result.state;if(result.result==='success')alert('Success! You hatched '+result.egg.species+' ('+result.egg.rarity+').');else if(result.result==='failure')alert('The egg did not hatch and is permanently lost.');},remaining>0);
+     button('Hatch Egg',()=>{const result=hatch(s,i);s=result.state;if(result.result==='success'){s={...s,inventory:{...s.inventory,creatures:s.inventory.creatures-1}};s=addCreature(s,result.egg.species,result.egg.rarity,result.egg.traits||[]);alert('Success! You hatched '+result.egg.species+' ('+result.egg.rarity+').');}else if(result.result==='failure')alert('The egg did not hatch and is permanently lost.');},remaining>0);
     }else{
      p('Empty');
      if(s.eggItems.length){
@@ -91,6 +92,30 @@ function render(){
    });
    p('Temporary alpha: egg species and skill requirements are placeholders. Hatch results are decided by the engine.');
   }
+  if(s.screen==='breeding'){
+   p('Select two creatures. Breeding takes 2:00. Each parent recovers for 5:00 after the attempt finishes, whether or not an egg is produced.');
+   p('Alpha breeding success chance: 80% (temporary). Species genetics, mutation rules and rarity probabilities are not yet implemented.');
+   const now=Date.now();
+   const available=eligibleCreatures(s,now);
+   if(available.length>=2){
+    const selectors=[];
+    for(let j=0;j<2;j++){
+     const picker=document.createElement('select');
+     picker.setAttribute('aria-label','Breeding creature '+(j+1));
+     available.forEach((creature,k)=>{const option=document.createElement('option');option.value=creature.id;option.textContent='Creature '+(s.creatureItems.findIndex(c=>c.id===creature.id)+1)+' — '+creature.species+' ('+creature.rarity+')';if(j===1&&k===1)option.selected=true;picker.append(option);});
+     game.append(picker);selectors.push(picker);
+    }
+    button('Start breeding pair',()=>{if(selectors[0].value===selectors[1].value){alert('Choose two different creatures.');return;}s=beginBreeding(s,selectors[0].value,selectors[1].value);});
+   }else p('At least two available creatures are needed. Explore, hatch eggs, or wait for cooldowns.');
+   s.breedingPairs.filter(pair=>!pair.claimed).forEach(pair=>{
+    const remaining=Math.max(0,Math.ceil((pair.startedAt+BREEDING_MS-now)/1000));
+    p('Breeding pair • '+(remaining?'Ready in '+Math.floor(remaining/60)+':'+String(remaining%60).padStart(2,'0'):'Ready to collect result'));
+    button('Collect breeding result',()=>{const result=finishBreeding(s,pair.id);s=result.state;if(result.result==='success')alert('Breeding succeeded! An egg was transferred to your incubation inventory.');else if(result.result==='failure')alert('No egg this time. Both creatures are recovering.');},remaining>0);
+   });
+   const recovering=s.creatureItems.filter(c=>(c.cooldownUntil||0)>now);
+   if(recovering.length){heading('Creature recovery');recovering.forEach(c=>{const t=Math.ceil((c.cooldownUntil-now)/1000);p(c.species+' • '+Math.floor(t/60)+':'+String(t%60).padStart(2,'0')+' remaining');});}
+   button('Go to incubation room',()=>setScreen('incubation'));
+  }
   if(s.screen==='care'){p('Creatures in your care: '+s.inventory.creatures);p(s.inventory.creatures?'Your captured creatures are safe here. Feeding, taming and training are future test features.':'You have no captured creatures yet. Explore to find one.');}
   if(s.screen==='craft'){p('Crafting materials: '+s.inventory.materials+' • Test field kits: '+(s.testKits||0));button('Craft test field kit (1 material)',()=>s=craftTestKit(s),s.inventory.materials<1);p('Temporary alpha recipe. Crafting skill gates and actual recipes are not implemented yet.');}
   if(s.screen==='inventory'){p('Eggs: '+s.inventory.eggs+' • Incubating: '+s.incubating+' • Creatures: '+s.inventory.creatures+' • Materials: '+s.inventory.materials);p('Egg rarity can be inspected in the incubation room; species remains hidden until hatching.');p('Test field kits: '+(s.testKits||0)+' • Test-hatched creatures: '+(s.testHatched||0));p('Potions: not implemented • Carried pet classes: awaiting rules.');}
@@ -100,13 +125,13 @@ function render(){
  heading(s.biome+' — Expedition');
  if(s.step==='trail'){if((s.testKits||0)>0)button('Use a test field kit (no bonus yet)',()=>s=useTestKit(s));p('You travel along a winding path. Strange marks interrupt the familiar terrain. What do you do?');button('Study the tracks',()=>s=decide(s,'observe'));button('Take the rocky shortcut',()=>s=decide(s,'shortcut'));}
  if(s.step==='clue'){p('The tracks lead toward a sheltered clearing. You hear movement ahead.');button('Follow the trail',()=>s=decide(s,'follow'));button('Avoid the clearing and keep moving',()=>s=decide(s,'avoid'));}
- if(s.step==='find'){p('TEST SCENE: In this clearing you can try one of three rewards. Actual encounters will not always show all three.');button('Collect materials (5 Essence)',()=>s=decide(s,'collect'),s.stamina<5);button('Collect an egg (5 Essence)',()=>{const before=s.inventory.eggs;s=decide(s,'egg');if(s.inventory.eggs>before){s={...s,inventory:{...s.inventory,eggs:before}};s=addEgg(s);}},s.stamina<5);button('Attempt creature capture (5 Essence)',()=>s=decide(s,'capture'),s.stamina<5);button('Leave the clearing without taking anything',()=>s=decide(s,'continue'));}
+ if(s.step==='find'){p('TEST SCENE: In this clearing you can try one of three rewards. Actual encounters will not always show all three.');button('Collect materials (5 Essence)',()=>s=decide(s,'collect'),s.stamina<5);button('Collect an egg (5 Essence)',()=>{const before=s.inventory.eggs;s=decide(s,'egg');if(s.inventory.eggs>before){s={...s,inventory:{...s.inventory,eggs:before}};s=addEgg(s);}},s.stamina<5);button('Attempt creature capture (5 Essence)',()=>{const before=s.inventory.creatures;s=decide(s,'capture');if(s.inventory.creatures>before){s={...s,inventory:{...s.inventory,creatures:before}};s=addCreature(s);}},s.stamina<5);button('Leave the clearing without taking anything',()=>s=decide(s,'continue'));}
  if(s.step==='after'){if(s.lastOutcome)p(s.lastOutcome);p('The clearing grows quiet. You can keep exploring or return to your '+s.homeBiome+' sanctuary using Leave Exploration.');button('Continue exploring',()=>s=decide(s,'continue'));}
  p('Recent expedition events:');s.log.slice(-3).forEach(p);
 }
 leaveButton.addEventListener('click',()=>{if((s.step==='find'||s.step==='clue')&&!confirm('Leave exploration? Your unfinished encounter ends; collected rewards and skills stay with you.'))return;s=leave(s);save();render();});
-document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including your character?')){s=normalizeIncubation(fresh());try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
+document.querySelector('#reset').addEventListener('click',()=>{if(confirm('Reset all alpha test progress, including your character?')){s=normalizeBreeding(normalizeIncubation(fresh()));try{localStorage.removeItem(SAVE_KEY);saveWarning='';saveStatus='Reset complete — not saved yet';}catch{saveWarning='Unable to clear browser save.';}render();}});
 render();
 
 // Refresh the on-screen stamina while the sanctuary is open; recovery also catches up after reload.
-setInterval(()=>{if(s.screen==='incubation'||(s.homeBiome && s.screen!=='explore' && s.stamina<STAMINA_MAX))render();},15000);
+setInterval(()=>{if(s.screen==='incubation'||s.screen==='breeding'||(s.homeBiome && s.screen!=='explore' && s.stamina<STAMINA_MAX))render();},15000);
