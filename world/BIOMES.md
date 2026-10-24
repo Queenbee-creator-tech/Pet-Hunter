@@ -235,3 +235,7 @@ Each logical grid cell represents 100 meters per side. At the proposed 256×256 
 - That water continues downstream toward Summer and falls again as a waterfall on the route into Summer.
 - Preserve the previously approved major waterway Spring → Autumn central lake → Summer ocean; exact confluences, whether the Spring lake and Autumn lake are distinct, and the second waterfall's exact position are not yet specified.
 - Generate hydrologically connected lake outlets and elevation drops; do not treat either waterfall as purely decorative.
+
+
+### Clarification to Decision 047 — Preserve previously approved river (2026-10-24)
+The **existing** continuous river is Spring headwaters and waterfalls → Autumn's central freshwater lake → Summer's ocean/Ancient Coral seas. Spring City's floating-land waterfall is connected to this same system. **Do not infer or require a new separate Spring lake, an enormous cross-biome lake, or a revised river route.** Earlier wording in Decision 047 about a lake directly beneath Spring City must not be interpreted as authorizing a distinct additional lake. Exact waterfall-base terrain and any downstream drop geometry remain to be determined without reopening established hydrology.
