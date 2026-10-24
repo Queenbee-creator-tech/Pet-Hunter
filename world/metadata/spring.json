@@ -3,16 +3,23 @@
   "status": "working_metadata_not_generator_ready",
   "id": "spring",
   "name": "Spring",
-  "identity": "lush forest-dominated elevated river headwaters",
+  "identity": "lush forest-dominated land with streams, waterfalls and floating land fragments",
   "terrain": {
     "approved_descriptors": [
       "dense_forest",
-      "elevated_forest_valleys",
+      "regular_ground_land",
+      "forest_valleys",
       "waterfalls",
-      "streams"
+      "streams",
+      "small_floating_land_fragments"
     ],
     "distribution_percentages": null,
-    "elevation_rules": null
+    "elevation_rules": {
+      "ground_is_mountain_range": false,
+      "floating_landmasses_have_separate_height_from_ground": true,
+      "ground_elevation_numeric_range": null,
+      "floating_height_numeric_range": null
+    }
   },
   "climate": {
     "approved_descriptors": [],
@@ -62,7 +69,13 @@
       "scattered_crystals_near_natural_terrain",
       "small_floating_land_fragments"
     ],
-    "exact_placements": null
+    "exact_placements": null,
+    "floating_landmasses": {
+      "present": true,
+      "not_mountains": true,
+      "independent_vertical_positions": true,
+      "exact_placements": null
+    }
   },
   "habitats": {
     "categories": null,
