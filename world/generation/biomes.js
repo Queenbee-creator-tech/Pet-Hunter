@@ -14,10 +14,10 @@ function quotas(total){
 function boundaries(width,height,seed,leftCount,middleCount){
  const rng=seededRandom(seed),p=Array.from({length:8},()=>rng()*Math.PI*2);
  const left=[],right=[],l0=leftCount/height,r0=(leftCount+middleCount)/height;
- const amp=Math.min(width*.065,Math.max(2,width*.065));
+ const amp=Math.max(3,width*.105);
  for(let y=0;y<height;y++){
   const t=y/height;
-  const wobble=(a,b,c)=>Math.sin(t*Math.PI*2+a)*.57+Math.sin(t*Math.PI*4+b)*.27+Math.sin(t*Math.PI*7+c)*.16;
+  const wobble=(a,b,c)=>Math.sin(t*Math.PI*2+a)*.57+Math.sin(t*Math.PI*4+b)*.27+Math.sin(t*Math.PI*7+c)*.16+Math.sin(t*Math.PI*11+a*.7)*.11;
   left[y]=Math.round(l0+amp*wobble(p[0],p[1],p[2]));
   right[y]=Math.round(r0+amp*wobble(p[3],p[4],p[5]));
  }
@@ -58,7 +58,7 @@ export function allocateBiomes(width=WORLD_CONFIG.width,height=WORLD_CONFIG.heig
  for(let x=0;x<width;x++){
   const t=x/width;
   cut[x]=Math.max(1,Math.min(height-1,Math.round(height*.56+
-   height*.075*Math.sin(t*2*Math.PI+phase)+height*.035*Math.sin(t*5*Math.PI+phase*.6))));
+   height*.12*Math.sin(t*2*Math.PI+phase)+height*.055*Math.sin(t*5*Math.PI+phase*.6)+height*.018*Math.sin(t*9*Math.PI+phase*1.3))));
  }
  function springCount(){
   let n=0;for(let y=0;y<height;y++)for(let x=0;x<left[y];x++)if(y<cut[x])n++;
