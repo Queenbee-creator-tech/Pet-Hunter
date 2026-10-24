@@ -172,5 +172,21 @@
     "probability_formula": null,
     "engine_authoritative": true,
     "implementation_status": "design_only"
+  },
+  "environmental_action_visibility": {
+    "mode": "hybrid",
+    "knowledge_gated_actions": "hidden_until_known",
+    "obvious_obstacle_unavailable_actions": "visible_locked",
+    "evaluated_by_engine": true,
+    "inputs": [
+      "hunter_skills",
+      "equipment",
+      "environmental_conditions",
+      "obstacle_requirements"
+    ],
+    "qualified_attempt_guarantees_success": false,
+    "exact_visibility_thresholds": null,
+    "success_probability_formula": null,
+    "locked_action_detail_policy": null
   }
 }
