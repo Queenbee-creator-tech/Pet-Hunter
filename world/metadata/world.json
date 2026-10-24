@@ -234,5 +234,12 @@
     "knowledge_gated_visibility": true,
     "exact_locations": null,
     "discovery_rates": null
+  },
+  "elevation_generation_constraints": {
+    "highest_natural_mountain_region": "winter",
+    "spring_ground_terrain": "non_mountainous_forest_and_regular_land",
+    "spring_floating_landmasses": "independent_vertical_features_not_ground_mountains",
+    "spring_to_autumn_river": "ground_level_downhill_drainage_without_mountain_requirement",
+    "numeric_elevation_ranges": null
   }
 }
