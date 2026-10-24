@@ -63,10 +63,10 @@
     ],
     "details": null,
     "floating_city_waterfall": {
-      "falls_into": "lake_below_city",
-      "downstream_route": "toward_summer_via_existing_autumn_water_system",
-      "water_source": null,
-      "exact_lake_location": null
+      "connection": "established_spring_to_autumn_lake_to_summer_ocean_waterway",
+      "separate_new_lake_not_approved": true,
+      "waterfall_base_geography": "not_yet_specified",
+      "exact_location": null
     }
   },
   "features": {
@@ -172,7 +172,7 @@
       "waterfall_source_and_outlet_geometry": null,
       "exact_location": null,
       "access_routes": null,
-      "waterfall_destination": "lake_directly_below_floating_city"
+      "waterfall_destination": "connected_existing_waterway_base_geography_not_yet_specified"
     },
     "surrounding_ground": "ordinary_forest_land_below_floating_landmasses"
   }
