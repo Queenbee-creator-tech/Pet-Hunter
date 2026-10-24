@@ -12,30 +12,36 @@ function quotas(total){
  return q;
 }
 function boundaries(width,height,seed,leftCount,middleCount){
- const rng=seededRandom(seed),phase1=rng()*Math.PI*2,phase2=rng()*Math.PI*2;
- const l0=leftCount/height,r0=(leftCount+middleCount)/height,left=[],right=[];
+ const rng=seededRandom(seed),p=Array.from({length:8},()=>rng()*Math.PI*2);
+ const left=[],right=[],l0=leftCount/height,r0=(leftCount+middleCount)/height;
+ const amp=Math.min(width*.065,Math.max(2,width*.065));
  for(let y=0;y<height;y++){
   const t=y/height;
-  left[y]=Math.max(1,Math.min(width-2,Math.round(l0+Math.sin(t*2*Math.PI+phase1)*Math.min(3,width*.018))));
-  right[y]=Math.max(left[y]+1,Math.min(width-1,Math.round(r0+Math.sin(t*2*Math.PI+phase2)*Math.min(3,width*.018))));
+  const wobble=(a,b,c)=>Math.sin(t*Math.PI*2+a)*.57+Math.sin(t*Math.PI*4+b)*.27+Math.sin(t*Math.PI*7+c)*.16;
+  left[y]=Math.round(l0+amp*wobble(p[0],p[1],p[2]));
+  right[y]=Math.round(r0+amp*wobble(p[3],p[4],p[5]));
  }
  function adjust(arr,target,min,max){
-  let sum=arr.reduce((a,b)=>a+b,0),guard=0;
+  let sum=arr.reduce((a,b)=>a+b,0),step=0;
   while(sum!==target){
-   if(++guard>width*height*2)throw new Error('Biome quota adjustment failed');
-   const d=sum<target?1:-1;let best=-1,score=Infinity;
+   if(step++>width*height*3)throw new Error('Biome quota adjustment failed');
+   const d=sum<target?1:-1;
+   let best=-1,score=Infinity;
    for(let y=0;y<height;y++){
     const n=arr[y]+d;if(n<min(y)||n>max(y))continue;
-    const prev=arr[Math.max(0,y-1)],next=arr[Math.min(height-1,y+1)];
-    const cost=Math.abs(n-prev)+Math.abs(n-next)-Math.abs(arr[y]-prev)-Math.abs(arr[y]-next)+Math.abs(y-height/2)*.00001;
+    const prev=arr[(y+height-1)%height],next=arr[(y+1)%height];
+    const rough=Math.abs(n-prev)+Math.abs(n-next)-Math.abs(arr[y]-prev)-Math.abs(arr[y]-next);
+    const drift=Math.abs(n-(arr===left?l0:r0));
+    const cost=rough*2+drift*.015+Math.sin(y*2.39996+seed)*.005;
     if(cost<score){score=cost;best=y;}
    }
    if(best<0)throw new Error('No feasible biome boundary adjustment');
    arr[best]+=d;sum+=d;
   }
  }
- adjust(left,leftCount,()=>1,y=>right[y]-1);
- adjust(right,leftCount+middleCount,y=>left[y]+1,()=>width-1);
+ for(let y=0;y<height;y++){left[y]=Math.max(2,Math.min(width-3,left[y]));right[y]=Math.max(left[y]+2,Math.min(width-1,right[y]));}
+ adjust(left,leftCount,()=>1,y=>right[y]-2);
+ adjust(right,leftCount+middleCount,y=>left[y]+2,()=>width-1);
  return {left,right};
 }
 export function allocateBiomes(width=WORLD_CONFIG.width,height=WORLD_CONFIG.height,seed=1){
@@ -45,12 +51,37 @@ export function allocateBiomes(width=WORLD_CONFIG.width,height=WORLD_CONFIG.heig
  const cells=new Int8Array(total);
  for(let y=0;y<height;y++)for(let x=0;x<width;x++)
   cells[y*width+x]=x<left[y]?1:x<right[y]?0:2;
- let remainingSpring=q[1];
- for(let y=0;y<height;y++){
-  const n=Math.min(remainingSpring,left[y]);
-  for(let x=n;x<left[y];x++)cells[y*width+x]=3;
-  remainingSpring-=n;
+ // A wavy horizontal Spring/Winter boundary, with exact Spring quota.
+ // Each column has a connected Spring cap and Winter remainder.
+ const cut=new Int16Array(width);
+ const phase=seededRandom(seed^0x7f4a7c15)()*Math.PI*2;
+ for(let x=0;x<width;x++){
+  const t=x/width;
+  cut[x]=Math.max(1,Math.min(height-1,Math.round(height*.56+
+   height*.075*Math.sin(t*2*Math.PI+phase)+height*.035*Math.sin(t*5*Math.PI+phase*.6))));
  }
- if(remainingSpring!==0)throw new Error('Spring quota impossible');
+ function springCount(){
+  let n=0;for(let y=0;y<height;y++)for(let x=0;x<left[y];x++)if(y<cut[x])n++;
+  return n;
+ }
+ let current=springCount(),guard=0;
+ while(current!==q[1]){
+  if(guard++>total*3)throw new Error('Spring quota adjustment failed');
+  const d=current<q[1]?1:-1;
+  let best=-1,score=Infinity;
+  for(let x=0;x<width;x++){
+   const y=d>0?cut[x]:cut[x]-1;
+   if(y<1||y>=height-1||x>=left[y])continue;
+   const n=cut[x]+d;
+   const near=(x>0?Math.abs(n-cut[x-1]):0)+(x<width-1?Math.abs(n-cut[x+1]):0);
+   const old=(x>0?Math.abs(cut[x]-cut[x-1]):0)+(x<width-1?Math.abs(cut[x]-cut[x+1]):0);
+   const cost=(near-old)*2+Math.abs(n-height*.56)*.001+Math.sin(x*2.21+seed)*.0001;
+   if(cost<score){score=cost;best=x;}
+  }
+  if(best<0)throw new Error('Spring/Winter quota impossible');
+  cut[best]+=d;current+=d;
+ }
+ for(let y=0;y<height;y++)for(let x=0;x<left[y];x++)
+  cells[y*width+x]=y<cut[x]?1:3;
  return {width,height,seed,cells,counts:Object.fromEntries(BIOME_IDS.map((id,i)=>[id,q[i]]))};
 }
