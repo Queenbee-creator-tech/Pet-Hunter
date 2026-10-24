@@ -89,5 +89,18 @@
   "sources": [
     "world/BIOMES.md"
   ],
-  "notes": "Null values are unresolved; no generated coordinates, terrain ratios, creature spawn rates or recipes are implied."
+  "notes": "Null values are unresolved; no generated coordinates, terrain ratios, creature spawn rates or recipes are implied.",
+  "environmental_hazards": {
+    "approved": [
+      "heavy_rainfall",
+      "dense_fog",
+      "flooding",
+      "slippery_hillsides"
+    ],
+    "frequency_rules": null,
+    "intensity_rules": null,
+    "warning_signs": null,
+    "mitigation_rules": null,
+    "consequences": null
+  }
 }
