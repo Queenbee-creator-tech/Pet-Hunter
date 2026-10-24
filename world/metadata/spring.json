@@ -18,7 +18,8 @@
       "ground_is_mountain_range": false,
       "floating_landmasses_have_separate_height_from_ground": true,
       "ground_elevation_numeric_range": null,
-      "floating_height_numeric_range": null
+      "floating_height_numeric_range": null,
+      "floating_city_landmass_distinct_from_small_fragments": true
     }
   },
   "climate": {
@@ -156,5 +157,16 @@
     "knowledge_gated_visibility": true,
     "exact_locations": null,
     "discovery_rates": null
+  },
+  "settlement_generation": {
+    "primary_city": {
+      "placement": "on_major_floating_landmass",
+      "city_bearing_floating_landmass_required": true,
+      "waterfall_associated_with_floating_city": true,
+      "waterfall_source_and_outlet_geometry": null,
+      "exact_location": null,
+      "access_routes": null
+    },
+    "surrounding_ground": "ordinary_forest_land_below_floating_landmasses"
   }
 }
