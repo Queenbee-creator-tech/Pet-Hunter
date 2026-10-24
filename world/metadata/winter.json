@@ -28,7 +28,34 @@
       "clear_freezing_conditions",
       "snowfall",
       "blizzard"
-    ]
+    ],
+    "weather_obstacles": {
+      "enabled": true,
+      "extreme_weather_potentially_fatal_if_unprepared": true,
+      "route_outcomes": [
+        "impassable",
+        "traversable_with_risk"
+      ],
+      "weather_onset_modes": [
+        "gradual",
+        "sudden"
+      ],
+      "shelter_options": [
+        "natural_shelter",
+        "craftable_camping_equipment"
+      ],
+      "wild_creature_behavior_affected": true,
+      "distinct_biome_hazards": true,
+      "mitigation": [
+        "equipment",
+        "skills",
+        "preparation"
+      ],
+      "specific_hazards": null,
+      "gear_requirements": null,
+      "skill_requirements": null,
+      "exposure_and_death_rules": null
+    }
   },
   "hydrology": {
     "approved": [],
