@@ -54,7 +54,12 @@
     "approved": [
       "major_river_from_autumn_empties_into_summer_ocean"
     ],
-    "details": null
+    "details": null,
+    "incoming_spring_cascade": {
+      "downstream_waterfall_before_or_at_summer": "approved",
+      "exact_waterfall_location": null,
+      "final_ocean_outlet": "existing_approved_route"
+    }
   },
   "features": {
     "approved": [
