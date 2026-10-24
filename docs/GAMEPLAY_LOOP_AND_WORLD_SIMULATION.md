@@ -234,3 +234,12 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 
 ## Sanctuary biome portals (approved core, 2026-10-23)
 The sanctuary includes one portal for each biome: Autumn, Spring, Summer, Winter. Portals are a sanctuary-based way to begin biome expeditions, with engine-defined arrival locations. This does not imply a player map or unrestricted in-biome teleportation. Craftable return portal stones remain a separate feature whose interaction with these permanent sanctuary portals needs clarification. Exact portal unlocks, costs, and arrival locations TBD.
+
+
+## Decision 029 — Sanctuary-crafted portal stones and Essence Potions (approved, 2026-10-23)
+- **Both portal stones and Essence Potions are crafted at the player's sanctuary.** They are preparation items, not wilderness crafting actions.
+- Sanctuary has a portal associated with each of Autumn, Spring, Summer, and Winter. Players use crafted portal stones to enter a selected biome from the sanctuary through its corresponding portal.
+- During exploration, portal-stone travel returns the player **directly to their sanctuary**. No free selection of arbitrary wilderness destinations.
+- A player without a usable return stone may need to travel home through engine-approved physical routes. Low/zero Essence does not prevent travel, creature interaction, combat, or XP; it only blocks Essence-gated acquisition attempts until restored.
+- Engine governs portal availability, destinations, items, and location changes; LLM narration cannot bypass these rules.
+- **Still undecided:** whether stones are consumed on use, whether outbound and inbound use the same stone/item count, crafting recipes, portal unlocks, and exact biome arrival positions.
