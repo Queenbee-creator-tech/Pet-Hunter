@@ -116,3 +116,12 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Engine evaluates hunter skills, equipment and environmental state; AI narrates eligible options without inventing routes.
 - [ ] Specify knowledge gates, equipment gates, optional risk checks, locked-option information and success probabilities.
 - [ ] Prototype one obstacle with a small set of actions and test information leakage / route consistency.
+
+## Decision 040 — Canonical world generation
+- [x] Rule-guided generation with designer-controlled important landmarks.
+- [x] Generate geography once, save and reuse same world for all players and sessions.
+- [ ] Define generation constraints, canonical save format and test reproducibility.
+
+## Decision 041 — Autumn terrain balance
+- [x] Predominantly open meadows and rolling hills with scattered smaller groves, not extensive continuous forest.
+- [ ] Define exact terrain proportions and placements during generation design.
