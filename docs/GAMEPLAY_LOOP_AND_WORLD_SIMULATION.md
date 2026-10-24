@@ -247,3 +247,7 @@ The sanctuary includes one portal for each biome: Autumn, Spring, Summer, Winter
 
 ## Decision 030 — Portal stones are consumed on use (approved, 2026-10-23)
 Each successful portal-stone travel action consumes **one** crafted stone, whether traveling outward from the sanctuary into a chosen biome or returning from exploration to the sanctuary. A round trip entirely by portal requires two stones. Players without a stone can return by physical travel. Stones are craftable at the sanctuary only. Do not infer recipe or cost yet; the engine must enforce the inventory deduction and destination change.
+
+
+## Decision 031 — Fixed biome portal arrival locations (approved, 2026-10-23)
+The sanctuary's four biome portals each have exactly one persistent arrival location in their respective biome. Every player using the same biome portal arrives at that same location. The engine owns these fixed destinations and subsequent world navigation; the LLM cannot randomize arrival points or create extra portal destinations. Arrival locations and safety characteristics are TBD. A successful portal activation consumes one crafted stone.
