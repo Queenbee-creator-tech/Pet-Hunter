@@ -67,3 +67,9 @@ When designing each species, define its approved visual modules (colors, marking
 - Whenever the hunter earns exploration skill XP, **every creature currently accompanying the hunter in the expedition party** receives a small amount of overall creature-level XP, even if that creature did not directly assist with the specific action.
 - Expedition party size is up to four creatures. Creatures remaining at the sanctuary (including those in care, rest, or training) do not receive expedition XP.
 - Combat remains the main source of creature-level XP. The precise exploration XP rate remains TBD.
+
+## Combat XP distribution — approved (2026-10-24)
+- All creatures in the expedition party participate in combat and **all earn combat XP** for the battle.
+- Combat XP includes a shared participation award plus **individual performance bonuses**. Creatures contributing more to the fight can earn additional XP, and delivering the final blow may grant an additional bonus.
+- Meaningful non-damage contributions (such as defense or support) should count toward performance, not only damage output.
+- Exact base awards, bonus amounts, weighting, eligibility and anti-exploit calculations are TBD. Any numerical examples discussed are illustrative, not approved balance values.
