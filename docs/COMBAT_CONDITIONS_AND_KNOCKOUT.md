@@ -77,3 +77,11 @@
 
 ## Implementation status
 Design recorded only. Combat and care systems are not yet implemented in the prototype.
+
+## Care Room and Codex interface — approved design (2026-10-24)
+- The Codex/Travel Journal is the read-only place to inspect the hunter and every owned creature's stats, skills, level, rarity, genetics, mutations, and condition.
+- The Care Room is an interactive facility, using the same graphical slot-and-dropdown selection pattern as the Incubation Room. Occupied slots show the assigned creature and relevant care/training state.
+- The care selection list should include **only creatures with actual care needs** (e.g., injury, low energy, stress/fear), not all healthy inventory creatures.
+- Training is opt-in: the player **manually transfers a creature to the training area**, including a healthy creature. Training should not force a medical-care requirement.
+- Codex and Care Room share the same underlying creature records; changes made by care or training appear in the Codex without duplicate state.
+- Exact number of care/training slots, durations, and user-interface details remain to be decided; this is design, not yet implemented.
