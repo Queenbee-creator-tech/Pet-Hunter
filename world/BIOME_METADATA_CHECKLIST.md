@@ -130,3 +130,8 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Every biome has environment-specific concealed caves/shelters, creature habitats and rare resources.
 - [x] Discovery locations remain fixed in the canonical world; perception follows approved hybrid skill gating.
 - [ ] Define individual discovery locations, contents, encounter requirements and rarity rates later.
+
+## Decision 043 — World cell scale
+- [x] Each grid cell represents 100 m × 100 m.
+- [ ] Finalize proposed 256×256 overall grid and biome allocation/ocean inclusion.
+- [ ] Specify how narrative travel distances map to grid cells.
