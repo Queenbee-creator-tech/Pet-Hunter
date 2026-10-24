@@ -34,3 +34,11 @@ When designing each species, define its approved visual modules (colors, marking
 - Distinguish inherited genetic potential from temporary condition and trained/current stats. Whether and how gained levels affect inheritance remains a balancing decision, not a locked formula.
 - Adapt these ideas to Pet Hunter's approved rarity system, crossbreeding rules, mutations independent of rarity and modular species traits. Do not copy ARK's exact rates, caps or formulas without user approval.
 - This is a design direction only; no numeric inheritance or mutation mechanics approved by this note.
+
+## Wild capture vs bred offspring progression (approved clarification)
+- Captured wild creatures KEEP their encounter level (e.g. wild level 25 captured -> owned level 25). Wild level cap 50.
+- Bred/hatched offspring ALWAYS begin at creature level 1 regardless of parent levels.
+- Bred offspring inherit stat potential/genetic traits from parents and develop their own current numerical stats as they level; inherited potential is distinct from current trained stats.
+- Hunter progression is skill-based (skills start at level 1 and cap at 50), rather than requiring a separate overall hunter level. Creature skills likewise cap at 50.
+- Breeding-exclusive level cap of 60 is under discussion/proposed, NOT yet final. How inherited potential interacts with that cap is TBD.
+- Preserve individual wild stat variation and species-specific ranges; no exact stat formulas approved.
