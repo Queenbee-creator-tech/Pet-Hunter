@@ -85,3 +85,10 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - Training is opt-in: the player **manually transfers a creature to the training area**, including a healthy creature. Training should not force a medical-care requirement.
 - Codex and Care Room share the same underlying creature records; changes made by care or training appear in the Codex without duplicate state.
 - Exact number of care/training slots, durations, and user-interface details remain to be decided; this is design, not yet implemented.
+
+## Care Room training sessions — approved (2026-10-24)
+- Training uses **timed sessions**, not interactive mini-games or required training challenges.
+- The player manually assigns an eligible creature to a training slot and selects a skill the creature can learn, then starts the timer.
+- Once the session finishes, the creature earns **XP in that selected individual skill**, rather than overall creature-level XP.
+- The player may leave the Care Room and continue other activities while the session runs; session timing must persist through navigation and save/resume.
+- Exact session duration, number of simultaneous training slots, XP awards, and whether collection/completion is automatic remain undecided.
