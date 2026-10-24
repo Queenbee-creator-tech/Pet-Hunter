@@ -92,3 +92,9 @@ Design recorded only. Combat and care systems are not yet implemented in the pro
 - Once the session finishes, the creature earns **XP in that selected individual skill**, rather than overall creature-level XP.
 - The player may leave the Care Room and continue other activities while the session runs; session timing must persist through navigation and save/resume.
 - Exact session duration, number of simultaneous training slots, XP awards, and whether collection/completion is automatic remain undecided.
+
+## Training session duration — approved (2026-10-24)
+- Each Care Room skill-training session lasts **2 real-world minutes**, matching the incubation timer duration.
+- The session timer persists when the player navigates elsewhere or resumes a saved game.
+- Completion awards XP toward the selected creature skill, not its overall creature level.
+- XP amount, slot capacity, and whether the player must manually collect the completed session remain TBD.
