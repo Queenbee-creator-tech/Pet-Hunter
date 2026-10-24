@@ -171,3 +171,10 @@ The following six directions are approved for all four permanent-season biomes:
 5. Weather affects wild creature behavior, movement and interactions with the environment. Creature-specific rules and spawn mechanics belong to Creature Development / Engine.
 6. Each biome has distinctive environmental hazards. Exact biome-specific catalogs and overlapping hazards are not yet finalized.
 Equipment, skills and preparation can help players overcome or mitigate weather obstacles (approved alongside these answers). Do not infer exact skill thresholds, equipment types, exposure values, damage, weather probabilities or death penalties. Weather must be simulated as engine-authoritative world state, with the narrator describing supported facts.
+
+## Decision 037 — Approved environmental hazards by biome
+- **Autumn:** heavy rainfall, dense fog, flooding, slippery hillsides.
+- **Spring:** heavy rainfall, earthquakes, floods, strong winds.
+- **Summer:** tsunamis, dangerous currents, heat, rough seas.
+- **Winter:** blizzards, extreme cold, avalanches, dangerous ice.
+These are approved environmental hazard categories, not a finalized list of every possible weather state. Earthquakes and tsunamis are environmental/geophysical events rather than weather. Event frequencies, intensity, duration, warning signs, exact effects, equipment counters, skill requirements and world-state consequences remain TBD. Preserve earlier approval that hazards may be fatal when unprepared and some routes may be impassable while others remain risky.
