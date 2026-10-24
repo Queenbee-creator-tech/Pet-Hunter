@@ -86,3 +86,10 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Each biome has distinctive environmental hazards.
 - [x] Skills, equipment and preparation can mitigate or overcome weather challenges.
 - [ ] Define biome-specific weather and hazard catalogs, thresholds, frequency, timing, shelter effectiveness, skill/equipment requirements, creature responses, and injury/death/recovery mechanics.
+
+## Decision 037 — Biome hazard catalogs (approved)
+- [x] Autumn: heavy rainfall, dense fog, flooding, slippery hillsides.
+- [x] Spring: heavy rainfall, earthquakes, floods, strong winds.
+- [x] Summer: tsunamis, dangerous currents, heat, rough seas.
+- [x] Winter: blizzards, extreme cold, avalanches, dangerous ice.
+- [ ] Set intensity, frequency, duration, triggers, warning cues, mitigation and consequences for each approved hazard. Earthquakes/tsunamis are geophysical events, not weather.
