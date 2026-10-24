@@ -186,3 +186,10 @@ These are approved environmental hazard categories, not a finalized list of ever
 - Shelter effectiveness varies with shelter type and hazard severity; no shelter is assumed universally protective. Shelter construction and effectiveness rules remain TBD.
 - Disasters may temporarily alter environmental conditions and block established routes (e.g. flooding or debris). The fixed persistent geography remains intact; no permanent terrain reshaping is approved. Exact persistence, clearance and reset mechanisms are TBD.
 - The authoritative engine determines hazard events, route accessibility and consequences. AI narrates only approved state. Death/respawn follows docs/PLAYER_INJURY_DEATH_RESPAWN.md; do not add Portal Stone respawn costs or progress loss.
+
+## Decision 039 — Hybrid skill-gated environmental actions (approved)
+- Actions requiring knowledge or recognition the hunter lacks remain hidden; the narrator must not reveal the hidden opportunity as an available action.
+- When an obstacle is obvious to the hunter, an action may be visible but unavailable if the required skill or equipment is missing.
+- Once requirements are met, an action becomes selectable, but success is not guaranteed for risky actions. The authoritative engine evaluates skill levels, equipment, terrain, weather and other relevant state to determine eligibility and resolve success/failure.
+- Distinguish three separate stages: recognizing an opportunity, qualifying to attempt it, and succeeding at the attempt. Survival/observation capabilities may affect recognition; crafting/equipment and other skills may affect eligibility and odds.
+- No specific skill thresholds, items, probability formula, locked-action disclosure details or UI wording are approved yet. This is a design decision, not a claim of implemented engine behavior.
