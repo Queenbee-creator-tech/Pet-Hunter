@@ -40,3 +40,7 @@ Implement combat as an engine-controlled turn-based state machine separate from 
 
 ## Clarification — acquisition meter is not combat stamina (2026-10-23)
 The hunter's currently named 'stamina' meter is **only for physical reward-acquisition attempts** (creature capture, egg collection, material gathering), not a general action-point, encounter, exploration, defense, combat, or XP gate. At zero, the engine still permits encounter participation, turn-based fighting, attempts to disable creatures, and character/skill XP; it rejects acquisition actions requiring resource. Any earlier reference to stamina-gated voluntary encounters or combat costs is superseded. Keep creature stamina distinct. The meter's permanent name and associated craftable potion name are undecided. Sanctuary recovery remains +2 per 5 real-world minutes.
+
+
+## Decision 027 — Essence terminology (approved)
+Rename the hunter acquisition meter in future implementation and UI from 'hunter stamina' to **Essence**. Rename its craftable recovery consumable **Essence Potion**. Engine validation: Essence gates physical reward-acquisition attempts (creature capture, egg collection, material gathering), not exploration, combat, defensive reactions, creature encounters, or character/skill XP. Home/sanctuary regeneration is +2 Essence per 5 real-world minutes; alpha maximum 20 is provisional. **Creature stamina** is a separate resource and keeps its name. Existing prototype identifiers may need a deliberate save-data migration; this is a design specification, not a claim of implemented changes.
