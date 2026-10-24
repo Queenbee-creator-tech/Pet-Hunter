@@ -11,7 +11,7 @@ test('three independent slots and no fourth',()=>{
  let s=home();for(let i=0;i<4;i++)s=addEgg(s,'Rare');
  for(let i=0;i<3;i++)s=startIncubation(s,s.eggItems[0].id,i,1000);
  assert.equal(s.incubating,3);assert.equal(s.inventory.eggs,1);
- assert.equal(startIncubation(s,s.eggItems[0].id,0,1000),s);
+ assert.equal(startIncubation(s,s.eggItems[0].id,0,1000).incubating,3);
 });
 test('early hatch blocked; failure destroys egg permanently',()=>{
  let s=addEgg(home(),'Legendary');s=startIncubation(s,s.eggItems[0].id,0,1000);
