@@ -161,3 +161,13 @@ Each biome retains its namesake season permanently: Autumn remains autumn, Sprin
 
 ## Decision 035 — Variable weather within permanent seasonal biomes (approved)
 Weather changes naturally within each biome even though its namesake season remains permanent. Each biome has distinct, season-appropriate weather patterns. Illustrative examples discussed: Autumn sunshine, fog, and rain; Winter clear freezing conditions, snowfall, and blizzards. These examples are not yet an exhaustive or finalized weather-type catalog. Exact probabilities, timing, weather transitions, visibility and traversal impacts remain TBD; engine-authoritative environmental conditions should inform the text narrator.
+
+## Decision 036 — Weather hazards, shelter, and wildlife response (approved; details open)
+The following six directions are approved for all four permanent-season biomes:
+1. Extreme weather can potentially be fatal for an unprepared player. Exact death, injury, rescue and recovery rules remain unapproved and belong to gameplay/engine design.
+2. Some weather-affected obstacles are impassable under current conditions; others can be attempted with increased risk. The engine determines actual traversability and risk; the narrator must not offer impassable routes as selectable movement.
+3. Weather events can develop gradually with warning signs or arrive suddenly, depending on the event. Exact forecasting, warning availability, transitions and timing remain TBD.
+4. Natural shelters and craftable camping equipment can provide refuge from hazardous conditions. Exact shelter locations, equipment recipes, effectiveness and placement rules remain TBD.
+5. Weather affects wild creature behavior, movement and interactions with the environment. Creature-specific rules and spawn mechanics belong to Creature Development / Engine.
+6. Each biome has distinctive environmental hazards. Exact biome-specific catalogs and overlapping hazards are not yet finalized.
+Equipment, skills and preparation can help players overcome or mitigate weather obstacles (approved alongside these answers). Do not infer exact skill thresholds, equipment types, exposure values, damage, weather probabilities or death penalties. Weather must be simulated as engine-authoritative world state, with the narrator describing supported facts.
