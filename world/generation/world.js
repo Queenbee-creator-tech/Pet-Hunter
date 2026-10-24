@@ -88,8 +88,8 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
  features[idx(sourceX,riverY,width)]|=4;
  const coastalX=summerXs[0],coastalCity={x:coastalX,y:riverY};
  const turtleRoutes=[
-  ...summerIslands.map((destination,i)=>({id:'summer_island_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle'})),
-  ...underwaterDestinations.map((destination,i)=>({id:'summer_underwater_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle'}))
+  ...summerIslands.map((destination,i)=>({id:'summer_island_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle',arrival:'island_landing'})),
+  ...underwaterDestinations.map((destination,i)=>({id:'summer_underwater_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle',arrival:'water_surface_descent_point'}))
  ];
  const landmarks={summerCity:coastalCity,summerIslands,underwaterDestinations,springCity:{x:sourceX,y:riverY},autumnLake:{x:lakeX,y:riverY,radius:lakeRadius},autumnTown:{x:lakeX,y:clamp(riverY+lakeRadius+2,0,height-1)},winterCity:{x:winter.x,y:winter.y},summerCoast:{x:summerXs[0],y:riverY},summerIsland:{x:islandX,y:islandY}};
  return {schema:'avalora-world-draft-1',canonical:false,seed,width,height,biomeIds:BIOME_IDS,counts,biomes,terrain,elevation,floatingHeight,features,landmarks,river,turtleRoutes};
