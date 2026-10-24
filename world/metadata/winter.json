@@ -19,7 +19,9 @@
       "extreme_cold",
       "near_permanent_polar_night"
     ],
-    "weather_parameters": null
+    "weather_parameters": null,
+    "permanent_season": "winter",
+    "season_rotates": false
   },
   "hydrology": {
     "approved": [],
