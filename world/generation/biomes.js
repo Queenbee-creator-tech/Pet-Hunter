@@ -18,8 +18,11 @@ function boundaries(width,height,seed,leftCount,middleCount){
  for(let y=0;y<height;y++){
   const t=y/height;
   const wobble=(a,b,c)=>Math.sin(t*Math.PI*2+a)*.57+Math.sin(t*Math.PI*4+b)*.27+Math.sin(t*Math.PI*7+c)*.16+Math.sin(t*Math.PI*11+a*.7)*.11;
-  left[y]=Math.round(l0+amp*wobble(p[0],p[1],p[2]));
-  right[y]=Math.round(r0+amp*wobble(p[3],p[4],p[5]));
+  // Spatially varying continental margins: broad bays, headlands and narrower necks.
+  // Different harmonics prevent the two coastlines from tracking as parallel strips.
+  const basin=Math.sin(t*Math.PI*2+p[6])*Math.cos(t*Math.PI*3+p[2]);
+  left[y]=Math.round(l0+amp*(1.9*wobble(p[0],p[1],p[2])+.65*basin));
+  right[y]=Math.round(r0+amp*(1.75*wobble(p[3],p[4],p[5])-.6*basin));
  }
  function adjust(arr,target,min,max){
   let sum=arr.reduce((a,b)=>a+b,0),step=0;
@@ -58,7 +61,7 @@ export function allocateBiomes(width=WORLD_CONFIG.width,height=WORLD_CONFIG.heig
  for(let x=0;x<width;x++){
   const t=x/width;
   cut[x]=Math.max(1,Math.min(height-1,Math.round(height*.56+
-   height*.12*Math.sin(t*2*Math.PI+phase)+height*.055*Math.sin(t*5*Math.PI+phase*.6)+height*.018*Math.sin(t*9*Math.PI+phase*1.3))));
+   height*.21*Math.sin(t*2*Math.PI+phase)+height*.09*Math.sin(t*5*Math.PI+phase*.6)+height*.035*Math.sin(t*9*Math.PI+phase*1.3))));
  }
  function springCount(){
   let n=0;for(let y=0;y<height;y++)for(let x=0;x<left[y];x++)if(y<cut[x])n++;
