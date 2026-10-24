@@ -29,7 +29,7 @@ These are **work stages, not claims that all design details are finalized**. Imp
 ### Immediate next decisions — world workflow
 
 1. Treat **256 × 256** as the selected *starting grid proposal*, pending confirmation of cell scale and biome allocation.
-2. Agree meters per cell, movement/location granularity, coordinate axes and elevation units.
+2. Use approved 100 meters per cell; agree movement/location granularity, coordinate axes and elevation units.
 3. Agree biome footprints and whether Summer's ocean is inside the same grid.
 4. Define terrain clustering and elevation-driven hydrology, including connected forests/groves, downhill river drainage, lake inlets/outlets, waterfalls at drops, and coastline/reef placement.
 5. Define permanent landmarks, route graph, sanctuary arrivals, habitats, resources, hidden discoveries, hazard zones, generator seed/version and persistence schema.
@@ -138,3 +138,7 @@ These rules are **approved design**, not yet a completed expedition or combat im
 - [Combat conditions and knockout rules](docs/COMBAT_CONDITIONS_AND_KNOCKOUT.md)
 
 **Documentation note:** Some older documents and prototype screens may still describe superseded ideas (such as choosing a starting biome). The newer approved gameplay decisions take precedence until those files and the prototype are updated.
+
+
+### Decision 043 — 100 m grid cell (approved)
+The world grid uses 100 m × 100 m logical cells. A proposed 256 × 256 grid would cover 25.6 km × 25.6 km (655.36 km²). Grid dimensions and biome allocation remain pending; narrative choice distance need not equal one cell.
