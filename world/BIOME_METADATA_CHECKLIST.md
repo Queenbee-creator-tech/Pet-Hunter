@@ -72,3 +72,7 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 ## Decision 034 — Permanent biome seasons (approved)
 - [x] Each seasonal biome permanently retains its namesake season; no global seasonal rotation.
 - [ ] Define changing weather conditions and time-of-day behavior separately without assuming particular schedules or frequencies.
+
+## Decision 035 — Dynamic biome weather (approved)
+- [x] Weather varies naturally within each permanently seasonal biome, with biome-appropriate patterns.
+- [ ] Define weather categories per biome, transition rules, frequency, duration, and engine impacts; examples are illustrative, not an exhaustive approved catalog.
