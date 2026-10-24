@@ -93,3 +93,12 @@ The JSON files intentionally exclude superseded or provisional percentages, map 
 - [x] Summer: tsunamis, dangerous currents, heat, rough seas.
 - [x] Winter: blizzards, extreme cold, avalanches, dangerous ice.
 - [ ] Set intensity, frequency, duration, triggers, warning cues, mitigation and consequences for each approved hazard. Earthquakes/tsunamis are geophysical events, not weather.
+
+## Decision 038 — Hazard behavior and persistent-world consequences
+- [x] Hazard likelihood varies by location; some areas have greater disaster risk.
+- [x] Most disasters have warning signs, though sudden events can occur.
+- [x] Hazards may affect survival, movement, equipment condition, creature behavior, and route availability.
+- [x] Shelter effectiveness depends on shelter type and hazard severity.
+- [x] Disasters may temporarily block established routes without permanently rewriting geography.
+- [ ] Specify location risk zones, frequency, warning cues, equipment effects, shelter effectiveness, temporary obstruction duration and restoration rules.
+- [ ] Align injury consequences with the still-open health model; preserve approved death/respawn rules.
