@@ -162,3 +162,12 @@ The table is symmetric: Fight/No response also advances the responding hunter, a
 **Thief example (NOT YET APPROVED AS A LIVE MECHANIC):** In a plausible context, the engine could trigger a suspicious NPC or stealing-creature encounter. Players might notice warning clues, protect belongings, pursue, negotiate, confront, or attempt recovery where valid. Detection and recovery outcomes should reflect skills, preparedness, circumstances and risk. Do not automatically steal rare/irreplaceable items or impose unavoidable losses; exact protections and recovery rules require approval. This does not imply open-world player-to-player theft.
 
 **Still undecided:** Whether some events have real-time decision timers; countdown duration and timeout behavior; frequency and severity; success formulas; injury/death and respawn rules; theft eligibility, item protection, and recovery; creature-assisted reactions; accessibility and connection-loss behavior. These are **design notes, not implemented or tested features**.
+
+
+## Approved return-trip resource loop — portal stones and stamina (2026-10-23)
+- Players can return by ordinary physical travel through engine-approved routes.
+- Crafting progression will include **portal stones** for automatic return and **stamina potions** to restore stamina. Portal-stone destination, cost, use limits, and unlock requirements are TBD; no unrestricted fast-travel network is implied.
+- Returning on foot with too little stamina remains possible. The player cannot initiate encounters or activities that cost more stamina than they currently have. A stamina potion can restore enough stamina to permit those actions, subject to eventual item rules.
+- Stamina recovery at home/sanctuary remains **2 stamina per 5 minutes**. Do not assume normal wilderness travel regenerates stamina.
+- The environment may still present hazards or creatures during low-stamina return travel. Rules for unavoidable encounters, defensive reactions, critical events and zero-stamina safety are **open** and must not be invented by the narrator.
+- Engine owns eligibility, stamina accounting, item consumption and position updates; the narrator only presents authorized actions and outcomes.
