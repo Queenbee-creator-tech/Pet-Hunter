@@ -1,0 +1,53 @@
+{
+  "schema_version": "draft-0.1",
+  "status": "working_metadata_not_generator_ready",
+  "id": "summer",
+  "name": "Summer",
+  "identity": "Ancient Coral coastal and ocean region",
+  "terrain": {
+    "approved_descriptors": [
+      "shallow_turquoise_ocean",
+      "reefs",
+      "reef_islands",
+      "walkable_coral_forests",
+      "deep_channels"
+    ],
+    "distribution_percentages": null,
+    "elevation_rules": null
+  },
+  "climate": {
+    "approved_descriptors": [],
+    "weather_parameters": null
+  },
+  "hydrology": {
+    "approved": [
+      "major_river_from_autumn_empties_into_summer_ocean"
+    ],
+    "details": null
+  },
+  "features": {
+    "approved": [
+      "ancient_coral_environment",
+      "giant_turtles_intended_for_transport_not_collection"
+    ],
+    "exact_placements": null
+  },
+  "habitats": {
+    "categories": null,
+    "suitability_rules": null
+  },
+  "resources": {
+    "categories": null,
+    "distribution_rules": null
+  },
+  "travel": {
+    "fixed_sanctuary_portal_arrival": true,
+    "arrival_location_id": null,
+    "arrival_safety": "relatively_safe",
+    "physical_routes": null
+  },
+  "sources": [
+    "world/BIOMES.md"
+  ],
+  "notes": "Null values are unresolved; no generated coordinates, terrain ratios, creature spawn rates or recipes are implied."
+}
