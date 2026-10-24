@@ -191,3 +191,9 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - **Scope undecided:** apply persistent world behavior broadly, but consider stronger, longer-lived individual records for significant/rare/legendary encounters and lightweight persistence for common encounters.
 - **Skill XP familiarity:** repeat attempts at the **same exact challenge at the same location** grant diminishing skill XP and eventually **exactly zero**. A genuinely different tree, cliff, mountain or challenge has its own fresh XP opportunity in the relevant skill (e.g. Climbing). The reduction should occur quietly without explicit XP-decay announcements. Exact decay curve, zero threshold, challenge identity and changed-environment exceptions remain open.
 - This is design discussion, **not implemented or tested** in the alpha engine.
+
+
+## Geography consistency and tracking stone discussion (2026-10-23)
+- **Core world constraint:** Pet Hunter has a persistent, internally mapped geography despite being a text-only exploration experience. Landmarks and geographic connections remain stable between visits; encounters, obstacles, conditions and narrative choices can change. Travel in reverse should follow actual traversable connections, not randomly regenerate an unrelated geography.
+- Retracing a creature sighting is possible through known routes without memorizing identical choice sequences.
+- **Working item proposal, not yet explicitly approved as final:** craftable, reusable tracking stone holding one active marked location at a time. It helps indicate which text choices move toward that fixed location, but does not teleport, freeze the creature, or guarantee capture. Replacing a mark overwrites the old mark; exact crafting requirements remain open.
