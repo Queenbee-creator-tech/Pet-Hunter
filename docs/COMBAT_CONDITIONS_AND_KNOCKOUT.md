@@ -29,6 +29,11 @@
 - Training improves the likelihood of responding appropriately to commands under fear/stress; bond and temperament may also influence response. Do not interpret these conditions as automatic refusal or lockout.
 - Creature travel benefits are passive party bonuses, not necessarily riding or physically transporting the hunter. Species-appropriate examples include bird-associated faster travel and aquatic-associated swimming benefits; specific eligibility and stacking TBD.
 
+## Trainable behavioral responses (approved clarification)
+- Fear/stress-triggered independent behaviors (freezing, fleeing, hesitation, other instinctive reactions) can be progressively reduced through training; they are not immutable penalties.
+- Training improves self-regulation and command reliability under pressure without erasing species temperament or personality.
+- High training can make independent panic responses very unlikely, but exact caps and whether absolute immunity is achievable are not yet specified. Avoid locking numerical rates.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
