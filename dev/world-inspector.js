@@ -15,7 +15,7 @@ function paint(){
  if(!world)return;
  const {width:w,height:h}=world,layer=$('layer').value;
  canvas.width=w;canvas.height=h;
- const image=ctx.createImageData(w,h),scratch=document.createElement('canvas').getContext('2d');
+ const image=ctx.createImageData(w,h);
  for(let i=0;i<w*h;i++){
   const hex=color(i,layer);const n=parseInt(hex.slice(1),16),p=i*4;
   image.data[p]=(n>>16)&255;image.data[p+1]=(n>>8)&255;image.data[p+2]=n&255;image.data[p+3]=255;
