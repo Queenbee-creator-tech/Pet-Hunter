@@ -255,3 +255,9 @@ The sanctuary's four biome portals each have exactly one persistent arrival loca
 
 ## Decision 032 — Relatively safe portal arrival zones (approved, 2026-10-23)
 Each fixed biome portal arrival point provides a reasonably safe opportunity for the player to orient themselves. Wildlife and environmental conditions continue to exist around arrival locations, and ordinary world simulation remains active. Do not make portal arrivals fully immune to danger or deliberately expose arriving players to immediate unavoidable threats. Threats emerge from engine-tracked terrain, weather, creatures, and circumstances; no arbitrary invisible danger-ring is approved. Specific arrival-site layouts and risks are TBD.
+
+## Waypoint Stone correction and first expedition test plan (2026-10-23)
+- **Approved correction:** The item is named **Waypoint Stone**, not smart/tracking stone. Its crafting recipe is **locked behind reaching a certain crafting skill level**, not immediately available to beginners. Exact level and ingredients remain open. Once crafted, the stone is reusable indefinitely; players do not repeatedly craft it.
+- It guides toward one marked encounter location while that encounter's return window is active. The return window starts on encounter regardless of marker, rarity, or species; the marker expires with that window. Earlier notes describing early access without a skill gate are superseded.
+- **Next testing milestone:** a compact expedition **within Autumn**, exercising consistent geographic connections, a creature encounter, departure and return during its window, and eventually Waypoint Stone guidance. The stone's skill unlock must be tested separately; it must not be given automatically at game start.
+- Existing prototype and engine tests still model older home-biome selection and do not yet test fixed-location encounters or the Waypoint Stone. Do not claim those mechanics are implemented or verified.
