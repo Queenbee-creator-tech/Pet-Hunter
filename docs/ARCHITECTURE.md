@@ -33,3 +33,7 @@ Candidate cases for tests: cliff fall with/without a reachable branch; pitfall a
 
 ## Return travel resource validation (approved design direction)
 The engine must support ordinary route-by-route return movement, craftable portal-stone automatic returns, craftable stamina potions, and stamina-gated voluntary encounters/actions. Ordinary return movement is not prohibited solely by insufficient stamina. Before presenting a stamina-costing voluntary action, validate the player's current stamina; after potion use, recalculate eligibility. Portal-stone destinations, inventory costs, crafting requirements and zero-stamina involuntary hazards are still open design decisions. Stamina regeneration at home/sanctuary: 2 per 5 minutes. Narrator text cannot bypass engine restrictions.
+
+
+## Turn-based combat mode (approved direction)
+Implement combat as an engine-controlled turn-based state machine separate from prose generation. On each turn, the engine exposes valid actions with stable identifiers and eligibility/cost information; the interface submits a chosen identifier; the engine validates and resolves the action, updates state, and returns a result for LLM narration. Combat must remain functional and deterministic in authority even when narration is unavailable. XCOM is a pacing/turn-based tactical reference, not approval of grid maps, cover mechanics, action points, or any specific XCOM rules. Exact turn and combat systems are undecided.
