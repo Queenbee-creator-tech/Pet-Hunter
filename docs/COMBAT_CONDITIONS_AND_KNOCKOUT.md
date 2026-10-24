@@ -34,6 +34,12 @@
 - Training improves self-regulation and command reliability under pressure without erasing species temperament or personality.
 - High training can make independent panic responses very unlikely, but exact caps and whether absolute immunity is achievable are not yet specified. Avoid locking numerical rates.
 
+## Correction: XCOM-style acquired combat fear/stress (approved clarification)
+- Creatures do NOT enter combat inherently frightened or stressed because of a fixed timid personality. Fear and stress are conditions ACQUIRED through events in combat or the environment (e.g. stronger enemies, heavy damage, ally knocked unconscious), based on engine calculations.
+- An affected creature can panic or act independently during combat; the condition can persist afterward and be addressed through sanctuary recovery and training. Once treated/trained through, the acquired condition is cleared, rather than being a permanent species personality flaw.
+- Do not require fear training as a prerequisite for normal command-following in an unaffected creature. Training can prepare for stressful encounters and rehabilitate acquired fear/stress.
+- Earlier speculative text about inherent species timidity/temperament governing fear should NOT be treated as approved design. This correction supersedes that interpretation.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
