@@ -21,15 +21,15 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   const i=idx(x,y,width),b=biomes[i];
   const wave=Math.sin(x*.035+seed*.03)*Math.cos(y*.049)*28+Math.sin(y*.075+x*.043)*16;
   if(b===0){elevation[i]=Math.round(110+wave);terrain[i]=Math.sin(x*.047+Math.sin(y*.029))*Math.cos(y*.058)+Math.sin(x*.083+y*.039)*.3+rng()*.14>.96?TERRAIN.GROVE:TERRAIN.MEADOW;}
-  else if(b===1){elevation[i]=Math.round(220+wave);terrain[i]=TERRAIN.FOREST;}
+  else if(b===1){elevation[i]=Math.round(220+wave);const clearing=Math.sin(x*.055+Math.sin(y*.041))*Math.cos(y*.063+seed*.04);terrain[i]=clearing>.82?TERRAIN.MEADOW:TERRAIN.FOREST;}
   else if(b===2){elevation[i]=Math.round(16+wave*.3);terrain[i]=TERRAIN.COAST;}
-  else{const d=Math.hypot((x-winter.x)*1.5,(y-winter.y)*1.2);const ridge=Math.abs(Math.sin(x*.065+y*.035+seed*.02))*360+Math.abs(Math.sin(y*.11-x*.025))*180;const valleyFactor=Math.exp(-d*d/(Math.max(4,width*.06)**2));elevation[i]=Math.round(300+ridge+wave*2-valleyFactor*300);terrain[i]=d<Math.max(3,width*.035)?TERRAIN.VALLEY:elevation[i]>720?TERRAIN.GLACIER:TERRAIN.MOUNTAIN;}
+  else{const d=Math.hypot((x-winter.x)*1.5,(y-winter.y)*1.2);const ridgeLine=Math.sin(y*.031+x*.047+seed*.02)*13+Math.sin(y*.067-x*.018)*6;const distanceToRidge=Math.abs(x-(winter.x+ridgeLine));const ridge=Math.max(0,550-distanceToRidge*12)+Math.max(0,210-Math.abs(x-(winter.x-22+Math.sin(y*.04)*9))*13);const valleyFactor=Math.exp(-d*d/(Math.max(4,width*.06)**2));elevation[i]=Math.round(300+ridge+wave*2-valleyFactor*300);terrain[i]=d<Math.max(3,width*.035)?TERRAIN.VALLEY:elevation[i]>720?TERRAIN.GLACIER:TERRAIN.MOUNTAIN;}
  }
  for(let y=0;y<height;y++){
   let first=width-1;for(let x=0;x<width;x++)if(biomes[idx(x,y,width)]===2){first=x;break;}
   for(let x=first;x<width;x++){
    const i=idx(x,y,width);if(biomes[i]!==2)continue;
-   const depth=x-first,shore=clamp(Math.round(width*.035+Math.sin(y*.09+seed)*2),2,Math.max(3,width*.08));
+   const depth=x-first,shore=clamp(Math.round(width*.045+Math.sin(y*.043+seed)*4+Math.sin(y*.11)*2),2,Math.max(3,width*.11));
    if(depth>shore){elevation[i]=-Math.min(80,depth*2);terrain[i]=depth<shore+3?TERRAIN.REEF:TERRAIN.OCEAN;}
   }
  }
@@ -45,9 +45,10 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   let cx=clamp(Math.round(width*fx),3,width-4);
   while(cx<width-3&&terrain[idx(cx,cy,width)]!==TERRAIN.OCEAN)cx++;
   if(terrain[idx(cx,cy,width)]!==TERRAIN.OCEAN)continue;
-  for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){
-   const x=cx+dx,y=cy+dy,i=idx(x,y,width);
-   if(biomes[i]===2&&terrain[i]===TERRAIN.OCEAN&&dx*dx+dy*dy<=2){terrain[i]=TERRAIN.ISLAND;elevation[i]=5;}
+  const radius=Math.max(2,Math.round(width*.014));
+  for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){
+   const x=cx+dx,y=cy+dy;if(x<0||x>=width||y<0||y>=height)continue;const i=idx(x,y,width);
+   if(biomes[i]===2&&terrain[i]===TERRAIN.OCEAN&&dx*dx+dy*dy<=radius*radius){terrain[i]=TERRAIN.ISLAND;elevation[i]=5;}
   }
   summerIslands.push({x:cx,y:cy});
  }
@@ -82,9 +83,24 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   elevation[i]=x<=lakeX?Math.round(75+(lakeX-x)*145/Math.max(1,lakeX-sourceX)):Math.round(75-Math.min(75,(x-lakeX)*75/Math.max(1,width-lakeX-1)));
   river.push({x,y});
  }
- for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){
-  const x=sourceX+dx,y=riverY+dy;if(x<0||x>=width||y<0||y>=height)continue;
-  const i=idx(x,y,width);if(biomes[i]===1&&dx*dx+dy*dy<=4){floatingHeight[i]=420;features[i]|=8;}
+ // Spring's city stands on a substantial floating island. Other islands have
+ // independent elevations; they do not replace ground cells below them.
+ const floatingIslands=[{x:sourceX,y:riverY,r:Math.max(5,Math.round(width*.035)),height:420}];
+ for(const [fx,fy,r,h] of [[.29,.17,.019,280],[.19,.32,.015,340],[.32,.43,.021,510]]){
+  const cy=clamp(Math.round(height*fy),2,height-3);
+  const candidates=regions[1].filter(p=>Math.abs(p.y-cy)<height*.1);
+  if(!candidates.length)continue;
+  const targetX=Math.round(width*fx);
+  const p=candidates.reduce((best,p)=>!best||Math.abs(p.x-targetX)+Math.abs(p.y-cy)<Math.abs(best.x-targetX)+Math.abs(best.y-cy)?p:best,null);
+  floatingIslands.push({x:p.x,y:p.y,r:Math.max(3,Math.round(width*r)),height:h});
+ }
+ for(const island of floatingIslands){
+  for(let dy=-island.r;dy<=island.r;dy++)for(let dx=-island.r;dx<=island.r;dx++){
+   const x=island.x+dx,y=island.y+dy;
+   if(x<0||x>=width||y<0||y>=height||dx*dx+dy*dy>island.r*island.r)continue;
+   const i=idx(x,y,width);
+   if(biomes[i]===1){floatingHeight[i]=island.height;features[i]|=8;}
+  }
  }
  features[idx(sourceX,riverY,width)]|=4;
  const coastalX=summerXs[0],coastalCity={x:coastalX,y:riverY};
@@ -92,7 +108,7 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   ...summerIslands.map((destination,i)=>({id:'summer_island_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle',arrival:'island_landing'})),
   ...underwaterDestinations.map((destination,i)=>({id:'summer_underwater_'+(i+1),from:'summerCity',to:destination,transport:'giant_turtle',arrival:'water_surface_descent_point'}))
  ];
- const landmarks={summerCity:coastalCity,summerIslands,underwaterDestinations,springCity:{x:sourceX,y:riverY},autumnLake:{x:lakeX,y:riverY,radius:lakeRadius},autumnTown:{x:lakeX,y:clamp(riverY+lakeRadius+2,0,height-1)},winterCity:{x:winter.x,y:winter.y},summerCoast:{x:summerXs[0],y:riverY},summerIsland:{x:islandX,y:islandY}};
+ const landmarks={summerCity:coastalCity,summerIslands,underwaterDestinations,springCity:{x:sourceX,y:riverY},autumnLake:{x:lakeX,y:riverY,radius:lakeRadius},autumnTown:{x:lakeX,y:clamp(riverY+lakeRadius+2,0,height-1)},winterCity:{x:winter.x,y:winter.y},summerCoast:{x:summerXs[0],y:riverY},summerIsland:{x:islandX,y:islandY},floatingIslands};
  return {schema:'avalora-world-draft-1',canonical:false,seed,width,height,biomeIds:BIOME_IDS,counts,biomes,terrain,elevation,floatingHeight,features,landmarks,river,turtleRoutes};
 }
 export function validateWorldDraft(world){
@@ -115,5 +131,9 @@ export function validateWorldDraft(world){
  if(!landmarks.underwaterDestinations?.length)issues.push('Summer underwater destinations missing');
  if(!world.turtleRoutes?.length)issues.push('Summer turtle transport routes missing');
  if(!terrain.includes(TERRAIN.LAKE))issues.push('Autumn lake missing');
+ const islands=landmarks.floatingIslands||[];
+ if(islands.length<3)issues.push('Spring floating islands missing');
+ if(islands.length && islands[0].r<4)issues.push('Spring city floating island too small');
+ if(islands.some(p=>biomes[idx(p.x,p.y,w)]!==1))issues.push('Floating island center outside Spring');
  return {ok:issues.length===0,issues};
 }
