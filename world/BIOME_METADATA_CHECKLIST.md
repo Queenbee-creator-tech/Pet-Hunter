@@ -1,0 +1,57 @@
+# Pet Hunter — Biome Metadata Completion Tracker
+
+Status: **Organized, not complete or implemented.** This document inventories existing approvals and gaps. It does not approve new mechanics, values, or geography. Primary decision history: [BIOMES.md](BIOMES.md). Gameplay and interface mechanics live in `docs/GAMEPLAY_LOOP_AND_WORLD_SIMULATION.md`; engine contracts in `docs/ARCHITECTURE.md`.
+
+## Legend
+- [x] Established design direction (not necessarily engine-ready)
+- [ ] Needs specific metadata, decisions, or validation
+- [~] Partial — working direction exists but required data is missing
+
+## 1. World-level metadata
+- [x] Four seasonal biomes: Autumn, Spring, Summer, Winter.
+- [x] One fixed persistent world; exact positions and routes are engine-owned.
+- [x] Autumn is central; Spring-origin river flows through Autumn lake to Summer ocean.
+- [x] Biomes have dramatic identities and physically traversable connections.
+- [ ] World dimensions, scale, coordinate model, orientation and elevation range.
+- [ ] Concrete biome boundaries, neighboring regions, crossing points and geographic connectivity.
+- [ ] Canonical world/biome identifiers and machine-readable world schema.
+
+## 2. Per-biome metadata
+- [x] Autumn: central lakeside waterfront town; mostly rolling meadow/hill wilderness, groves, streams and valleys.
+- [x] Spring: forest, waterfalls, crystals, elevated river source, small floating land fragments.
+- [x] Summer: Ancient Coral seas, reefs, islands, coral forests, deep channels; giant turtles envisioned as transport, not collectible.
+- [x] Winter: snowy mountains, cliffs, glaciers, frozen forests, near-permanent polar night and auroras.
+- [ ] Per-biome climate/weather ranges and seasonal behavior (not just theme).
+- [ ] Terrain category definitions, elevation constraints and distribution. Earlier percentage breakdowns are **provisional, not approved**.
+- [ ] Environmental hazard definitions and conditions; how they affect traversal belongs to gameplay/engine.
+- [ ] Habitat classifications and environmental suitability for future creature metadata (species lists belong in Creature Development).
+- [ ] Gatherable resource categories and placement rules (acquisition costs belong in Gameplay).
+- [ ] Hydrology and landmark placement constraints for each biome.
+- [ ] Biome metadata schema with validated values for all four.
+
+## 3. Routes, portal locations, and geography
+- [x] Fixed public and discoverable hidden routes; players discover hidden routes independently.
+- [x] Movement choices come from actual engine-valid connections; no visible player map.
+- [x] Sanctuary has one portal for each biome; each biome has one fixed arrival location shared by all players.
+- [x] Arrival points are relatively safe, not immune to normal world conditions.
+- [ ] Exact portal arrival world location IDs and terrain/connection context.
+- [ ] Generated route graph, crossings, obstacles and navigability constraints.
+- [ ] Geographical validation: reachability, river continuity, sensible elevation and no isolated mandatory destinations.
+
+## 4. Generator readiness
+- [x] Engine must generate/persist geography once; narrator cannot invent or rewrite authoritative geography.
+- [ ] Engine-readable schema and representative data for every biome.
+- [ ] Generation procedure, persistence format and reproducibility approach.
+- [ ] Validation tests for geography, hydrology, routes, portals and metadata completeness.
+- [ ] Prototype generator built and tested.
+
+## Out of scope for this tracker
+- Essence amounts, potion recipes, portal-stone consumption, combat and critical events: Gameplay/Engine.
+- Creature species, rarity, genetics and spawn rates: Creature Development (biomes only provide habitat constraints).
+- Narrative prose, portal appearance and interface art: optional later presentation/lore work.
+
+## Suggested next step
+Define the **world-level metadata schema** using approved facts first, marking missing values as TBD. Then populate each biome without inventing unapproved values. Review checklist items one at a time.
+
+## Source caveats
+`BIOMES.md` is a chronological decision log and contains superseded early text (e.g., references to stamina-gated encounters, player maps, undecided portal stone consumption). Later explicit decisions supersede earlier statements. Do not treat all entries as simultaneously current.
