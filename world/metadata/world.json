@@ -72,5 +72,30 @@
       "transition_rules": null
     },
     "time_of_day_rules": null
+  },
+  "environmental_weather_obstacles": {
+    "enabled": true,
+    "extreme_weather_potentially_fatal_if_unprepared": true,
+    "route_outcomes": [
+      "impassable",
+      "traversable_with_risk"
+    ],
+    "weather_onset_modes": [
+      "gradual",
+      "sudden"
+    ],
+    "shelter_options": [
+      "natural_shelter",
+      "craftable_camping_equipment"
+    ],
+    "wild_creature_behavior_affected": true,
+    "distinct_hazards_per_biome": true,
+    "mitigation": [
+      "equipment",
+      "skills",
+      "preparation"
+    ],
+    "engine_authoritative": true,
+    "exact_rules": null
   }
 }
