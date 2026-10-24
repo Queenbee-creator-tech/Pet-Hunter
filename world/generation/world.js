@@ -76,7 +76,8 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
  }
  const river=[];
  for(let x=sourceX;x<width;x++){
-  const y=clamp(riverY+Math.round(Math.sin((x-sourceX)*.065)*2+Math.sin((x-sourceX)*.14)*1),1,height-2);
+  const travel=x-sourceX;
+  const y=clamp(riverY+Math.round(Math.sin(travel*.052)*4+Math.sin(travel*.103)*1.6),1,height-2);
   const i=idx(x,y,width),b=biomes[i];if(b===3)throw new Error('River intersects Winter');
   if(b===2&&terrain[i]===TERRAIN.OCEAN){river.push({x,y});break;}
   if(terrain[i]!==TERRAIN.LAKE&&terrain[i]!==TERRAIN.OCEAN){terrain[i]=TERRAIN.RIVER;features[i]|=1;}
@@ -85,19 +86,22 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
  }
  // Spring's city stands on a substantial floating island. Other islands have
  // independent elevations; they do not replace ground cells below them.
- const floatingIslands=[{x:sourceX,y:riverY,r:Math.max(5,Math.round(width*.035)),height:420}];
+ const floatingIslands=[{x:sourceX,y:riverY,r:Math.max(7,Math.round(width*.045)),height:420,stretch:1.28,phase:.6}];
  for(const [fx,fy,r,h] of [[.29,.17,.019,280],[.19,.32,.015,340],[.32,.43,.021,510]]){
   const cy=clamp(Math.round(height*fy),2,height-3);
   const candidates=regions[1].filter(p=>Math.abs(p.y-cy)<height*.1);
   if(!candidates.length)continue;
   const targetX=Math.round(width*fx);
   const p=candidates.reduce((best,p)=>!best||Math.abs(p.x-targetX)+Math.abs(p.y-cy)<Math.abs(best.x-targetX)+Math.abs(best.y-cy)?p:best,null);
-  floatingIslands.push({x:p.x,y:p.y,r:Math.max(3,Math.round(width*r)),height:h});
+  floatingIslands.push({x:p.x,y:p.y,r:Math.max(4,Math.round(width*r*1.45)),height:h,stretch:.72+(floatingIslands.length%3)*.31,phase:floatingIslands.length*1.7});
  }
  for(const island of floatingIslands){
   for(let dy=-island.r;dy<=island.r;dy++)for(let dx=-island.r;dx<=island.r;dx++){
    const x=island.x+dx,y=island.y+dy;
-   if(x<0||x>=width||y<0||y>=height||dx*dx+dy*dy>island.r*island.r)continue;
+   const angle=island.phase,rx=dx*Math.cos(angle)+dy*Math.sin(angle),ry=-dx*Math.sin(angle)+dy*Math.cos(angle);
+   const theta=Math.atan2(ry,rx),dist=Math.hypot(rx/island.stretch,ry*island.stretch);
+   const edge=island.r*(1+.16*Math.sin(theta*3+angle)+.11*Math.cos(theta*5-angle));
+   if(x<0||x>=width||y<0||y>=height||dist>edge)continue;
    const i=idx(x,y,width);
    if(biomes[i]===1){floatingHeight[i]=island.height;features[i]|=8;}
   }
