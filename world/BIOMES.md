@@ -131,3 +131,7 @@ The resource previously called hunter stamina limits **capturing creatures, coll
 
 ## Decision 027 — Essence replaces hunter stamina (approved)
 The hunter's reward-acquisition resource is named **Essence**, with craftable **Essence Potions**. Essence is used for attempts to capture creatures, collect eggs, and gather materials; it does not limit travel, combat, defense, encounters, or XP gain. Players may return from expeditions at zero Essence and still engage with the world, but cannot acquire Essence-gated physical rewards until restored. Essence regenerates at home/sanctuary at +2 per 5 real-world minutes. Creature stamina is a distinct mechanic. The resource's magical origin and exact costs are TBD. This supersedes earlier 'hunter stamina' wording in world decisions.
+
+
+## Decision 028 — Sanctuary portals for all four biomes (approved core)
+The player's sanctuary contains a portal associated with each of the four seasonal biomes: Autumn, Spring, Summer, and Winter. These are sanctuary-based biome travel access points, not an arbitrary network of portal destinations scattered across the wilderness. The engine controls valid destinations and player location. Exact arrival locations, unlock conditions, travel costs, and the relationship between sanctuary portals and craftable return portal stones are not yet approved. Do not assume a portal enables arbitrary fast travel within a biome.
