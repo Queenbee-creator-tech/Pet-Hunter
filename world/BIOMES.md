@@ -207,4 +207,11 @@ Autumn is predominantly open meadows and rolling hills, with mostly smaller grov
 All four biomes contain their own environmentally appropriate hidden discoveries, including versions of concealed caves/shelters, creature dens/nests/habitats, and rare gatherable resources. Autumn's scattered groves can conceal such finds; equivalent discovery opportunities adapt to Spring forests/waterfalls, Summer coasts/reefs/seas, and Winter mountains/ice. These are categories, not finalized specific locations, species, materials, or frequency. Hidden discoveries occupy stable locations in the one canonical saved world. Knowledge-gated discovery visibility follows Decision 039; engine owns discovery state and location, AI narrates without inventing locations.
 
 ## Decision 043 — World grid cell scale (approved)
-Each logical grid cell represents 100 meters per side. At the proposed 256×256 dimensions, the extent would be 25.6 km × 25.6 km (655.36 km²). Cell size is for engine geography and does not mandate one text movement choice per cell. Final grid dimensions, biome allocation, and ocean inclusion are pending.
+Each logical grid cell represents 100 meters per side. At the proposed 256×256 dimensions, the extent would be 25.6 km × 25.6 km (655.36 km²). Cell size is for engine geography and does not mandate one text movement choice per cell. Grid dimensions, biome allocation and ocean inclusion are now approved.
+
+
+## Decision 044 — Canonical world grid and biome allocation (approved)
+- World grid: 256 × 256 cells at 100 m per cell, 25.6 × 25.6 km (655.36 km²).
+- Target biome shares: Autumn 30%, Spring 25%, Summer 25%, Winter 20%; irregular connected boundaries, approximate area targets rather than rectangles.
+- Summer's 25% **includes ocean, reefs, islands and underwater habitats** in the same world grid; no separate ocean grid.
+- Still to design: elevation/terrain generation, hydrology, precise region shapes and coordinates. Generator and developer inspector are not yet complete.
