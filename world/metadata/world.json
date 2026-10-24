@@ -97,5 +97,37 @@
     ],
     "engine_authoritative": true,
     "exact_rules": null
+  },
+  "environmental_hazards": {
+    "by_biome": {
+      "autumn": [
+        "heavy_rainfall",
+        "dense_fog",
+        "flooding",
+        "slippery_hillsides"
+      ],
+      "spring": [
+        "heavy_rainfall",
+        "earthquakes",
+        "floods",
+        "strong_winds"
+      ],
+      "summer": [
+        "tsunamis",
+        "dangerous_currents",
+        "heat",
+        "rough_seas"
+      ],
+      "winter": [
+        "blizzards",
+        "extreme_cold",
+        "avalanches",
+        "dangerous_ice"
+      ]
+    },
+    "frequency_rules": null,
+    "intensity_rules": null,
+    "event_effects": null,
+    "notes": "Geophysical hazards (earthquakes and tsunamis) are not weather."
   }
 }
