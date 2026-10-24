@@ -205,3 +205,11 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - **Craft the tracking stone once**, early in the game after gathering the required minerals; no advanced crafting-level gate. It is **reusable indefinitely** and is not consumed when marking. Current working capacity is one active location mark at a time, overwritable; final capacity can be revisited if needed.
 - The mark identifies the **original encounter spot**, not a moving creature's live position. Within its return window the same individual is there; after expiration, tracking/evidence/world outcomes apply.
 - The exact mineral recipe and stone UI implementation remain undecided. Not yet implemented in alpha.
+
+
+## Tracking stone: general use and expiring guidance (2026-10-23)
+- The reusable tracking stone is **not restricted to legendary creatures**. It can mark other encounter locations as well; legendary was only an example.
+- An activated mark has a **limited return window** (duration not yet fixed). While active, relevant text choices show yellow-glowing directional guidance toward the marked encounter location. No visible countdown is required.
+- **When that timer expires, the yellow guidance disappears, the mark deactivates, and the reusable stone returns to the player's inventory** for reuse. The stone does not preserve a creature at its location indefinitely.
+- Expiry of the mark does not mean the creature ceases to exist; it may continue moving or interacting with the world. Exact timing and whether a player can still follow ordinary environmental clues after mark expiry remain to be balanced.
+- This is an approved design direction, not yet implemented.
