@@ -199,3 +199,6 @@ Environmental obstacle actions use hybrid visibility. Actions requiring knowledg
 
 ## Decision 040 — Generated-once, immutable shared geography (approved)
 Use rule-guided generation (Option B) to arrange most explorable terrain and locations while preserving designer-controlled important landmarks. Generate the canonical Avalora geography once, persist the result, and load that same saved geography for every player and session; do not regenerate on login, character creation, or biome travel. Fixed features and hidden routes retain their canonical locations even when individually undiscovered. Temporary hazard conditions may affect accessibility without changing permanent geography. Generation algorithm, seed, landmark coordinates and final world layout are not yet implemented or finalized.
+
+## Decision 041 — Autumn open terrain with scattered small groves (approved)
+Autumn is predominantly open meadows and rolling hills, with mostly smaller groves scattered among them rather than large continuous forests. Preserve the established central lakeside town, freshwater lake, streams and valleys. Specific terrain percentages and exact placement remain TBD; canonical generated locations remain fixed.
