@@ -55,5 +55,17 @@
   "sources": [
     "world/BIOMES.md"
   ],
-  "notes": "Game mechanics for portal stones and Essence belong to gameplay/architecture documentation. This is source metadata, not the generated map."
+  "notes": "Game mechanics for portal stones and Essence belong to gameplay/architecture documentation. This is source metadata, not the generated map.",
+  "seasons": {
+    "mode": "permanent_per_biome",
+    "global_season_rotation": false,
+    "biome_seasons": {
+      "autumn": "autumn",
+      "spring": "spring",
+      "summer": "summer",
+      "winter": "winter"
+    },
+    "weather_patterns": null,
+    "time_of_day_rules": null
+  }
 }
