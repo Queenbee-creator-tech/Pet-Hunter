@@ -147,3 +147,7 @@ Each portal-stone activation consumes exactly **one crafted portal stone**. This
 
 ## Decision 031 — One fixed arrival point per biome (approved)
 Each of the four sanctuary biome portals (Autumn, Spring, Summer, Winter) leads to **one permanent, fixed arrival location** within its corresponding biome. All players using a given biome portal arrive at the same persistent world location, not an engine-randomized spawn and not an unlockable list of alternative portal arrivals. Players then navigate outward via engine-approved routes. Exact portal arrival coordinates, landmarks, safety, and visual descriptions are still to be designed. Portal activation continues to consume one crafted stone under Decision 030; returning by portal goes directly to the player's own sanctuary.
+
+
+## Decision 032 — Relatively safe biome portal arrivals (approved)
+Each biome's single fixed portal arrival point is a **relatively safe place to orient oneself**, not a completely protected safe zone and not a deliberately hazardous spawn. Nearby wildlife, natural weather, and environmental conditions remain part of the living world. Risk depends on actual terrain, wildlife, conditions, and player actions, rather than an artificial danger boundary. No invulnerability bubble or absolute guarantee against danger is implied. Exact terrain and nearby hazards for each of the four arrival points remain to be designed.
