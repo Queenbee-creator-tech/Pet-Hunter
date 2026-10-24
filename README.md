@@ -27,12 +27,12 @@ The goal is a **living world with stable geography**: the locations and their ge
 - The sanctuary is the player's home base for creature care, preparation, and recovery.
 - The prototype uses **home-only stamina recovery** at +2 stamina per five real-world minutes, including elapsed time away from the app while the hunter is home. Current stamina values are prototype balancing choices, not final numbers.
 
-## Creature encounters and the smart stone
+## Creature encounters and the Waypoint Stone
 
 - Creatures spawn in the world and behave within its environment. Text-adventure circumstances can lead the player to a creature at a particular location.
 - **Each encountered creature gets a return window beginning at the encounter**, whether the player attempts to tame it, cannot tame it, or chooses to leave. The window applies regardless of rarity or species and **does not require a marker**.
 - During that window, the player can return to the **same encounter location** and find that creature. **15 minutes is an example, not a finalized duration.**
-- A **smart/tracking stone** is an early craftable, **indefinitely reusable** navigation tool. The player crafts it once after gathering the needed materials; an advanced crafting-level requirement is not planned.
+- A **Waypoint Stone** is an **indefinitely reusable** navigation tool unlocked when the hunter reaches a required **crafting skill level**. Once unlocked and crafted using the necessary materials, it does not need to be crafted again. The exact level and recipe are not yet set.
 - A marked encounter can be retraced using **yellow-highlighted text choices** that lead toward the recorded location. The stone does not teleport the player, capture the creature, or extend its encounter window.
 - When the encounter window ends, the yellow guidance disappears, the mark deactivates, and the stone becomes available for reuse. The creature is no longer guaranteed at that exact spot; it is **not deleted from the world**.
 - The working design uses **one active mark at a time**. The precise recipe, interface, and final encounter duration remain to be determined.
