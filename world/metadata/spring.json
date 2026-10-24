@@ -1,0 +1,54 @@
+{
+  "schema_version": "draft-0.1",
+  "status": "working_metadata_not_generator_ready",
+  "id": "spring",
+  "name": "Spring",
+  "identity": "lush forest-dominated elevated river headwaters",
+  "terrain": {
+    "approved_descriptors": [
+      "dense_forest",
+      "elevated_forest_valleys",
+      "waterfalls",
+      "streams"
+    ],
+    "distribution_percentages": null,
+    "elevation_rules": null
+  },
+  "climate": {
+    "approved_descriptors": [],
+    "weather_parameters": null
+  },
+  "hydrology": {
+    "approved": [
+      "converging_streams_and_waterfalls_feed_major_river_to_autumn"
+    ],
+    "details": null
+  },
+  "features": {
+    "approved": [
+      "soft_shaded_light",
+      "glowing_plants",
+      "scattered_crystals_near_natural_terrain",
+      "small_floating_land_fragments"
+    ],
+    "exact_placements": null
+  },
+  "habitats": {
+    "categories": null,
+    "suitability_rules": null
+  },
+  "resources": {
+    "categories": null,
+    "distribution_rules": null
+  },
+  "travel": {
+    "fixed_sanctuary_portal_arrival": true,
+    "arrival_location_id": null,
+    "arrival_safety": "relatively_safe",
+    "physical_routes": null
+  },
+  "sources": [
+    "world/BIOMES.md"
+  ],
+  "notes": "Null values are unresolved; no generated coordinates, terrain ratios, creature spawn rates or recipes are implied."
+}
