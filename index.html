@@ -1,3 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pet Hunter — Loop Prototype</title><link rel="stylesheet" href="./prototype/style.css"></head>
-<body><main class="shell"><header><h1>Pet Hunter <small>Loop Prototype</small></h1><div id="stats"></div></header><section id="game" aria-live="polite"></section><footer><button id="leave" hidden>Leave Exploration</button><button id="reset">Reset Test</button></footer></main><script type="module" src="./prototype/app.js?v=0.9.0"></script></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#18110e"><title>Avalora — Pet Hunter</title><link rel="stylesheet" href="./prototype/style.css"></head>
+<body><main class="shell"><header class="topbar"><div class="brand">✦ AVALORA <small>Pet Hunter · Alpha</small></div><div id="world-title" class="world-title">A Hunter's Beginning</div><div id="stats" aria-label="Hunter resources"></div></header>
+<div class="scene" id="scene">
+<div id="corner-tools" class="corner-tools" hidden><button id="journal-tool" aria-label="Open Travel Journal"><span aria-hidden="true">📖</span><small>Journal</small></button><button id="bag-tool" aria-label="Open Bag"><span aria-hidden="true">🎒</span><small>Bag</small></button></div>
+<div id="scene-hotspots" class="hotspots" hidden><button class="hotspot library" data-hotspot="character">✦ <span>Library</span></button><button class="hotspot workbench" data-hotspot="craft">✦ <span>Crafting Workbench</span></button><button class="hotspot door" data-hotspot="destinations">✦ <span>Explore</span></button></div>
+<div class="story-wrap"><button id="return-context" hidden>← Back to previous view</button><section id="game" aria-live="polite"></section><button id="leave" hidden>Leave Exploration</button></div>
+</div>
+<nav id="world-nav" class="room-nav" aria-label="Sanctuary rooms" hidden><button data-screen="sanctuary"><span>⌂</span>Sanctuary</button><button data-screen="incubation"><span>🥚</span>Incubation</button><button data-screen="breeding"><span>♡</span>Breeding</button><button data-screen="care"><span>✚</span>Creature Care</button></nav>
+<footer><details><summary>Alpha testing controls</summary><button id="reset">Reset Test</button></details></footer></main><script type="module" src="./prototype/app.js?v=0.9.1"></script></body></html>
