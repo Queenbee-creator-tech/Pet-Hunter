@@ -48,3 +48,7 @@ Rename the hunter acquisition meter in future implementation and UI from 'hunter
 
 ## Decision 029 — Portal travel action contract (approved direction)
 Portal stones and Essence Potions are craftable only at the sanctuary. Sanctuary portals correspond to the four seasonal biomes. Validate an outbound portal-stone action against the player's sanctuary position, selected biome portal, inventory and any approved unlock rules; validate an inbound portal-stone action against exploration state and return the player to their own sanctuary. Engine owns authoritative position updates and inventory accounting. No arbitrary in-world teleport destinations. Stone consumption, recipes, and destination coordinates remain open and must not be hardcoded as approved rules. At zero Essence, normal movement/combat/XP remain possible; Essence limits reward acquisition only.
+
+
+## Decision 030 — Portal stone inventory transaction
+Each successful portal travel activation requires and consumes one portal stone. This applies to outbound sanctuary-to-biome and inbound exploration-to-sanctuary actions. Reject activation when no stone is available; never deduct on an invalid/failed action. Validate inventory, consume one stone, and update authoritative location in a single reliable state transition so refreshes or repeated taps cannot duplicate travel or consume extra stones. Crafting recipe and arrival coordinates remain undecided.
