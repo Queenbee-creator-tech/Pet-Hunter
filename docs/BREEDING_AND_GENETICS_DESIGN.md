@@ -18,3 +18,12 @@ When designing each species, define its approved visual modules (colors, marking
 - Placeholder captured and hatched creatures have species 'Unknown creature' and Common rarity; this is not the final catalog.
 - The prototype currently selects a parent species and rarity for successful offspring; proper rarity inheritance, mutation transfer, and hybrids await the species database.
 - Creature inventory migration converts legacy aggregate creature counts into individual placeholder creature records.
+
+
+## ARK-inspired breeding and genetics direction (2026-10-24)
+- ARK is the reference for selective breeding, inherited stat strengths, generational lineages, genetic variation and mutations—not an approval of ARK's manual level-up stat allocation.
+- Design separate heritable stat potential from acquired combat levels, temporary injuries, fear, stress and exhaustion. Combat damage must not change inheritable genetics.
+- Offspring should be able to inherit desirable stat tendencies from either parent, with potential for recombination and variation; exact probabilities, stat ceilings, mutation rates and inheritance formulas remain undecided.
+- Combine performance genetics with approved modular appearance traits (horns, wings, tails, color, markings) when species art and genetics are designed.
+- Existing rules still apply: mutations are separate from rarity; crossbreeding is allowed only within approved species/hybrid catalog; offspring rarity not guaranteed by parents' rarity; max creature level 50 does not imply numeric stat cap 50.
+- Do not copy ARK's exact formulas or lock unapproved mechanics.
