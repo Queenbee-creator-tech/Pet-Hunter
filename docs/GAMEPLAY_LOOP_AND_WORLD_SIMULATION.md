@@ -230,3 +230,7 @@ The hunter reward-acquisition resource is officially named **Essence**, replacin
 - At window expiry, the creature is no longer guaranteed at the location and may move or interact with the world; if marked, the stone deactivates and becomes available again.
 - **Do not use species-specific or rarity-specific timers as an assumed rule.** The previous species-specific timer interpretation was incorrect and is superseded by this section.
 - Implementation and playtesting are pending.
+
+
+## Sanctuary biome portals (approved core, 2026-10-23)
+The sanctuary includes one portal for each biome: Autumn, Spring, Summer, Winter. Portals are a sanctuary-based way to begin biome expeditions, with engine-defined arrival locations. This does not imply a player map or unrestricted in-biome teleportation. Craftable return portal stones remain a separate feature whose interaction with these permanent sanctuary portals needs clarification. Exact portal unlocks, costs, and arrival locations TBD.
