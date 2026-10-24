@@ -16,6 +16,13 @@
 - The lore explanation of who or what transported the unconscious hunter is intentionally unknown; do not invent a rescuer.
 - Knockout transport is a recovery choice triggered by unconsciousness, not a freely usable travel shortcut.
 
+## Knockout persistence and encounter loss (approved)
+- Any creature knocked out at 0 HP remains owned and present in creature inventory/party storage, but is unusable until appropriate care and recovery; it retains its injured/unconscious condition.
+- If the hunter is knocked unconscious during an encounter, that encounter ends and the player forfeits opportunities/rewards from that encounter only.
+- All creatures (including knocked-out ones), equipment and items already collected on the expedition accompany the hunter to the chosen sanctuary or nearest portal.
+- Persistent state does not reset during return: armor retains damage; creatures retain injuries, unconsciousness, fatigue, fear and stress as applicable. Previously acquired expedition loot is retained.
+- Party creature abilities may influence overworld travel (e.g. suitable avian creatures improve travel speed, aquatic creatures improve swimming/traversal). Exact species abilities and traversal rules to be approved in species design; do not assume universal mounts or transport capabilities.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
