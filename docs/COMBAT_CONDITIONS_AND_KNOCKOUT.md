@@ -23,6 +23,12 @@
 - Persistent state does not reset during return: armor retains damage; creatures retain injuries, unconsciousness, fatigue, fear and stress as applicable. Previously acquired expedition loot is retained.
 - Party creature abilities may influence overworld travel (e.g. suitable avian creatures improve travel speed, aquatic creatures improve swimming/traversal). Exact species abilities and traversal rules to be approved in species design; do not assume universal mounts or transport capabilities.
 
+## Combat availability and autonomous reactions (approved clarification)
+- ONLY knockout/unconsciousness (0 HP) makes a creature unavailable to fight. Injuries, fatigue, fear, and stress alone do NOT prohibit participation in combat.
+- These conditions instead modify probabilities of following the hunter's commands and can trigger autonomous, instinctive actions (inspired by XCOM turn-based panic/stress behavior): e.g. hesitate, defend, freeze, retreat, or act independently. Specific action tables and probabilities remain TBD.
+- Training improves the likelihood of responding appropriately to commands under fear/stress; bond and temperament may also influence response. Do not interpret these conditions as automatic refusal or lockout.
+- Creature travel benefits are passive party bonuses, not necessarily riding or physically transporting the hunter. Species-appropriate examples include bird-associated faster travel and aquatic-associated swimming benefits; specific eligibility and stacking TBD.
+
 ## Still to design
 - Knockout recovery costs or other consequences beyond destination choice (not established).
 - Whether an unconscious creature is carried, automatically retrieved, or handled by another rule.
