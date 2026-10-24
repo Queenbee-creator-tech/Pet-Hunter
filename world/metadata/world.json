@@ -65,7 +65,12 @@
       "summer": "summer",
       "winter": "winter"
     },
-    "weather_patterns": null,
+    "weather_patterns": {
+      "dynamic_within_each_biome": true,
+      "biome_appropriate": true,
+      "exact_patterns": null,
+      "transition_rules": null
+    },
     "time_of_day_rules": null
   }
 }
