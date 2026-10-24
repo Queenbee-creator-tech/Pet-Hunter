@@ -92,6 +92,26 @@
     "intensity_rules": null,
     "warning_signs": null,
     "mitigation_rules": null,
-    "consequences": null
+    "consequences": null,
+    "behavior": {
+      "location_dependent_risk": true,
+      "relative_risk_by_location": true,
+      "location_risk_zones": null,
+      "warning_policy": "usually_with_possible_sudden_events",
+      "warning_lead_times": null,
+      "affected_systems": [
+        "player_survival",
+        "player_movement",
+        "equipment_condition",
+        "wild_creature_behavior",
+        "route_availability"
+      ],
+      "shelter_effectiveness": "depends_on_shelter_type_and_hazard_severity",
+      "shelter_effectiveness_parameters": null,
+      "temporary_route_obstructions": true,
+      "permanent_geography_changes_approved": false,
+      "obstruction_duration_rules": null,
+      "engine_authoritative": true
+    }
   }
 }
