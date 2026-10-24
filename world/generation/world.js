@@ -75,10 +75,20 @@ export function generateWorldDraft(seed=42,width=WORLD_CONFIG.width,height=WORLD
   const i=idx(x,y,width);if(biomes[i]===0&&dx*dx+dy*dy<=lakeRadius*lakeRadius){terrain[i]=TERRAIN.LAKE;features[i]|=2;elevation[i]=75;}
  }
  const river=[];
+ let previousY=riverY;
  for(let x=sourceX;x<width;x++){
   const travel=x-sourceX;
-  const y=clamp(riverY+Math.round(Math.sin(travel*.052)*4+Math.sin(travel*.103)*1.6),1,height-2);
-  const i=idx(x,y,width),b=biomes[i];if(b===3)throw new Error('River intersects Winter');
+  // Route within the guaranteed Spring–Autumn–Summer corridor, not through Winter.
+  // Limit lateral movement to one cell per step so the river remains connected.
+  const lakeApproach=Math.min(1,Math.abs(x-lakeX)/Math.max(1,lakeRadius*2));
+  const desired=riverY+Math.round((Math.sin(travel*.052)*4+Math.sin(travel*.103)*1.6)*lakeApproach);
+  const options=[riverY-1,riverY,riverY+1].filter(y=>
+   y>0&&y<height-1&&Math.abs(y-previousY)<=1&&biomes[idx(x,y,width)]!==3&&
+   (x===width-1||biomes[idx(x+1,y,width)]!==3));
+  const y=options.sort((a,b)=>Math.abs(a-desired)-Math.abs(b-desired)||Math.abs(a-riverY)-Math.abs(b-riverY))[0];
+  if(y===undefined)throw new Error('No connected river corridor');
+  previousY=y;
+  const i=idx(x,y,width),b=biomes[i];
   if(b===2&&terrain[i]===TERRAIN.OCEAN){river.push({x,y});break;}
   if(terrain[i]!==TERRAIN.LAKE&&terrain[i]!==TERRAIN.OCEAN){terrain[i]=TERRAIN.RIVER;features[i]|=1;}
   elevation[i]=x<=lakeX?Math.round(75+(lakeX-x)*145/Math.max(1,lakeX-sourceX)):Math.round(75-Math.min(75,(x-lakeX)*75/Math.max(1,width-lakeX-1)));
