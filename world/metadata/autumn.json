@@ -13,7 +13,8 @@
       "streams"
     ],
     "distribution_percentages": null,
-    "elevation_rules": null
+    "elevation_rules": null,
+    "distribution_guidance": "Predominantly open meadows and rolling hills with smaller groves scattered throughout; no extensive continuous forest"
   },
   "climate": {
     "approved_descriptors": [],
@@ -138,5 +139,12 @@
     "exact_visibility_thresholds": null,
     "success_probability_formula": null,
     "locked_action_detail_policy": null
+  },
+  "generation": {
+    "method": "rule_guided_generated_once",
+    "designer_controlled_landmarks": true,
+    "canonical_geography_persisted": true,
+    "layout_generated": false,
+    "generation_parameters": null
   }
 }
