@@ -23,7 +23,7 @@ function paint(){
  ctx.putImageData(image,0,0);
  if($('markers').checked){
   ctx.lineWidth=.9;ctx.strokeStyle='#f7f7fa';ctx.beginPath();
-  for(const route of world.turtleRoutes){const a=world.landmarks.summerCity,b=route.to;ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);}
+  for(const route of (layer==='floating'?[]:world.turtleRoutes)){const a=world.landmarks.summerCity,b=route.to;ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);}
   ctx.stroke();
   const landmarks=world.landmarks;
   const markers=[['Spring city',landmarks.springCity,'#f6eaa4'],['Autumn lake',landmarks.autumnLake,'#c1f3ff'],['Autumn town',landmarks.autumnTown,'#fff0ac'],['Winter city',landmarks.winterCity,'#ff8f8f'],['Summer city',landmarks.summerCity,'#f6eaa4'],...landmarks.summerIslands.map(p=>['Island',p,'#fff']),...landmarks.underwaterDestinations.map(p=>['Underwater descent',p,'#86edfa'])];
